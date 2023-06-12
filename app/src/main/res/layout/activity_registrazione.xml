@@ -9,19 +9,19 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="384dp"
-        android:layout_height="528dp"
+        android:layout_width="387dp"
+        android:layout_height="350dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975">
+        app:layout_constraintVertical_bias="0.58">
 
 
         <EditText
-            android:id="@+id/register_etName"
+            android:id="@+id/registration_etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -40,9 +40,8 @@
             app:layout_constraintVertical_bias="0.573" />
 
 
-
         <EditText
-            android:id="@+id/register_etUsername"
+            android:id="@+id/registration_etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -61,9 +60,8 @@
             app:layout_constraintVertical_bias="0.573" />
 
 
-
         <EditText
-            android:id="@+id/register_etEmail"
+            android:id="@+id/registration_etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -82,9 +80,8 @@
             app:layout_constraintVertical_bias="0.573" />
 
 
-
         <EditText
-            android:id="@+id/register_etPassword"
+            android:id="@+id/registration_etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -103,9 +100,8 @@
             app:layout_constraintVertical_bias="0.573" />
 
 
-
         <EditText
-            android:id="@+id/register_etConfermaPassword"
+            android:id="@+id/registration_etConfermaPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -124,11 +120,10 @@
             app:layout_constraintVertical_bias="0.573" />
 
 
-
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/registration_imageView"
         android:layout_width="205dp"
         android:layout_height="176dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -140,19 +135,34 @@
         app:srcCompat="@drawable/immagine_app" />
 
     <TextView
-        android:id="@+id/register_tvRegister"
-        android:layout_width="170dp"
-        android:layout_height="121dp"
+        android:id="@+id/registration_tvRegister"
+        android:layout_width="209dp"
+        android:layout_height="117dp"
         android:layout_margin="20dp"
         android:padding="20dp"
         android:text="Registration"
+        android:textColor="@color/black"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintVertical_bias="0.061" />
+
+    <Button
+        android:id="@+id/registration_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login_button_signin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:backgroundTint="@color/login_backgroundButton"
+        android:padding="15dp"
+        android:textSize="18sp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
