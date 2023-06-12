@@ -20,18 +20,22 @@ import retrofit2.Response
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var intentPrincipale :Intent
+    private lateinit var intentRegistrazione :Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
 
-        binding.btnLogin.setOnClickListener{
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+
+        binding.loginBtnLogin.setOnClickListener{
 
         }
 
-        binding.butnSignin.setOnClickListener{
-            val intentRegistrazione = Intent(this, Registrazione::class.java)
+        binding.loginButnSignin.setOnClickListener{
+            intentRegistrazione = Intent(this, Registrazione::class.java)
             startActivity(intentRegistrazione)
         }
 

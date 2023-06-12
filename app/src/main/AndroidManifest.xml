@@ -19,6 +19,9 @@
              <activity
             android:name=".login.Login"
             android:exported="false"/>
+            <activity
+            android:name=".login.Registrazione"
+            android:exported="false"/>
          <activity
              android:name=".principale.MainPrincipale"
              android:exported="true">
@@ -34,6 +37,9 @@
             android:exported="false"/>
         <activity
             android:name=".login.Login"
+            android:exported="false"/>
+        <activity
+            android:name=".login.Registrazione"
             android:exported="false"/>
         <activity
             android:name=".MainActivity"
