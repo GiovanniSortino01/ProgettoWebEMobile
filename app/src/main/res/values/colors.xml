@@ -5,7 +5,10 @@
 
     <color name="bottom_nav_icon_color">#FF5252</color>
     <color name="bottom_nav_text_color">#FFFFFF</color>
-
     <color name="login_textView">#3C3232</color>
     <color name="login_backgroundButton">#947914</color>
+
+
+
+
 </resources>
