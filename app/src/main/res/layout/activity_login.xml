@@ -8,7 +8,7 @@
     tools:context=".login">
 
     <LinearLayout
-        android:id="@+id/layoutPassword"
+        android:id="@+id/login_layoutPassword"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.53">
 
         <TextView
-            android:id="@+id/tvPassword"
+            android:id="@+id/login_tvPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -31,7 +31,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/login_etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -46,7 +46,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutUsername"
+        android:id="@+id/login_layoutUsername"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.336">
 
         <TextView
-            android:id="@+id/tvUsername"
+            android:id="@+id/login_tvUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -68,7 +68,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/etUsername"
+            android:id="@+id/login_etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -101,7 +101,7 @@
         app:srcCompat="@drawable/immagine_app" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/login_btnLogin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="480dp"
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/butnSignin"
+        android:id="@+id/login_butnSignin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
@@ -132,18 +132,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tvOr"
+        android:id="@+id/login_tvOr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="or create a new account"
         android:textColor="@color/login_textView"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/butnSignin"
+        app:layout_constraintBottom_toTopOf="@+id/login_butnSignin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/login_btnLogin"
         app:layout_constraintVertical_bias="0.536" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
