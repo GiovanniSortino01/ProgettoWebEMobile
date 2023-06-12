@@ -2,6 +2,7 @@ package com.example.progettopwm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.progettowebemobile.R
 
 class Registrazione : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
