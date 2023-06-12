@@ -22,6 +22,8 @@
     <string name="register_surname_text">Surname</string>
     <string name="register_surname_hint">Enter your surname...</string>
 
+    <string name="register_back">Back</string>
+
 
 
 </resources>
