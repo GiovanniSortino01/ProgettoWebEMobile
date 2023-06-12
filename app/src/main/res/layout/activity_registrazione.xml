@@ -31,7 +31,8 @@
             android:drawablePadding="15dp"
             android:hint="@string/register_name_text"
             android:inputType="text|textCapWords"
-            android:padding="20dp" />
+            android:padding="20dp"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/registration_etSurname"
@@ -71,7 +72,8 @@
             android:drawablePadding="15dp"
             android:hint="@string/login_password_text"
             android:inputType="textPassword"
-            android:padding="20dp" />
+            android:padding="20dp"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/registration_etConfermaPassword"
