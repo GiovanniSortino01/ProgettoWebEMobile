@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ProgettoWebEMobile</string>
+
+    <string name="Buttom_navigation_bar_home">Home</string>
+    <string name="Buttom_navigation_bar_search">Cerca</string>
+    <string name="Buttom_navigation_bar_location">GPS</string>
+    <string name="Buttom_navigation_bar_account">Profilo</string>
+
+
+
+</resources>
