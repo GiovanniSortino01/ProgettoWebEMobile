@@ -1,13 +1,16 @@
 package com.example.progettowebemobile.login
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.db_connection.ClientNetwork
 import com.example.db_connection.RequestLogin
 import com.example.progettowebemobile.R
+import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.ActivityLoginBinding
 import com.example.progettowebemobile.principale.MainPrincipale
 import com.google.gson.JsonArray
@@ -22,20 +25,24 @@ class Login : AppCompatActivity() {
     private lateinit var intentPrincipale :Intent
     private lateinit var intentRegistrazione :Intent
     private lateinit var requestLogin: RequestLogin
+    private var utils: Utils=Utils()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var email = binding.loginEtEmail.text.toString()
-        var password = binding.loginEtPassword.text.toString()
 
         binding.loginBtnLogin.setOnClickListener{
-
+            var email = binding.loginEtEmail.text.toString()
+            var password = binding.loginEtPassword.text.toString()
+            if(email.isEmpty() || password.isEmpty()){
+                utils.PopError("Errore Login","Inserisci sia email che password",this)
+            }else{
+            intentPrincipale = Intent(this, MainPrincipale::class.java)
             requestLogin = RequestLogin(email, password)
             loginUtente(requestLogin)
-
+            }
         }
 
         binding.loginButnSignin.setOnClickListener{
@@ -62,14 +69,14 @@ class Login : AppCompatActivity() {
                             startActivity(intentPrincipale)
 
                         } else {
-                            Toast.makeText(applicationContext,"credenziali errate", Toast.LENGTH_LONG).show()
-                            //binding.progressBar.visibility = View.GONE
+                            utils.PopError("Credenziali errate", "Le credenziali che hai inserito non sono corrette",this@Login)
                         }
                     }
                 }
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
                     //Toast.makeText(this@MainActivity,"onFailure1", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(applicationContext, "Errore connessione al Database", Toast.LENGTH_SHORT).show()
+                    Log.i("onFailure", "Sono dentro al onFailure")
+                    utils.PopError("Errore DB", "Errore connessione al database",this@Login)
                 }
             }
         )
