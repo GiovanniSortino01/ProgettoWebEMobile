@@ -21,14 +21,20 @@ class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var intentPrincipale :Intent
     private lateinit var intentRegistrazione :Intent
+    private lateinit var requestLogin: RequestLogin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var email = binding.loginEtEmail.text.toString()
+        var password = binding.loginEtPassword.text.toString()
 
         binding.loginBtnLogin.setOnClickListener{
+
+            requestLogin = RequestLogin(email, password)
+            loginUtente(requestLogin)
 
         }
 

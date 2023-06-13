@@ -22,18 +22,10 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
 class GpsFragment : Fragment() {
+
     private val LOCATION_PERMISSION_REQUEST_CODE = 100
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var latitude: Double? = null
-    private var longitude: Double? = null
-    private val requestPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()){
-            isGranted: Boolean ->
-        if(isGranted){
-            Log.i(TAG, "Permission enabled")
-        } else {
-            Log.i(TAG, "Explain the reason")
-        }
-    }
+    private val homeFragment: Fragment = HomeFragment() // Sostituisci con il tuo fragment Home
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,7 +41,6 @@ class GpsFragment : Fragment() {
             requestLocationPermission()
         }
         navigateToHomeFragment()
-
         return view
     }
 
@@ -101,74 +92,90 @@ class GpsFragment : Fragment() {
         startActivity(intent)
     }
 
+
+
+
+
+    /*
+    private val LOCATION_PERMISSION_REQUEST_CODE = 100
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var latitude: Double? = null
+    private var longitude: Double? = null
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_gps, container, false)
+
+        // Controlla se i permessi sono già stati concessi
+        if (checkLocationPermission()) {
+            openGoogleMaps()
+        } else {
+            // Richiedi i permessi
+            requestLocationPermission()
+        }
+        navigateToHomeFragment()
+        return view
+    }
+
+    private fun checkLocationPermission(): Boolean {
+        val permission = Manifest.permission.ACCESS_FINE_LOCATION
+        val result = ContextCompat.checkSelfPermission(requireContext(), permission)
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestLocationPermission() {
+        val permission = Manifest.permission.ACCESS_FINE_LOCATION
+
+        if (shouldShowRequestPermissionRationale(permission)) {
+            // Spiega all'utente perché sono necessari i permessi
+            val dialogBuilder = AlertDialog.Builder(requireContext())
+            dialogBuilder.setMessage("I permessi di localizzazione sono necessari per utilizzare questa funzionalità.")
+                .setTitle("Permessi Richiesti")
+                .setPositiveButton("Concedi") { dialog, _ ->
+                    dialog.dismiss()
+                    requestPermissionLauncher.launch(permission)
+                }
+                .setNegativeButton("Annulla") { dialog, _ ->
+                    dialog.dismiss()
+                    navigateToHomeFragment()
+                }
+                .create()
+                .show()
+        } else {
+            // Richiedi direttamente i permessi
+            requestPermissionLauncher.launch(permission)
+        }
+    }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                openGoogleMaps()
+            } else {
+                navigateToHomeFragment()
+            }
+        }
+*/
     private fun navigateToHomeFragment() {
         findNavController().navigate(R.id.action_gpsFragment_to_homeFragment)
     }
 /*
-    fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+    private fun openGoogleMaps() {
+        val latitude = 38.1157
+        val longitude = 13.3613
 
-    if (ContextCompat.checkSelfPermission(
-    requireContext(),
-    Manifest.permission.ACCESS_FINE_LOCATION
-    ) != PackageManager.PERMISSION_GRANTED
-    ) {
-        // I permessi non sono stati ancora concessi, richiedili all'utente
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-            LOCATION_PERMISSION_REQUEST_CODE
-        )
-
-
+        val uri = Uri.parse("geo:$latitude,$longitude")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
     }
-    getLastLocation()
 
-
-    // ...*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private fun openGoogleMaps(latitude: Double, longitude: Double) {
+        val uri = Uri.parse("geo:${latitude ?: 0.0},${longitude ?: 0.0}")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+    }
 
 
     private fun getLastLocation() {
@@ -193,31 +200,6 @@ class GpsFragment : Fragment() {
                     // Errore durante il recupero della posizione
                 }
         }
-    }
-//
-//
-//
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<String>,
-//        grantResults: IntArray
-//    ) {
-//        when (requestCode) {
-//            LOCATION_PERMISSION_REQUEST_CODE -> {
-//                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    // L'utente ha concesso i permessi, puoi procedere ad accedere alla posizione
-//                    getLastLocation()
-//                } else {
-//                    // L'utente ha negato i permessi, gestisci di conseguenza
-//                    // Ad esempio, mostra un messaggio o disabilita le funzionalità che richiedono la posizione
-//                }
-//            }
-//        }
-//    }
-//
-private fun openGoogleMaps(latitude: Double, longitude: Double) {
-        val uri = Uri.parse("geo:${latitude ?: 0.0},${longitude ?: 0.0}")
-        val intent = Intent(Intent.ACTION_VIEW, uri)
-        startActivity(intent)
-    }
+    }*/
 }
+
