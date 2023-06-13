@@ -15,6 +15,7 @@
     <string name="login_password_hint">Enter your password...</string>
 
     <string name="login_button_login">Login</string>
+    <string name="login_or">or create a new account</string>
     <string name="login_button_signin">Sign in</string>
 
     <string name="login_error_title">Errore Login</string>
@@ -27,14 +28,16 @@
     <string name="login_db_error_title">Errore connessione al database</string>
 
 
-    <!-- Registazione -->
-    <string name="register_name_text">Name</string>
+    <!-- Registration -->
+    <string name="registration_name_text">Name</string>
     <string name="register_name_hint">Enter your name...</string>
 
-    <string name="register_surname_text">Surname</string>
-    <string name="register_surname_hint">Enter your surname...</string>
+    <string name="registration_surname_text">Surname</string>
+    <string name="registration_surname_hint">Enter your surname...</string>
+    <string name="registration_confirmPassword">Confirm password</string>
+    <string name="registration_text">Registration</string>
 
-    <string name="register_back">Back</string>
+    <string name="registration_back">Back</string>
     
     <string name="name_restaurant">Restaurant name</string>
     <string name="name_place">Place name</string>

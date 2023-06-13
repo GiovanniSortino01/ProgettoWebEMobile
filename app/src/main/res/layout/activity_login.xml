@@ -116,7 +116,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/login_butnSignin"
+        android:id="@+id/login_btnSignin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
@@ -136,10 +136,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="or create a new account"
+        android:text="@string/login_or"
         android:textColor="@color/login_textView"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/login_butnSignin"
+        app:layout_constraintBottom_toTopOf="@+id/login_btnSignin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
