@@ -23,6 +23,10 @@
     <string name="register_surname_hint">Enter your surname...</string>
 
     <string name="register_back">Back</string>
+    
+    <string name="name_restaurant">Restaurant name</string>
+    <string name="name_place">Place name</string>
+    <string name="valuation">Valuation</string>
 
 
 
