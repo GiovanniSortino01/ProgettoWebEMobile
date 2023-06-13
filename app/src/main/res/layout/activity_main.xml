@@ -7,4 +7,16 @@
     tools:context=".MainActivity">
 
 
+    <ImageView
+        android:id="@+id/imageLogoLogin"
+        android:layout_width="381dp"
+        android:layout_height="270dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48"
+        app:srcCompat="@drawable/immagine_app" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
