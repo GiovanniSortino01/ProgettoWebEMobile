@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="btnResturant">Ristoranti</string>
+    <string name="btnHotel">Hotel</string>
+    <string name="btnMonument">Monumenti/Eventi</string>
+    <string name="btnPerson">Persone</string>
+
+
+</resources>

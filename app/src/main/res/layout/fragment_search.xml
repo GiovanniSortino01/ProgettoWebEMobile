@@ -6,16 +6,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".principale.SearchFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="searchh"
+    <Button
+        android:id="@+id/btn_resturant"
+        android:layout_width="114dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="170dp"
+        android:text="@string/btnResturant"
+        app:layout_constraintEnd_toStartOf="@+id/btn_hotel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_hotel"
+        android:layout_width="114dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/btnHotel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_monument"
+        android:layout_width="141dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="328dp"
+        android:text="@string/btnMonument"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_resturant" />
+
+    <Button
+        android:id="@+id/btn_person"
+        android:layout_width="114dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="324dp"
+        android:text="@string/btnPerson"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintStart_toEndOf="@+id/btn_monument"
+        app:layout_constraintTop_toBottomOf="@+id/btn_hotel" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

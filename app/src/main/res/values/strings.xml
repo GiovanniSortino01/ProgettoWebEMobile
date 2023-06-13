@@ -35,7 +35,20 @@
     <string name="register_surname_hint">Enter your surname...</string>
 
     <string name="register_back">Back</string>
-    
+
+    <string name="register_email_exist_title">Email già esistente</string>
+    <string name="register_email_exist_text">L\'email che hai inserito è già esistente</string>
+
+    <string name="register_new_account_title">Utente Creato</string>
+    <string name="register_new_account_text">L\'utente è stato creato con successo</string>
+
+    <string name="register_exist_title">Email già esistente</string>
+    <string name="register_exist_text">Se hai già un \'account utilizza le tue credenziali per accedere</string>
+
+
+
+
+
     <string name="name_restaurant">Restaurant name</string>
     <string name="name_place">Place name</string>
     <string name="valuation">Valuation</string>

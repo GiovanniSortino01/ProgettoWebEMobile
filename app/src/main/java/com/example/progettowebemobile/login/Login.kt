@@ -33,19 +33,23 @@ class Login : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.loginBtnLogin.setOnClickListener{
+        binding.loginBtnLogin.setOnClickListener {
             var email = binding.loginEtEmail.text.toString()
             var password = binding.loginEtPassword.text.toString()
-            if(email.isEmpty() || password.isEmpty()){
-                utils.PopError(getString(R.string.login_error_title),getString(R.string.login_error_text),this)
-            }else{
-            intentPrincipale = Intent(this, MainPrincipale::class.java)
-            requestLogin = RequestLogin(email, password)
-            loginUtente(requestLogin)
+            if (email.isEmpty() || password.isEmpty()) {
+                utils.PopError(
+                    getString(R.string.login_error_title),
+                    getString(R.string.login_error_text),
+                    this
+                )
+            } else {
+                intentPrincipale = Intent(this, MainPrincipale::class.java)
+                requestLogin = RequestLogin(email, password)
+                loginUtente(requestLogin)
             }
         }
 
-        binding.loginButnSignin.setOnClickListener{
+        binding.loginButnSignin.setOnClickListener {
             intentRegistrazione = Intent(this, Registrazione::class.java)
             startActivity(intentRegistrazione)
         }
