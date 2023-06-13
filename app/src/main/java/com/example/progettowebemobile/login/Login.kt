@@ -49,7 +49,7 @@ class Login : AppCompatActivity() {
             }
         }
 
-        binding.loginButnSignin.setOnClickListener {
+        binding.loginBtnSignin.setOnClickListener {
             intentRegistrazione = Intent(this, Registrazione::class.java)
             startActivity(intentRegistrazione)
         }

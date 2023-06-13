@@ -9,6 +9,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Url
+import java.util.Date
 
 interface UserAPI {
     @POST("postSelect/")
@@ -21,4 +22,8 @@ interface UserAPI {
 
     @GET
     fun getAvatar(@Url url: String) : Call <ResponseBody>
+
+    @POST("postInsert/")
+    @FormUrlEncoded
+    fun insert(@Field("query") query: String): Call <JsonObject>
 }
