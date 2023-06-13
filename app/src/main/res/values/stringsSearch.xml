@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    
+    <string name="search_restaurant">Restaurant</string>
+    <string name="search_hotel">Hotel</string>
+    <string name="search_mounuments">Monuments</string>
+    <string name="search_people">People</string>
+</resources>
