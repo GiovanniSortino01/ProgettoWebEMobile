@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_image">Profile picture</string>
+    <string name="user_name">Name</string>
+    <string name="user_surname">Surname</string>
+    <string name="user_RegistrationDate">Registration date</string>
+
+    <string name="user_btnEdit">Edit</string>
+    <string name="user_btnPlus">+</string>
+
+
+
+
+
+
+
+
+
+
+</resources>
