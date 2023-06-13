@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">ProgettoWebEMobile</string>
 
+    <!-- BottomNavigationBar-->
     <string name="Buttom_navigation_bar_home">Home</string>
     <string name="Buttom_navigation_bar_search">Cerca</string>
     <string name="Buttom_navigation_bar_location">GPS</string>
     <string name="Buttom_navigation_bar_account">Profilo</string>
 
-
+   <!-- Login -->
     <string name="login_email_text">E-mail</string>
     <string name="login_email_hint">Enter your e-mail...</string>
 
@@ -16,6 +17,17 @@
     <string name="login_button_login">Login</string>
     <string name="login_button_signin">Sign in</string>
 
+    <string name="login_error_title">Errore Login</string>
+    <string name="login_error_text">Inserisci sia email che password</string>
+
+    <string name="login_credenziali_errate_titolo">Credenziali errate</string>
+    <string name="login_credenziali_errate">Le credenziali che hai inserito non sono corrette</string>
+
+    <string name="login_db_error">Errore DB</string>
+    <string name="login_db_error_title">Errore connessione al database</string>
+
+
+    <!-- Registazione -->
     <string name="register_name_text">Name</string>
     <string name="register_name_hint">Enter your name...</string>
 

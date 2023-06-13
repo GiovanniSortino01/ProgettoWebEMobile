@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="dialog_text">I permessi di localizzazione sono necessari per utilizzare questa funzionalità.</string>
+    <string name="dialog_title">Permessi Richiesti</string>
+    <string name="dialog_concedi">Concedi</string>
+    <string name="dialog_annulla">Annulla</string>
+
+</resources>

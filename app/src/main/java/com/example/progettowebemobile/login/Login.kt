@@ -37,7 +37,7 @@ class Login : AppCompatActivity() {
             var email = binding.loginEtEmail.text.toString()
             var password = binding.loginEtPassword.text.toString()
             if(email.isEmpty() || password.isEmpty()){
-                utils.PopError("Errore Login","Inserisci sia email che password",this)
+                utils.PopError(getString(R.string.login_error_title),getString(R.string.login_error_text),this)
             }else{
             intentPrincipale = Intent(this, MainPrincipale::class.java)
             requestLogin = RequestLogin(email, password)
@@ -49,7 +49,6 @@ class Login : AppCompatActivity() {
             intentRegistrazione = Intent(this, Registrazione::class.java)
             startActivity(intentRegistrazione)
         }
-
     }
 
     private fun loginUtente (requestLogin: RequestLogin){
@@ -69,14 +68,14 @@ class Login : AppCompatActivity() {
                             startActivity(intentPrincipale)
 
                         } else {
-                            utils.PopError("Credenziali errate", "Le credenziali che hai inserito non sono corrette",this@Login)
+                            utils.PopError(getString(R.string.login_credenziali_errate_titolo), getString(R.string.login_credenziali_errate),this@Login)
                         }
                     }
                 }
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
                     //Toast.makeText(this@MainActivity,"onFailure1", Toast.LENGTH_SHORT).show()
                     Log.i("onFailure", "Sono dentro al onFailure")
-                    utils.PopError("Errore DB", "Errore connessione al database",this@Login)
+                    utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),this@Login)
                 }
             }
         )

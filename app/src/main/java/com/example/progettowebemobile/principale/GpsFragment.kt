@@ -52,13 +52,13 @@ class GpsFragment : Fragment() {
         if (shouldShowRequestPermissionRationale(permission)) {
             // Spiega all'utente perché sono necessari i permessi
             val dialogBuilder = AlertDialog.Builder(requireContext())
-            dialogBuilder.setMessage("I permessi di localizzazione sono necessari per utilizzare questa funzionalità.")
-                .setTitle("Permessi Richiesti")
-                .setPositiveButton("Concedi") { dialog, _ ->
+            dialogBuilder.setMessage(getString(R.string.dialog_text))
+                .setTitle(getString(R.string.dialog_title))
+                .setPositiveButton(R.string.dialog_concedi) { dialog, _ ->
                     dialog.dismiss()
                     requestPermissionLauncher.launch(permission)
                 }
-                .setNegativeButton("Annulla") { dialog, _ ->
+                .setNegativeButton(R.string.dialog_annulla) { dialog, _ ->
                     dialog.dismiss()
                 }
                 .create()

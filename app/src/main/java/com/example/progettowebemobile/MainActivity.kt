@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed({
 
             startActivity(intentLogin)
+            finish()
         }, 2000)
+
     }
 
 
