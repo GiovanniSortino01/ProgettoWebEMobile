@@ -14,6 +14,7 @@ import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
 import java.util.Date
 
 class Registrazione : AppCompatActivity() {
@@ -78,8 +79,8 @@ class Registrazione : AppCompatActivity() {
         )
     }
     fun insert(nome: String,cognome:String, email: String, password: String){
-        var data = Date()
-        val query = "insert into utenti (nome, cognome, data_inscrizione, email, password) values ('$nome', '$cognome', '$data', '$email', '$password');"
+        val currentDate = LocalDate.now()
+        val query = "INSERT INTO utenti (nome, cognome, datainscrizione, email, password) VALUES ('${nome}', '${cognome}', '$currentDate', '${email}', '${password}');"
         Log.i("LOG", "Query creata:$query ")
 
         ClientNetwork.retrofit.insert(query).enqueue(
@@ -93,7 +94,7 @@ class Registrazione : AppCompatActivity() {
                         utils.PopError(getString(R.string.register_new_account_title),getString(R.string.register_new_account_title),this@Registrazione)
 
                     }else{
-
+                        Log.i("LOG", "Errore durante la registrazione ")
                     }
                 }
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
@@ -104,7 +105,6 @@ class Registrazione : AppCompatActivity() {
         )
     }
 }
-
 
 
 /*
