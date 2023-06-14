@@ -7,7 +7,7 @@
     <string name="Buttom_navigation_bar_location">GPS</string>
     <string name="Buttom_navigation_bar_account">Profilo</string>
 
-   <!-- Login -->
+    <!-- Login -->
     <string name="login_email_text">E-mail</string>
     <string name="login_email_hint">Enter your e-mail...</string>
 
@@ -52,13 +52,8 @@
     <string name="login_or">accedi o registrati</string>
     <string name="registration_back">Back</string>
     <string name="registration_text">Registrazione</string>
-
-
-
-    <string name="name_restaurant">Restaurant name</string>
-    <string name="name_place">Place name</string>
-    <string name="valuation">Valuation</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

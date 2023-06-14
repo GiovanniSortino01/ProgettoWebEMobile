@@ -8,16 +8,16 @@ import android.view.ViewGroup
 import com.example.progettowebemobile.R
 
 
-class RestaurantFragment : Fragment() {
+class HotelFragment : Fragment() {
+
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_restaurant, container, false)
+        return inflater.inflate(R.layout.fragment_hotel, container, false)
     }
-
 
 
 }
