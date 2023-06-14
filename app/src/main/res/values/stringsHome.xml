@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="home_nav_open">Open</string>
+    <string name="home_nav_close">Close</string>
     <string name="home_tvPlace">Most popular places</string>
     <string name="home_title">Most popular places</string>
 
