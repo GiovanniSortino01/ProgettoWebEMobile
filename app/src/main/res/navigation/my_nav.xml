@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.example.progettowebemobile.principale.account.AccountFragment"
+        android:name="com.example.progettowebemobile.principale.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
     <fragment

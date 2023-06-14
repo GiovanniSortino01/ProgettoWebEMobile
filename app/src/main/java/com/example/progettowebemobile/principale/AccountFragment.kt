@@ -1,4 +1,4 @@
-package com.example.progettowebemobile.principale.account
+package com.example.progettowebemobile.principale
 
 import android.os.Bundle
 import android.view.LayoutInflater
