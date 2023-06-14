@@ -41,7 +41,10 @@
             android:drawablePadding="20dp"
             android:hint="@string/login_password_hint"
             android:inputType="textPassword"
-            android:padding="20dp" />
+            android:padding="20dp"
+
+            android:text="1234"
+            />
 
     </LinearLayout>
 
@@ -80,6 +83,9 @@
             android:hint="@string/login_email_hint"
             android:inputType="textWebEmailAddress|text|textEmailAddress"
             android:padding="20dp"
+
+            android:text="giovanni"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.4"

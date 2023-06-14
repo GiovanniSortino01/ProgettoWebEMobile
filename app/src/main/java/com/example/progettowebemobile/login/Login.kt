@@ -12,7 +12,9 @@ import com.example.db_connection.RequestLogin
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.ActivityLoginBinding
+import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.MainPrincipale
+import com.example.progettowebemobile.principale.search.Buffer
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import retrofit2.Call
@@ -26,6 +28,7 @@ class Login : AppCompatActivity() {
     private lateinit var intentRegistrazione :Intent
     private lateinit var requestLogin: RequestLogin
     private var utils: Utils=Utils()
+    private lateinit var utente: Utente
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,10 +68,20 @@ class Login : AppCompatActivity() {
 
                 override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
                     Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
-                    if (response.isSuccessful) { //Se non ci sono stati errori di connessione con il server
-                        Log.i("onResponse", "Sono dentro il primo if. dim response: ${(response.body()?.get("queryset") as JsonArray).size()}")
-                        if ((response.body()?.get("queryset") as JsonArray).size() == 1) {
-                            Log.i("onResponse", "Sono dentro il secondo if. e chiamo la getImageProfilo")
+                    if (response.isSuccessful) {
+                        val queryset = response.body()?.getAsJsonArray("queryset")
+                        if (queryset?.size() == 1) {
+                            val utenteJsonObject = queryset.get(0).asJsonObject
+                            val id = utenteJsonObject.get("id").asInt
+                            val nome = utenteJsonObject.get("nome").asString
+                            val cognome = utenteJsonObject.get("cognome").asString
+                            val data = utenteJsonObject.get("data_inscrizione").asString
+                            val email = utenteJsonObject.get("email").asString
+                            val password = utenteJsonObject.get("password").asString
+                            utente = Utente(id,nome,cognome,data,email,password)
+                            val buffer = Buffer()
+                            buffer.setUtente(utente)
+                            intentPrincipale.putExtra("Utente", utente);
                             startActivity(intentPrincipale)
 
                         } else {
@@ -85,3 +98,5 @@ class Login : AppCompatActivity() {
         )
     }
 }
+
+

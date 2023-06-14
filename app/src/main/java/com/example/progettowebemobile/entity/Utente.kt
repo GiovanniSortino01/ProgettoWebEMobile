@@ -1,13 +1,15 @@
 package com.example.progettowebemobile.entity
 
+import java.io.Serializable
 import java.util.Date
 
 
-class Utente(id: Int,nome: String,cognome: String,data: Date,email: String, password: String) {
-    private var id: Int = id
-    private var nome: String = nome
-    private var cognome: String = cognome
-    private var data: Date = data
-    private var email: String = email
-    private var password: String = password
+class Utente(id: Int,nome: String,cognome: String,data: String,email: String, password: String) :
+    Serializable {
+    public var id: Int = id
+    public var nome: String = nome
+    public var cognome: String = cognome
+    public var data: String = data
+    public var email: String = email
+    public var password: String = password
 }
