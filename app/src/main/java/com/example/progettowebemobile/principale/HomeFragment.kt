@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.progettowebemobile.R
+import com.example.progettowebemobile.databinding.ActivityMainBinding
 
 class HomeFragment : Fragment() {
 
