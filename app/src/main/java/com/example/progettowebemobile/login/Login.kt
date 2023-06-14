@@ -1,12 +1,9 @@
 package com.example.progettowebemobile.login
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.db_connection.ClientNetwork
 import com.example.db_connection.RequestLogin
 import com.example.progettowebemobile.R
@@ -14,8 +11,7 @@ import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.ActivityLoginBinding
 import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.MainPrincipale
-import com.example.progettowebemobile.principale.search.Buffer
-import com.google.gson.JsonArray
+import com.example.progettowebemobile.Buffer
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback

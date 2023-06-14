@@ -1,17 +1,13 @@
 package com.example.progettowebemobile.principale
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.Contacts.Intents
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.FragmentAccountBinding
 import com.example.progettowebemobile.entity.Utente
-import com.example.progettowebemobile.principale.search.Buffer
+import com.example.progettowebemobile.Buffer
 
 class AccountFragment : Fragment() {
     private lateinit var binding: FragmentAccountBinding

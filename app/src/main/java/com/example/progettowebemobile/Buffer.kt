@@ -1,4 +1,4 @@
-package com.example.progettowebemobile.principale.search
+package com.example.progettowebemobile
 
 import com.example.progettowebemobile.entity.Utente
 
@@ -12,6 +12,6 @@ class Buffer {
     }
 
     fun setUtente(utente: Utente) {
-        Buffer.utente = utente
+        Companion.utente = utente
     }
 }
