@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Profile -->
     <string name="user_image">Profile picture</string>
     <string name="user_name">Name</string>
     <string name="user_surname">Surname</string>
+    <string name="user_password">Password</string>
+    <string name="user_email">Email</string>
     <string name="user_RegistrationDate">Registration date</string>
+    <string name="user_tvProfile">Profile</string>
 
     <string name="user_btnEdit">Edit</string>
     <string name="user_btnPlus">+</string>
+
+    <!-- Edit -->
+    <string name="user_edit_btnPhoto">Edit photo</string>
+    <string name="user_edit_btnEmail">Change e-mail</string>
+    <string name="user_edit_btnPassword">Change password</string>
 
 
 

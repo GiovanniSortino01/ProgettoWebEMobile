@@ -1,4 +1,4 @@
-package com.example.progettowebemobile.principale
+package com.example.progettowebemobile.principale.account
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.example.progettowebemobile.R
 
 
-class MonumentFragment : Fragment() {
+
+
+class EditProfileFragment : Fragment() {
 
 
 
@@ -17,8 +19,7 @@ class MonumentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_monument, container, false)
+        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
     }
-
 
 }
