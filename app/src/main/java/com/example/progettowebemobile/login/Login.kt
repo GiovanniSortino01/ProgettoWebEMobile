@@ -74,7 +74,8 @@ class Login : AppCompatActivity() {
                             val data = utenteJsonObject.get("datainscrizione").asString
                             val email = utenteJsonObject.get("email").asString
                             val password = utenteJsonObject.get("password").asString
-                            utente = Utente(id,nome,cognome,data,email,password)
+                            val immagine = utenteJsonObject.get("immagine").asString
+                            utente = Utente(id,nome,cognome,data,email,password,immagine)
                             val buffer = Buffer()
                             buffer.setUtente(utente)
                             intentPrincipale.putExtra("Utente", utente);
