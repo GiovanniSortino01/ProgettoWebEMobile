@@ -71,7 +71,7 @@ class Login : AppCompatActivity() {
                             val id = utenteJsonObject.get("id").asInt
                             val nome = utenteJsonObject.get("nome").asString
                             val cognome = utenteJsonObject.get("cognome").asString
-                            val data = utenteJsonObject.get("data_inscrizione").asString
+                            val data = utenteJsonObject.get("datainscrizione").asString
                             val email = utenteJsonObject.get("email").asString
                             val password = utenteJsonObject.get("password").asString
                             utente = Utente(id,nome,cognome,data,email,password)
