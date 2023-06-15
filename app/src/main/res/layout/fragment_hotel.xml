@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
-            app:queryHint="@string/search_svHint" />
+            app:queryHint="@string/search_svHintHotel" />
 
     </com.google.android.material.card.MaterialCardView>
 
