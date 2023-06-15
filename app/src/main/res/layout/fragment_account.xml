@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="280dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +68,7 @@
 
         <Button
             android:id="@+id/user_buttonSettings"
-            android:layout_width="105dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
             android:layout_marginTop="12dp"
@@ -92,27 +92,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/user_recycleView"
-            android:layout_width="402dp"
-            android:layout_height="380dp"
-            app:layout_constraintBottom_toTopOf="@+id/user_buttonRecycle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/user_buttonRecycle"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/login_backgroundButton"
-            android:text="@string/user_btnPlus"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/user_buttonRecycle"
+            android:backgroundTint="@color/login_backgroundButton"
+            android:contentDescription="Add new photo"
+            android:src="@drawable/baseline_add_24" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_recycleView"
+            android:layout_width="411dp"
+            android:layout_height="371dp"
+            app:layout_constraintBottom_toTopOf="@+id/user_buttonRecycle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
