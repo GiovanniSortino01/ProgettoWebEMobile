@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/search_cl"
-    tools:context=".principale.search.RestaurantFragment">
+    android:id="@+id/search_hotel_cl"
+    tools:context=".principale.search.HotelFragment">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/search_materialCardView"
+        android:id="@+id/search_hotel_materialCardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
@@ -21,24 +21,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_searchView"
+            android:id="@+id/search_hotel_searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
-            app:queryHint="@string/search_svHintRestaurant" />
+            app:queryHint="@string/search_svHintHotel" />
 
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_recyclerView"
+        android:id="@+id/search_hotel_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/search_hotel_materialCardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
