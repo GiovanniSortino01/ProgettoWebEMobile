@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/search_zone_generalZone"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:text="@string/search_generalZone"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_margin="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_zone_generalZone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/search_zone_street"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/search_street"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/search_zone_howGeneral"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/search_generalHowToArrive"
+                android:textStyle="bold"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/search_zone_how1"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/search_howToArrive1"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/search_zone_how2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/search_howToArrive2"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/search_zone_generalZone2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/search_textZone"
+                android:textStyle="bold"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/search_zone_notes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/search_cenniZona"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,30 @@
     <string name="search_name_place">Place name</string>
     <string name="search_valuation">Valuation</string>
 
+    <!-- Stringhe per i singoli elementi -->
+
+    <!-- Item1 -->
+    <string name="search_Name">Name</string>
+
+    <!-- Item2 -->
+    <string name="search_generalPrice">Price</string>
+    <string name="search_price1">- Price 1</string>
+    <string name="search_price2">- Price 2</string>
+    <string name="search_price3">- Price 3</string>
+
+    <!-- Item3 -->
+    <string name="search_generalZone">Zone</string>
+    <string name="search_textZone">Zone:</string>
+    <string name="search_generalHowToArrive">How to arrive</string>
+    <string name="search_howToArrive1">How to arrive 1</string>
+
+    <string name="search_howToArrive2">How to arrive 2</string>
+    <string name="search_street">Street</string>
+    <string name="search_cenniZona">Notes on the area</string>
+
+    <!-- Item4 -->
+    <string name="search_reviews">Contribute too</string>
+    <string name="search_btnReviews">Add review</string>
 
 
-</resources>
+    </resources>
