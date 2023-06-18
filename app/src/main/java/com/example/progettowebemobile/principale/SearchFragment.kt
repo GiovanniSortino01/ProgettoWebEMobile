@@ -4,53 +4,53 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.fragment.findNavController
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.FragmentSearchBinding
-import com.example.progettowebemobile.principale.search.HotelFragment
-import com.example.progettowebemobile.principale.search.MonumentFragment
-import com.example.progettowebemobile.principale.search.RestaurantFragment
+import com.example.progettowebemobile.principale.search.RecyclerView.ReciclerViewSearch
 
 class SearchFragment : Fragment() {
 
-    private var _binding: FragmentSearchBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentSearchBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         binding.searchBtnRestaurant.setOnClickListener {
-            val restaurantFragment = RestaurantFragment()
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.search_flFragment, restaurantFragment)
-                .addToBackStack(null)
-                .commit()
+            val resultString = "monumento"
+            setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
+            findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
         binding.searchBtnHotel.setOnClickListener {
-            val hotelFragment = HotelFragment()
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.search_flFragment, hotelFragment)
-                .addToBackStack(null)
-                .commit()
+            val resultString = "monumento"
+            setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
+            findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
         binding.searchBtnMonuments.setOnClickListener {
-            val monumentFragment = MonumentFragment()
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.search_flFragment, monumentFragment)
-                .addToBackStack(null)
-                .commit()
+            val resultString = "monumento"
+            setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
+            findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
-    }
+        binding.searchBtnPeople.setOnClickListener {
+            val resultString = "monumento"
+            setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
+            findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
+        }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+
+
+
+
+        return binding.root
     }
 }

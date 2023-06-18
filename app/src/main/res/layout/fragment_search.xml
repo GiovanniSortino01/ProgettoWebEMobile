@@ -70,8 +70,8 @@
 
     <FrameLayout
         android:id="@+id/search_flFragment"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_width="386dp"
+        android:layout_height="276dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
