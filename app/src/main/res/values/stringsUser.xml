@@ -19,7 +19,6 @@
     <string name="user_edit_btnPassword">Change password</string>
 
     <!-- Reviews -->
-
     <string name="reviews_title">Title reviews</string>
     <string name="reviews_text">Text reviews</string>
     <string name="reviews_ratingDescription">Rating bar</string>
