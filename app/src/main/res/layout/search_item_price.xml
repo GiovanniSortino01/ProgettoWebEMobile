@@ -23,16 +23,15 @@
 
     <LinearLayout
         android:id="@+id/search_linearPrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_price_generalPrice"
         android:layout_width="320dp"
         android:layout_height="230dp"
         android:layout_margin="30dp"
+        android:layout_marginTop="316dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="368dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_price_generalPrice">
 
         <TextView
             android:id="@+id/search_price_price1"
