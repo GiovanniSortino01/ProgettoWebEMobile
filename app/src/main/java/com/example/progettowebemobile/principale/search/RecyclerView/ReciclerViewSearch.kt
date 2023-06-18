@@ -54,7 +54,7 @@ class ReciclerViewSearch : Fragment() {
     }
 
     private fun loadRecyclerViewData() {
-        if (tipo.equals("ristorante") || tipo.equals("hotel") || tipo.equals("monumento") || tipo.equals("persona")) {
+        if (tipo.equals("ristorante") || tipo.equals("hotel") || tipo.equals("monumento")) {
             getItems(tipo) { data ->
                 val adapter = SearchAdapter(data)
                 binding.searchRecyclerView.adapter = adapter
@@ -66,7 +66,20 @@ class ReciclerViewSearch : Fragment() {
                 })
                 adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
             }
-        } else {
+        }else if(tipo.equals("persona")){
+            getPersone() { data ->
+                val adapter = AccountAdapter(data)
+                binding.searchRecyclerView.adapter = adapter
+
+                adapter.setOnClickListener(object : AccountAdapter.OnClickListener {
+                    override fun onClick(position: Int, model: ItemsViewModelAccount) {
+                        Log.i(TAG, "Index ${position + 1}")
+                    }
+                })
+                adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
+            }
+        }
+        else {
             Log.i(TAG, "Tipo non valido")
         }
     }
@@ -94,7 +107,6 @@ class ReciclerViewSearch : Fragment() {
                                 if (avatar != null) {
                                     data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asInt))
                                 }
-
                                 // Verifica se tutte le chiamate sono state completate
                                 if (completedCount == queryset.size()) {
                                     callback(data)
@@ -131,12 +143,12 @@ class ReciclerViewSearch : Fragment() {
         })
     }
 
-    /*
-        private fun prendiPersone (): ArrayList<ItemsViewModelSearch>{
+
+        private fun getPersone (callback: (ArrayList<ItemsViewModelAccount>) -> Unit): ArrayList<ItemsViewModelAccount>{
 
             val query = "select * from utenti;"
             Log.i("LOG", "Query creata:$query ")
-            val data = ArrayList<ItemsViewModelSearch>()
+            val data = ArrayList<ItemsViewModelAccount>()
 
             ClientNetwork.retrofit.login(query).enqueue(
                 object : Callback<JsonObject> {
@@ -146,13 +158,21 @@ class ReciclerViewSearch : Fragment() {
                         if (response.isSuccessful) {
                             val queryset = response.body()?.getAsJsonArray("queryset")
                             if (queryset?.size()!! >= 1) {
+                                var completedCount = 0 // Contatore per tenere traccia del numero di chiamate completate
 
                                 for (i in 0 until queryset.size()) {
                                     val item = queryset.get(i).asJsonObject
-                                    var foto=getImageProfilo(item.get("immagine").asString)
-                                    data.add(ItemsViewModelSearch(foto, item.get("nome").asString, item.get("cognome").asString,0))
+                                    getImageProfilo(item.get("immagine").asString) { avatar ->
+                                        completedCount++
+                                        if (avatar != null) {
+                                            data.add(ItemsViewModelAccount(item.get("id").asInt,avatar, item.get("nome").asString, item.get("cognome").asString, item.get("datainscrizione").asString))
+                                        }
+                                        // Verifica se tutte le chiamate sono state completate
+                                        if (completedCount == queryset.size()) {
+                                            callback(data)
+                                        }
+                                    }
                                 }
-
                             } else {
                                 //Non ci sono oggetti da aggiungere alla recyclerView
                             }
@@ -167,5 +187,4 @@ class ReciclerViewSearch : Fragment() {
             )
             return data
         }
-    */
 }

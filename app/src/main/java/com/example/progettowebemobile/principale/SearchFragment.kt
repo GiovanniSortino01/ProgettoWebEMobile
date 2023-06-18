@@ -27,12 +27,12 @@ class SearchFragment : Fragment() {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         binding.searchBtnRestaurant.setOnClickListener {
-            val resultString = "monumento"
+            val resultString = "ristorante"
             setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
             findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
         binding.searchBtnHotel.setOnClickListener {
-            val resultString = "monumento"
+            val resultString = "hotel"
             setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
             findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
@@ -42,14 +42,10 @@ class SearchFragment : Fragment() {
             findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
         binding.searchBtnPeople.setOnClickListener {
-            val resultString = "monumento"
+            val resultString = "persona"
             setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
             findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
-
-
-
-
 
         return binding.root
     }
