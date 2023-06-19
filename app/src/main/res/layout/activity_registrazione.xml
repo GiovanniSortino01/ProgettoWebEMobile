@@ -9,15 +9,16 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="387dp"
+        android:layout_width="match_parent"
         android:layout_height="350dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58">
+        app:layout_constraintVertical_bias="0.498">
 
 
         <EditText
@@ -124,8 +125,8 @@
 
     <ImageView
         android:id="@+id/registration_imageView"
-        android:layout_width="205dp"
-        android:layout_height="176dp"
+        android:layout_width="193dp"
+        android:layout_height="159dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -136,36 +137,36 @@
 
     <TextView
         android:id="@+id/registration_tvRegister"
-        android:layout_width="209dp"
-        android:layout_height="117dp"
+        android:layout_width="217dp"
+        android:layout_height="99dp"
         android:layout_margin="20dp"
         android:padding="20dp"
         android:text="@string/registration_text"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.047" />
 
     <Button
         android:id="@+id/registration_buttonSignin"
         android:layout_width="146dp"
         android:layout_height="62dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/login_backgroundButton"
         android:padding="15dp"
         android:text="@string/login_button_signin"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/registration_buttonBack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.864"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.459" />
+        app:layout_constraintTop_toTopOf="@+id/registration_buttonBack"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/registration_buttonBack"
@@ -178,12 +179,13 @@
         android:text="@string/registration_back"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:layout_marginLeft="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/registration_buttonSignin"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.825"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
