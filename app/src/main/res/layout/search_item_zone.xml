@@ -77,7 +77,7 @@
                 android:id="@+id/search_zone_generalZone2"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="@string/search_textZone"
+                android:text="@string/search_generalDescription"
                 android:textStyle="bold"
                 android:textSize="30sp" />
 
@@ -85,7 +85,7 @@
                 android:id="@+id/search_zone_notes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/search_cenniZona"
+                android:text="@string/search_descriptionText"
                 android:textSize="30sp" />
         </LinearLayout>
 
