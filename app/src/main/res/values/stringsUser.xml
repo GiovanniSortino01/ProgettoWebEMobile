@@ -15,8 +15,11 @@
 
     <!-- Edit -->
     <string name="user_edit_btnPhoto">Edit photo</string>
-    <string name="user_edit_btnEmail">Change e-mail</string>
-    <string name="user_edit_btnPassword">Change password</string>
+    <string name="user_edit_btnCredentials">Change credentials</string>
+    <string name="user_generalEdit">Edit</string>
+    <string name="user_generalEditText">Enter your changes</string>
+    <string name="user_edit_btnChange">CHANGE</string>
+    <string name="user_edit_btnClose">CLOSE</string>
 
     <!-- Reviews -->
     <string name="reviews_title">Title reviews</string>
