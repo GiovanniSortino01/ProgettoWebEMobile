@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_title_new_post"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+
+    <EditText
+        android:id="@+id/Et_descrizione"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/user_hint_descrizione"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+    <EditText
+        android:id="@+id/Et_luogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/user_hint_luogo"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="183dp"
+        android:layout_height="145dp"
+        android:adjustViewBounds="true"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:src="@drawable/baseline_camera_alt_24" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_text_add_new_post"
+        android:textSize="20sp"
+        android:textColor="#FF1744"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF1744"
+        android:text="@string/user_botton_back"
+        android:id="@+id/close_button"
+        android:gravity="center" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00C853"
+        android:text="@string/user_botton_add"
+        android:id="@+id/add_botton"
+        android:gravity="center" />
+</LinearLayout>
+
+</LinearLayout>
+

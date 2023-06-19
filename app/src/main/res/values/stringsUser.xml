@@ -13,6 +13,17 @@
     <string name="user_btnEdit">Edit</string>
     <string name="user_btnPlus">+</string>
 
+    <!-- Post -->
+    <string name="user_title_new_post">Aggiungi un nuovo post</string>
+    <string name="user_hint_descrizione">Inserisci una descrizione</string>
+    <string name="user_hint_luogo">Inserisci il luogo</string>
+    <string name="user_text_add_new_post">Clicca qui per inserire una nuova foto</string>
+    <string name="user_botton_back">Torna Indietro</string>
+    <string name="user_botton_add">Aggiungi</string>
+
+    <string name="user_error_popup_title">Inserisci tutti i campi</string>
+    <string name="user_error_popup_text">Devi inserire tutti i campi prima di poter publicare</string>
+
     <!-- Edit -->
     <string name="user_edit_btnPhoto">Edit photo</string>
     <string name="user_edit_btnEmail">Change e-mail</string>

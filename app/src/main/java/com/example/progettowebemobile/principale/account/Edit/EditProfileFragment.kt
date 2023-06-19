@@ -1,4 +1,4 @@
-package com.example.progettowebemobile.principale.account
+package com.example.progettowebemobile.principale.account.Edit
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,10 +11,6 @@ import com.example.progettowebemobile.R
 
 
 class EditProfileFragment : Fragment() {
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
