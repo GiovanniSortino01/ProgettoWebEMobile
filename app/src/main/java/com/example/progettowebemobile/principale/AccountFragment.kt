@@ -18,11 +18,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.db_connection.ClientNetwork
-import com.example.progettowebemobile.databinding.FragmentAccountBinding
 import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
+import com.example.progettowebemobile.databinding.FragmentAccountBinding
 import com.example.progettowebemobile.principale.account.ItemsViewModelPost
 import com.example.progettowebemobile.principale.account.PersonalAccountAdapter
 import com.example.progettowebemobile.principale.search.RecyclerView.AccountAdapter
@@ -63,6 +63,16 @@ class AccountFragment : Fragment() {
         getImageProfilo(utente.immagine)
 
         loadRecyclerViewData()
+        binding.userBtnEdit.setOnClickListener{
+            val inflater = LayoutInflater.from(context)
+            val popupView = inflater.inflate(R.layout.pop_up_edit, null)
+            val Et_nome = popupView.findViewById<EditText>(R.id.user_edit_etName)
+            val Et_cognome = popupView.findViewById<EditText>(R.id.user_edit_etSurname)
+            val Et_email = popupView.findViewById<EditText>(R.id.user_edit_etEmail)
+            val alertDialogBuilder = AlertDialog.Builder(context).setView(popupView)
+            val alertDialog = alertDialogBuilder.create()
+
+        }
 
         binding.btnAddPost.setOnClickListener{
             //pop-up
@@ -110,8 +120,6 @@ class AccountFragment : Fragment() {
                 adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
             }
     }
-
-
     private fun getImageProfilo(url: String){
         ClientNetwork.retrofit.getAvatar(url).enqueue(
             object : Callback<ResponseBody> {
@@ -129,7 +137,6 @@ class AccountFragment : Fragment() {
             }
         )
     }
-
     private fun getItems(
         id: Int,
         callback: (ArrayList<ItemsViewModelPost>) -> Unit // Callback per restituire il risultato nullable
@@ -172,7 +179,6 @@ class AccountFragment : Fragment() {
             }
         )
     }
-
     private fun getImageProfiloRecyclerView(url: String, callback: (Bitmap?) -> Unit) {
         ClientNetwork.retrofit.getAvatar(url).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
@@ -189,7 +195,6 @@ class AccountFragment : Fragment() {
             }
         })
     }
-
     fun insert(id:Int,descrizione:String,luogo:String) {
 
         val currentDate = LocalDate.now()

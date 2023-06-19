@@ -8,7 +8,7 @@
     <string name="user_password">Password</string>
     <string name="user_email">Email</string>
     <string name="user_RegistrationDate">Registration date</string>
-    <string name="user_tvProfile">Profile</string>
+    <string name="user_tvProfile">Modifica Profilo</string>
 
     <string name="user_btnEdit">Edit</string>
     <string name="user_btnPlus">+</string>
@@ -25,12 +25,18 @@
     <string name="user_error_popup_text">Devi inserire tutti i campi prima di poter publicare</string>
 
     <!-- Edit -->
-    <string name="user_edit_btnPhoto">Edit photo</string>
-    <string name="user_edit_btnCredentials">Change credentials</string>
+    <string name="user_edit_btnPhoto">Cambia foto</string>
+    <string name="user_edit_btnCredentials">Modifica</string>
     <string name="user_generalEdit">Edit</string>
     <string name="user_generalEditText">Enter your changes</string>
     <string name="user_edit_btnChange">CHANGE</string>
     <string name="user_edit_btnClose">CLOSE</string>
+    <string name="user_tvNome">Nome</string>
+    <string name="user_tvCognome">Cognome</string>
+    <string name="user_tvEmail">Email</string>
+    <string name="user_edit_btnPassword">Cambia Password</string>
+
+
 
     <!-- Reviews -->
     <string name="reviews_title">Title reviews</string>
