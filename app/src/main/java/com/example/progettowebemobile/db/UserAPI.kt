@@ -27,4 +27,8 @@ interface UserAPI {
     @FormUrlEncoded
     fun insert(@Field("query") query: String): Call <JsonObject>
 
+    @POST("postUpdate/")
+    @FormUrlEncoded
+    fun update(@Field("query") query: String): Call <JsonObject>
+
 }

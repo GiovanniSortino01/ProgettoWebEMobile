@@ -31,10 +31,50 @@
     <string name="user_generalEditText">Enter your changes</string>
     <string name="user_edit_btnChange">CHANGE</string>
     <string name="user_edit_btnClose">CLOSE</string>
+
     <string name="user_tvNome">Nome</string>
     <string name="user_tvCognome">Cognome</string>
     <string name="user_tvEmail">Email</string>
     <string name="user_edit_btnPassword">Cambia Password</string>
+
+    <string name="user_error_popup_edit_title">Elementi Mancanti</string>
+    <string name="user_error_popup_edit_text">Devi compilare tutti i campi prima di poter modificare</string>
+
+    <string name="user_edit_modificaEffetuata_title">Password</string>
+    <string name="user_edit_modificaEffetuata_text">Password confermata con successo</string>
+
+    <!-- Edit Password-->
+    <string name="user_tvEditPassword">Modifica Password</string>
+
+    <string name="user_tvOldPassword">Vecchia Password</string>
+    <string name="user_tvNewPassword">Nuova Password</string>
+    <string name="user_tvConfermaPassword">Conferma Password</string>
+
+    <string name="user_etOldPassword">Vecchia Password</string>
+    <string name="user_etNewPassword">Nuova Password</string>
+    <string name="user_etConfermaPassword">Conferma Password</string>
+
+    <string name="user_editPassword_btnPassword">Cambia Password</string>
+
+    <string name="user_error_popup_editPassword_title">Elementi Mancanti</string>
+    <string name="user_error_popup_editPassword_text">Devi compilare tutti i campi prima di poter modificare</string>
+
+    <string name="user_error_popup_editPassword_noConform_title">Password Errata</string>
+    <string name="user_error_popup_editPassword_noConform_text">La vecchia password non è corretta</string>
+
+    <string name="user_error_popup_editPassword_passwordDiverse_title">Conferma Password Errata</string>
+    <string name="user_error_popup_editPassword_passwordDiverse_text">Le nuove Password non corrispondono</string>
+
+    <string name="user_edit_cambioEffetuato_title">Password</string>
+    <string name="user_edit_cambioEffetuato_text">Password confermata con successo</string>
+
+    <!-- Edit Photo-->
+    <string name="edit_photo_gallery">Galleria</string>
+    <string name="edit_photo_camera">Fotocamera</string>
+
+
+
+
 
 
 
