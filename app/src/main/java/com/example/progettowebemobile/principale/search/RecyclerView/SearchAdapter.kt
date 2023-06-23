@@ -1,22 +1,31 @@
 package com.example.progettowebemobile.principale.search.RecyclerView
 
+import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.SearchItemBinding
+import com.example.progettowebemobile.principale.SearchFragment
 
-class SearchAdapter(private val mList: List<ItemsViewModelSearch>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
 
+
+class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val fragmentManager: FragmentManager) : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
+    private var itemClickListener: ((Object) -> Unit)? = null
     private var onClickListener: OnClickListener?= null
+
 
     class ViewHolder(binding: SearchItemBinding):RecyclerView.ViewHolder(binding.root){
         val imageView = binding.imageView
         val name = binding.nameTextView
         val luogo = binding.locationTextView
         val recenzioni = binding.reviewsTextView
+        val cv_search = binding.cvSearch
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
         val view = SearchItemBinding.inflate(
@@ -33,6 +42,9 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>) : RecyclerVie
         holder.itemView.setOnClickListener{
             onClickListener?.onClick(position,ItemsViewModelSearch)
         }
+        holder.cv_search.setOnClickListener{
+
+        }
     }
 
     override fun getItemCount(): Int {
@@ -45,6 +57,9 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>) : RecyclerVie
 
     fun setOnClickListener(onClickListener:OnClickListener){
         this.onClickListener =  onClickListener
+    }
+    fun setOnItemClickListener(listener: (Object) -> Unit) {
+        itemClickListener = listener
     }
 
 }

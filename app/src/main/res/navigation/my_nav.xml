@@ -45,10 +45,17 @@
         <action
             android:id="@+id/action_reciclerViewSearch_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_reciclerViewSearch_to_placeFragment"
+            app:destination="@id/placeFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.progettowebemobile.principale.account.Edit.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/placeFragment"
+        android:name="com.example.progettowebemobile.principale.search.RecyclerView.Place.PlaceFragment"
+        android:label="PlaceFragment" />
 </navigation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap android:src="@drawable/picchu" /> <!-- Inserisci il nome del file dell'immagine -->
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Colore di sfondo di fallback -->
+            <corners android:radius="100dp" /> <!-- Raggio degli angoli arrotondati -->
+        </shape>
+    </item>
+</layer-list>

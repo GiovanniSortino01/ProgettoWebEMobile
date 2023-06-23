@@ -2,12 +2,22 @@ package com.example.progettowebemobile.principale.search.RecyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.AccountItemBinding
+import com.example.progettowebemobile.principale.search.RecyclerView.Place.PlaceFragment
 
-class AccountAdapter(private val mList: List<ItemsViewModelAccount>) : RecyclerView.Adapter<AccountAdapter.ViewHolder>(){
+
+class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val fragmentManager: FragmentManager) : RecyclerView.Adapter<AccountAdapter.ViewHolder>(){
+    private var itemClickListener = emptyList<Object>()
 
     private var onClickListener: OnClickListener?= null
+    private var lastClickTime: Long = 0
+    private val DOUBLE_CLICK_TIME_DELTA: Long = 300 // Tempo di doppio clic desiderato in millisecondi
+
 
     class ViewHolder(binding: AccountItemBinding): RecyclerView.ViewHolder(binding.root){
         val imageView = binding.imageViewProfile
@@ -43,5 +53,8 @@ class AccountAdapter(private val mList: List<ItemsViewModelAccount>) : RecyclerV
     fun setOnClickListener(onClickListener:OnClickListener){
         this.onClickListener =  onClickListener
     }
+
+
+
 
 }

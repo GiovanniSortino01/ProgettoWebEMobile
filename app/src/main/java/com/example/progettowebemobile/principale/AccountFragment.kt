@@ -554,6 +554,7 @@ class AccountFragment : Fragment() {
         if (intent.resolveActivity(requireContext().packageManager) != null) {
             startActivityForResult(intent, 1001)
         } else {
+            utils.PopError(getString(R.string.edit_photo_NoCamere_title),getString(R.string.edit_photo_NoCamere_text), requireContext())
             Log.i("TAG","La foto camera non c'è")
         }
     }

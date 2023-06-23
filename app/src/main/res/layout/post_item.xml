@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     app:cardElevation="4dp"
     app:cardCornerRadius="8dp"
-    app:cardBackgroundColor="#FFFFFF"
+    app:strokeColor="#CCCCCC"
     android:padding="16dp">
 
     <LinearLayout
@@ -16,6 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -24,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Nome Utente"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="16dp"
                 android:textStyle="bold" />
 
@@ -35,6 +36,7 @@
                 android:text="Altra Informazione"
                 android:textSize="14sp"
                 android:layout_marginRight="16dp"
+                android:textStyle="bold"
                 android:layout_gravity="end"/>
         </LinearLayout>
 
@@ -44,6 +46,7 @@
             android:layout_height="match_parent"
             android:text="Descrizione del Posto"
             android:textSize="16sp"
+            android:textStyle="italic"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"/>

@@ -10,16 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import com.example.db_connection.ClientNetwork
-import com.example.db_connection.RequestLogin
-import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.FragmentRecyclerviewSearchBinding
-import com.example.progettowebemobile.databinding.SearchItemBinding
-import com.example.progettowebemobile.entity.Utente
-import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -28,6 +25,7 @@ import retrofit2.Response
 
 
 class ReciclerViewSearch : Fragment() {
+    private var objectList = emptyList<Object>()
 
     private lateinit var binding: FragmentRecyclerviewSearchBinding
     private lateinit var utils: Utils
@@ -40,7 +38,7 @@ class ReciclerViewSearch : Fragment() {
     ): View? {
         binding = FragmentRecyclerviewSearchBinding.inflate(inflater, container, false)
 
-        //decide il pattern
+
         binding.searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         setFragmentResultListener("requestKey") { requestKey, bundle ->
@@ -56,7 +54,7 @@ class ReciclerViewSearch : Fragment() {
     private fun loadRecyclerViewData() {
         if (tipo.equals("ristorante") || tipo.equals("hotel") || tipo.equals("monumento")) {
             getItems(tipo) { data ->
-                val adapter = SearchAdapter(data)
+                val adapter = SearchAdapter(data,requireActivity().supportFragmentManager)
                 binding.searchRecyclerView.adapter = adapter
 
                 adapter.setOnClickListener(object : SearchAdapter.OnClickListener {
@@ -68,7 +66,7 @@ class ReciclerViewSearch : Fragment() {
             }
         }else if(tipo.equals("persona")){
             getPersone() { data ->
-                val adapter = AccountAdapter(data)
+                val adapter = AccountAdapter(data,requireActivity().supportFragmentManager)
                 binding.searchRecyclerView.adapter = adapter
 
                 adapter.setOnClickListener(object : AccountAdapter.OnClickListener {
@@ -142,8 +140,6 @@ class ReciclerViewSearch : Fragment() {
             }
         })
     }
-
-
         private fun getPersone (callback: (ArrayList<ItemsViewModelAccount>) -> Unit): ArrayList<ItemsViewModelAccount>{
 
             val query = "select * from utenti;"

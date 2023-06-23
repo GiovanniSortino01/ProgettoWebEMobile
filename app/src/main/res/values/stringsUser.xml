@@ -10,7 +10,7 @@
     <string name="user_RegistrationDate">Registration date</string>
     <string name="user_tvProfile">Modifica Profilo</string>
 
-    <string name="user_btnEdit">Edit</string>
+    <string name="user_btnEdit">Modifica profilo</string>
     <string name="user_btnPlus">+</string>
 
     <!-- Post -->
@@ -71,6 +71,10 @@
     <!-- Edit Photo-->
     <string name="edit_photo_gallery">Galleria</string>
     <string name="edit_photo_camera">Fotocamera</string>
+
+    <string name="edit_photo_NoCamere_title">Errore Fotocamera</string>
+    <string name="edit_photo_NoCamere_text">Impossibile connettere la fotocamera</string>
+
 
 
 

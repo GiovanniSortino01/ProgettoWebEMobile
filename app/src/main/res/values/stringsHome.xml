@@ -3,7 +3,17 @@
     <string name="home_nav_open">Open</string>
     <string name="home_nav_close">Close</string>
     <string name="home_tvPlace">Most popular places</string>
-    <string name="home_title">Most popular places</string>
+    <string name="home_title">Eventi importanti</string>
+    <string name="home_title_monument">Luoghi da visitare</string>
 
+    <string name="home_principale_title">Luoghi in evidenza</string>
+
+    <string name="home_vasco_title">Concerto Vasco Rossi</string>
+    <string name="home_vasco_text">Vieni a vivere un\'esperienza indimenticabile il 04/05/24 a Milano con il concerto imperdibile di Vasco Rossi! L\'icona del rock italiano si esibirà sul palco per regalarti una serata carica di energia, emozioni e i suoi più grandi successi. Con il suo stile unico e la voce inconfondibile, Vasco trasporterà il pubblico in un viaggio attraverso decenni di musica straordinaria</string>
+    <string name="home_teatroMassimo_title">Lirica teatro Massimo</string>
+    <string name="home_teatroMassimo_text">Hai mai sognato di vivere un\'esperienza straordinaria immerso nella bellezza della lirica? Lascia che il Teatro Massimo il 30/07/23 a Palermo ti conduca in un mondo di emozioni, melodie e performance straordinarie.</string>
+
+    <string name="home_colosseo_title">Colosseo</string>
+    <string name="home_colosseo_text">Ti invitiamo a immergerti nella grandezza e nella storia senza tempo del Colosseo, nel momento ideale per esplorare questa iconica meraviglia. Adesso è il momento perfetto per visitare questo monumento straordinario e godere di un\'esperienza indimenticabile. </string>
 </resources>
 
