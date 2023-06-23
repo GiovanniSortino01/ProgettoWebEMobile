@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.daimajia.slider.library.SliderLayout
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.FragmentPlaceBinding
@@ -25,7 +24,6 @@ import java.io.IOException
 
 class PlaceFragment : Fragment() {
     private lateinit var binding: FragmentPlaceBinding
-    private lateinit var imageSlider: SliderLayout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,14 +37,5 @@ class PlaceFragment : Fragment() {
     }
 
 
-    override fun onStop() {
-        imageSlider.stopAutoCycle()
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        imageSlider.removeAllSliders()
-        super.onDestroy()
-    }
 
 }

@@ -6,9 +6,7 @@
     <string name="search_btnMonument">Monuments/Events</string>
     <string name="search_btnPerson">People</string>
 
-    <string name="search_svHintRestaurant">Search restaurant ...</string>
-    <string name="search_svHintHotel">Search hotel ...</string>
-    <string name="search_svHintMonument">Search monument ...</string>
+    <string name="search_svHint">Cerca...</string>
     <string name="search_name_restaurant">Restaurant name</string>
     <string name="search_name_hotel">Hotel name</string>
     <string name="search_name_monument">Monument name</string>

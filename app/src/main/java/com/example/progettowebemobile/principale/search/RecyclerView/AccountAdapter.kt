@@ -1,7 +1,9 @@
 package com.example.progettowebemobile.principale.search.RecyclerView
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
@@ -11,7 +13,7 @@ import com.example.progettowebemobile.databinding.AccountItemBinding
 import com.example.progettowebemobile.principale.search.RecyclerView.Place.PlaceFragment
 
 
-class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val fragmentManager: FragmentManager) : RecyclerView.Adapter<AccountAdapter.ViewHolder>(){
+class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val context: Context) : RecyclerView.Adapter<AccountAdapter.ViewHolder>(){
     private var itemClickListener = emptyList<Object>()
 
     private var onClickListener: OnClickListener?= null
@@ -39,6 +41,10 @@ class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val 
         holder.data_di_inscrizione.text=ItemsViewModelAccount.data_di_inscrizione
         holder.itemView.setOnClickListener{
             onClickListener?.onClick(position,ItemsViewModelAccount)
+            val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
+            navController.navigate(R.id.action_reciclerViewSearch_to_placeFragment)
+
+
         }
     }
 

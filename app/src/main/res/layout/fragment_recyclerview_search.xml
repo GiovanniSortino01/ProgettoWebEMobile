@@ -3,10 +3,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/search_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/search_cl"
-    tools:context=".principale.search.RecyclerView.ReciclerViewSearch">
+    tools:context=".principale.search.RecyclerView.RecyclerViewSearch">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/search_materialCardView"
@@ -19,24 +19,26 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_searchView"
-            android:layout_width="280sp"
-            android:layout_height="wrap_content"
-            app:iconifiedByDefault="false"
-            app:queryBackground="@android:color/transparent"
-            app:queryHint="@string/search_svHintRestaurant" />
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_searchView"
+                android:layout_width="280sp"
+                android:layout_height="wrap_content"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent"
+                app:queryHint="@string/search_svHint" />
 
             <Button
+                android:id="@+id/btn_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cerca"
+                android:layout_gravity="right"
                 android:backgroundTint="#3F51B5"
-                android:layout_gravity="right">
+                android:text="cerca">
 
 
             </Button>
@@ -55,7 +57,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_materialCardView" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="282dp"
+        android:layout_height="365dp"
+        android:src="@drawable/ricercavuota"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/search_recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nessun elemento trovato"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.692" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

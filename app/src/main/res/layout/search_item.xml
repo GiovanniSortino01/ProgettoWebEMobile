@@ -12,14 +12,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="2dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-         />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#000000" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Nome"
-                    android:textSize="18sp"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -54,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="left">
 
                 <RatingBar
                     android:id="@+id/ratingBar"
@@ -62,16 +63,13 @@
                     android:layout_height="wrap_content"
                     android:numStars="5"
                     android:rating="4"
+                    android:min="1"
                     android:stepSize="0.5"
                     android:isIndicator="true"
-                    android:layout_marginRight="8dp" />
+                    android:layout_marginRight="8dp"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6" />
 
-                <TextView
-                    android:id="@+id/reviewsTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recensioni"
-                    android:textSize="14sp" />
 
             </LinearLayout>
 

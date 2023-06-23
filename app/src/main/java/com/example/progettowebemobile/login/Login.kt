@@ -43,6 +43,7 @@ class Login : AppCompatActivity() {
                 )
             } else {
                 intentPrincipale = Intent(this, MainPrincipale::class.java)
+                intentPrincipale.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 requestLogin = RequestLogin(email, password)
                 loginUtente(requestLogin)
             }

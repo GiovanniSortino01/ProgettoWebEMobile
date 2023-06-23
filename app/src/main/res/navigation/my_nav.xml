@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/reciclerViewSearch"
-        android:name="com.example.progettowebemobile.principale.search.RecyclerView.ReciclerViewSearch"
+        android:name="com.example.progettowebemobile.principale.search.RecyclerView.RecyclerViewSearch"
         android:label="fragment_recyclerview_search"
         tools:layout="@layout/fragment_recyclerview_search" >
         <action

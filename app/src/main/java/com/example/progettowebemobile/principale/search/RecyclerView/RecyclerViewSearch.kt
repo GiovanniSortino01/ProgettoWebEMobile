@@ -10,9 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
@@ -24,7 +22,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ReciclerViewSearch : Fragment() {
+class RecyclerViewSearch : Fragment() {
     private var objectList = emptyList<Object>()
 
     private lateinit var binding: FragmentRecyclerviewSearchBinding
@@ -38,14 +36,28 @@ class ReciclerViewSearch : Fragment() {
     ): View? {
         binding = FragmentRecyclerviewSearchBinding.inflate(inflater, container, false)
 
-
         binding.searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         setFragmentResultListener("requestKey") { requestKey, bundle ->
             tipo = bundle.getString("bundleKey").toString()
-
             // Chiamata alla funzione per caricare i dati nella RecyclerView
             loadRecyclerViewData()
+        }
+
+        binding.btnSearch.setOnClickListener{
+            var text = binding.searchSearchView.query.toString()
+
+            getItems(tipo,text) { data ->
+                val adapter = SearchAdapter(data,requireActivity().supportFragmentManager)
+                binding.searchRecyclerView.adapter = adapter
+
+                adapter.setOnClickListener(object : SearchAdapter.OnClickListener {
+                    override fun onClick(position: Int, model: ItemsViewModelSearch) {
+                        Log.i(TAG, "Index ${position + 1}")
+                    }
+                })
+                adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
+            }
         }
 
         return binding.root
@@ -66,7 +78,7 @@ class ReciclerViewSearch : Fragment() {
             }
         }else if(tipo.equals("persona")){
             getPersone() { data ->
-                val adapter = AccountAdapter(data,requireActivity().supportFragmentManager)
+                val adapter = AccountAdapter(data,requireContext())
                 binding.searchRecyclerView.adapter = adapter
 
                 adapter.setOnClickListener(object : AccountAdapter.OnClickListener {
@@ -103,7 +115,7 @@ class ReciclerViewSearch : Fragment() {
                             getImageProfilo(item.get("fotoPrincipale").asString) { avatar ->
                                 completedCount++
                                 if (avatar != null) {
-                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asInt))
+                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat))
                                 }
                                 // Verifica se tutte le chiamate sono state completate
                                 if (completedCount == queryset.size()) {
@@ -123,7 +135,53 @@ class ReciclerViewSearch : Fragment() {
             }
         )
     }
+    private fun getItems(
+        tipo: String,text:String,
+        callback: (ArrayList<ItemsViewModelSearch>) -> Unit // Callback per restituire il risultato nullable
+    ) {
+        val query = "select * from luoghi where tipo = '$tipo' and (nome LIKE '%$text%' or luogo LIKE '%$text%' or indirizzo LIKE '%$text%');"
+        val data = ArrayList<ItemsViewModelSearch>()
 
+        ClientNetwork.retrofit.login(query).enqueue(
+            object : Callback<JsonObject> {
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+
+                    val queryset = response.body()?.getAsJsonArray("queryset")
+
+                    if (queryset?.size()!! >= 1) {
+                        binding.imageView3.visibility = View.GONE
+                        binding.textView6.visibility = View.GONE
+
+                        var completedCount = 0 // Contatore per tenere traccia del numero di chiamate completate
+
+                        for (i in 0 until queryset.size()) {
+                            val item = queryset.get(i).asJsonObject
+                            getImageProfilo(item.get("fotoPrincipale").asString) { avatar ->
+                                completedCount++
+                                if (avatar != null) {
+                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat))
+                                }
+                                // Verifica se tutte le chiamate sono state completate
+                                if (completedCount == queryset.size()) {
+                                    callback(data)
+
+                                }
+                            }
+                        }
+                    } else {
+                        callback(data)
+                        binding.imageView3.visibility = View.VISIBLE
+                        binding.textView6.visibility = View.VISIBLE
+                    }
+                }
+
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                    // Chiamata alla callback con valore null in caso di fallimento
+                    callback(data)
+                }
+            }
+        )
+    }
     private fun getImageProfilo(url: String, callback: (Bitmap?) -> Unit) {
         ClientNetwork.retrofit.getAvatar(url).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {

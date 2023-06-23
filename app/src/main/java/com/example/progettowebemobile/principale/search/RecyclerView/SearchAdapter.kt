@@ -24,7 +24,7 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val fr
         val imageView = binding.imageView
         val name = binding.nameTextView
         val luogo = binding.locationTextView
-        val recenzioni = binding.reviewsTextView
+        val recenzioni = binding.ratingBar
         val cv_search = binding.cvSearch
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
@@ -39,6 +39,7 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val fr
         holder.imageView.setImageBitmap(ItemsViewModelSearch.image)
         holder.name.text=ItemsViewModelSearch.name
         holder.luogo.text=ItemsViewModelSearch.luogo
+        holder.recenzioni.rating=ItemsViewModelSearch.recenzione
         holder.itemView.setOnClickListener{
             onClickListener?.onClick(position,ItemsViewModelSearch)
         }

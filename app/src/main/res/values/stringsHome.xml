@@ -15,5 +15,12 @@
 
     <string name="home_colosseo_title">Colosseo</string>
     <string name="home_colosseo_text">Ti invitiamo a immergerti nella grandezza e nella storia senza tempo del Colosseo, nel momento ideale per esplorare questa iconica meraviglia. Adesso è il momento perfetto per visitare questo monumento straordinario e godere di un\'esperienza indimenticabile. </string>
+
+
+    <string name="back_title">Conferma di uscire</string>
+    <string name="back_text">Sei sicuro di voler uscire?</string>
+
+    <string name="back_yes">Si</string>
+    <string name="back_no">No</string>
 </resources>
 
