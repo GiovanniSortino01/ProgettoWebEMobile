@@ -10,15 +10,15 @@
     app:cardUseCompatPadding="true">
 
     <ImageView
+        android:id="@+id/search_imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.7"
         android:filter="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/colosseo" />
+        android:scaleType="centerCrop"/>
 
     <ImageButton
-        android:id="@+id/favoriteButton"
+        android:id="@+id/search_favoriteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_favorite_border_24"
@@ -30,7 +30,8 @@
         android:shadowColor="#000000"
         android:shadowDx="8"
         android:shadowDy="8"
-        android:shadowRadius="8"/>
+        android:shadowRadius="8"
+        android:contentDescription="Tasto Preferiti"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,6 +40,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/search_nameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -54,7 +56,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/search_locationTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Roma"
@@ -70,7 +72,7 @@
             android:textStyle="italic"/>
 
         <RatingBar
-            android:id="@+id/reviews_ratingBar"
+            android:id="@+id/search_ratingBar"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:gravity="left"

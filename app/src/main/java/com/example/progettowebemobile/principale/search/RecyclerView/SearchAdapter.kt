@@ -21,10 +21,10 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val fr
 
 
     class ViewHolder(binding: SearchItemBinding):RecyclerView.ViewHolder(binding.root){
-        val imageView = binding.imageView
-        val name = binding.nameTextView
-        val luogo = binding.locationTextView
-        val recenzioni = binding.ratingBar
+        val imageView = binding.searchImageView
+        val name = binding.searchNameTextView
+        val luogo = binding.searchLocationTextView
+        val recenzioni = binding.searchRatingBar
         val cv_search = binding.cvSearch
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
