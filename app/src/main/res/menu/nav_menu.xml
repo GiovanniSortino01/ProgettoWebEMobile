@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"/>
+    <item
+        android:id="@+id/nav_prenotazioni"
+        android:title="Prenotazioni"
+        android:icon="@drawable/baseline_restaurant_menu_24"/>
+    <item
+        android:id="@+id/nav_preferiti"
+        android:title="Preferiti"
+        android:icon="@drawable/baseline_favorite_24"/>
+    <item
+        android:id="@+id/nav_chiSiamo"
+        android:title="Chi siamo"
+        android:icon="@drawable/baseline_question_mark_24"/>
+</menu>

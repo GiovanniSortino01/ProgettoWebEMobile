@@ -15,6 +15,10 @@
     <string name="search_name_person">User name</string>
     <string name="search_name_place">Place name</string>
     <string name="search_valuation">Valuation</string>
+    
+    <string name="item_site">Visita il sito</string>
+    <string name="item_call">Chiama</string>
+    <string name="item_menu">Menù</string>
 
     <!-- Stringhe per i singoli elementi -->
 
