@@ -35,7 +35,8 @@ class PlaceFragment : Fragment() {
         luogo = bundle?.getSerializable("itemViewModel") as Luogo
 
         binding = FragmentPlaceBinding.inflate(inflater, container, false)
-        binding.tx.text = luogo.nome
+
+
 
 
         return binding.root

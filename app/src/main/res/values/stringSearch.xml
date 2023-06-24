@@ -11,37 +11,41 @@
     <string name="search_name_hotel">Hotel name</string>
     <string name="search_name_monument">Monument name</string>
     <string name="search_name_person">User name</string>
-    <string name="search_name_place">Place name</string>
+    <string name="search_name_place">Luogo</string>
     <string name="search_valuation">Valuation</string>
     
-    <string name="item_site">Visita il sito</string>
-    <string name="item_call">Chiama</string>
-    <string name="item_menu">Menù</string>
+    <string name="search_site">Visita il sito</string>
+    <string name="search_call">Chiama</string>
+    <string name="search_menu">Menù</string>
+    <string name="search_servizi">Servizi</string>
 
     <!-- Stringhe per i singoli elementi -->
 
     <!-- Item1 -->
-    <string name="search_Name">Name</string>
+    <string name="search_Name">Nome</string>
 
     <!-- Item2 -->
-    <string name="search_generalPrice">Price</string>
-    <string name="search_price1">- Price 1</string>
-    <string name="search_price2">- Price 2</string>
-    <string name="search_price3">- Price 3</string>
+    <string name="search_generalPrenotation">Prenota una o più stanze</string>
+    <string name="search_btnScegli">SCEGLI</string>
+    <string name="search_btnPrenota">PRENOTA</string>
+    <string name="search_generalPrice">Prezzo:</string>
+    <string name="search_price">0.00</string>
+
 
     <!-- Item3 -->
-    <string name="search_generalZone">Zone</string>
-    <string name="search_generalDescription">Description</string>
-    <string name="search_generalHowToArrive">How to arrive</string>
-    <string name="search_howToArrive1">How to arrive 1</string>
+    <string name="search_generalZone">La zona</string>
+    <string name="search_generalAddress">Indirizzo</string>
+    <string name="search_address">Via posto, n.civico, cap Luogo PR</string>
+    <string name="search_generalDescription">Informazioni su questo hotel</string>
+    <string name="search_generalHowToArrive">Come arrivarci</string>
+    <string name="search_howToArrive1">Posto - km</string>
 
-    <string name="search_howToArrive2">How to arrive 2</string>
-    <string name="search_street">Street</string>
-    <string name="search_descriptionText">Description text</string>
+    <string name="search_howToArrive2">Posto - km</string>
+    <string name="search_descriptionText">Description del posto</string>
 
     <!-- Item4 -->
-    <string name="search_reviews">Contribute too</string>
-    <string name="search_btnReviews">Add review</string>
+    <string name="search_generalReviews">Contribuisci anche tu</string>
+    <string name="search_btnReviews">Aggiungi una recensione</string>
 
 
     </resources>
