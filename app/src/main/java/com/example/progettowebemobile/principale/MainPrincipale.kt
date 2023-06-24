@@ -26,7 +26,6 @@ class MainPrincipale : AppCompatActivity() {
         setContentView(binding.root)
 
         //Navigation Drawer
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
 

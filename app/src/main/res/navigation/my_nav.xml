@@ -11,8 +11,8 @@
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" >
         <action
-            android:id="@+id/action_accountFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment" />
+            android:id="@+id/action_accountFragment_to_editFragment"
+            app:destination="@id/editFragment" />
     </fragment>
     <fragment
         android:id="@+id/gpsFragment"
@@ -50,12 +50,12 @@
             app:destination="@id/placeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/editProfileFragment"
-        android:name="com.example.progettowebemobile.principale.account.Edit.EditProfileFragment"
-        android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" />
-    <fragment
         android:id="@+id/placeFragment"
         android:name="com.example.progettowebemobile.principale.search.RecyclerView.Place.PlaceFragment"
         android:label="PlaceFragment" />
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.progettowebemobile.principale.account.Edit.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" />
 </navigation>

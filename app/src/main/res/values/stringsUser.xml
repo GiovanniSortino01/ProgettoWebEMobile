@@ -75,6 +75,8 @@
     <string name="edit_photo_NoCamere_title">Errore Fotocamera</string>
     <string name="edit_photo_NoCamere_text">Impossibile connettere la fotocamera</string>
 
+    <!-- Edit Card-->
+    <string name="user_edit_btnCard">Visualizza carte</string>
 
 
 

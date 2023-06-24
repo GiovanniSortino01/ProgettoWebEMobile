@@ -11,6 +11,7 @@ import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.FragmentPlaceBinding
 import com.example.progettowebemobile.databinding.FragmentRecyclerviewSearchBinding
+import com.example.progettowebemobile.entity.Luogo
 import com.example.progettowebemobile.principale.account.ItemsViewModelPost
 import com.google.gson.JsonObject
 import com.google.gson.internal.bind.ArrayTypeAdapter
@@ -24,13 +25,17 @@ import java.io.IOException
 
 class PlaceFragment : Fragment() {
     private lateinit var binding: FragmentPlaceBinding
+    private lateinit var luogo: Luogo
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentPlaceBinding.inflate(inflater, container, false)
+        val bundle = arguments
+        luogo = bundle?.getSerializable("itemViewModel") as Luogo
 
+        binding = FragmentPlaceBinding.inflate(inflater, container, false)
+        binding.tx.text = luogo.nome
 
 
         return binding.root

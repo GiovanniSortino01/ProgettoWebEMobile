@@ -1,6 +1,8 @@
 package com.example.progettowebemobile.principale.search.RecyclerView
 
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View.OnClickListener
 import android.view.ViewGroup
@@ -10,10 +12,18 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.db_connection.ClientNetwork
+import com.example.db_connection.RequestLogin
+import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.SearchItemBinding
+import com.example.progettowebemobile.entity.Luogo
+import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.SearchFragment
-
+import com.google.gson.JsonObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val context: Context) : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
@@ -26,7 +36,6 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val co
         val name = binding.searchNameTextView
         val luogo = binding.searchLocationTextView
         val recenzioni = binding.searchRatingBar
-        val cv_search = binding.cvSearch
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
         val view = SearchItemBinding.inflate(
@@ -43,8 +52,10 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val co
         holder.recenzioni.rating=ItemsViewModelSearch.recenzione
         holder.itemView.setOnClickListener{
             onClickListener?.onClick(position,ItemsViewModelSearch)
-            val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
-            navController.navigate(R.id.action_reciclerViewSearch_to_placeFragment)
+            var nome2=ItemsViewModelSearch.name
+            var luogo2=ItemsViewModelSearch.luogo
+            getItem(nome2,luogo2)
+
         }
     }
 
@@ -61,6 +72,49 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val co
     }
     fun setOnItemClickListener(listener: (Object) -> Unit) {
         itemClickListener = listener
+    }
+
+    private fun getItem (nome:String, luogo:String){
+
+        val query = "select * from luoghi where nome = '${nome}' and luogo = '${luogo}';"
+        Log.i("LOG", "Query creata:$query ")
+
+        ClientNetwork.retrofit.login(query).enqueue(
+            object : Callback<JsonObject> {
+
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
+                    Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
+                    if (response.isSuccessful) {
+                        val queryset = response.body()?.getAsJsonArray("queryset")
+                        if (queryset?.size() == 1) {
+                            val utenteJsonObject = queryset.get(0).asJsonObject
+                            val id_luogo = utenteJsonObject.get("id_luogo").asInt
+                            val nome = utenteJsonObject.get("nome").asString
+                            val descrizione = utenteJsonObject.get("descrizione").asString
+                            val numero_di_cellulare = utenteJsonObject.get("numero_di_cellulare").asLong
+                            val indirizzo = utenteJsonObject.get("indirizzo").asString
+                            val valutazione = utenteJsonObject.get("valutazione").asFloat
+                            val foto = utenteJsonObject.get("foto").asString
+                            val luogoposto = utenteJsonObject.get("luogo").asString
+                            var luogo = Luogo(id_luogo,nome,descrizione,numero_di_cellulare,indirizzo,foto,valutazione,luogoposto)
+                            val bundle = Bundle()
+                            bundle.putSerializable("itemViewModel", luogo) // Passa l'oggetto ItemsViewModelSearch come serializzabile
+
+                            val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
+                            navController.navigate(R.id.action_reciclerViewSearch_to_placeFragment,bundle)
+
+                        } else {
+                           // utils.PopError(getString(R.string.login_credenziali_errate_titolo), getString(R.string.login_credenziali_errate),this@Login)
+                        }
+                    }
+                }
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+                    //Toast.makeText(this@MainActivity,"onFailure1", Toast.LENGTH_SHORT).show()
+                    Log.i("onFailure", "Sono dentro al onFailure")
+                   // utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),this@Login)
+                }
+            }
+        )
     }
 
 }
