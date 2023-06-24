@@ -36,6 +36,4 @@ class PlaceFragment : Fragment() {
         return binding.root
     }
 
-
-
 }

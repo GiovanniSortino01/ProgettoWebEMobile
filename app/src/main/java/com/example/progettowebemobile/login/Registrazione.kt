@@ -26,15 +26,15 @@ class Registrazione : AppCompatActivity() {
         binding = ActivityRegistrazioneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.registrationButtonBack.setOnClickListener{
+        binding.registerBtnBack.setOnClickListener{
             finish()
         }
-        binding.registrationButtonSignin.setOnClickListener{
-            var nome = binding.registrationEtName.text.toString()
-            var cognome = binding.registrationEtSurname .text.toString()
-            var email = binding.registrationEtEmail.text.toString()
-            var password1 = binding.registrationEtPassword.text.toString()
-            var password2 = binding.registrationEtConfermaPassword.text.toString()
+        binding.registerBtnRegister.setOnClickListener{
+            var nome = binding.registerEtFirstName.text.toString()
+            var cognome = binding.registerEtLastName.text.toString()
+            var email = binding.registerEtEmail.text.toString()
+            var password1 = binding.registerEtPassword.text.toString()
+            var password2 = binding.registerEtConfirmPassword.text.toString()
             if(nome.isEmpty()||cognome.isEmpty()||email.isEmpty()||password1.isEmpty()||password2.isEmpty()){
                 utils.PopError(getString(R.string.register_empty_title),getString(R.string.register_empty_text),this)
             }else if(password1 != password2){

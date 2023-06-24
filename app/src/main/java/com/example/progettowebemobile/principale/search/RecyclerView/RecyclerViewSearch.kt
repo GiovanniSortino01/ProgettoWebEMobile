@@ -48,7 +48,7 @@ class RecyclerViewSearch : Fragment() {
             var text = binding.searchSearchView.query.toString()
 
             getItems(tipo,text) { data ->
-                val adapter = SearchAdapter(data,requireActivity().supportFragmentManager)
+                val adapter = SearchAdapter(data,requireContext())
                 binding.searchRecyclerView.adapter = adapter
 
                 adapter.setOnClickListener(object : SearchAdapter.OnClickListener {
@@ -66,7 +66,7 @@ class RecyclerViewSearch : Fragment() {
     private fun loadRecyclerViewData() {
         if (tipo.equals("ristorante") || tipo.equals("hotel") || tipo.equals("monumento")) {
             getItems(tipo) { data ->
-                val adapter = SearchAdapter(data,requireActivity().supportFragmentManager)
+                val adapter = SearchAdapter(data,requireContext())
                 binding.searchRecyclerView.adapter = adapter
 
                 adapter.setOnClickListener(object : SearchAdapter.OnClickListener {

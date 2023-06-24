@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progettowebemobile.R
@@ -15,7 +16,7 @@ import com.example.progettowebemobile.principale.SearchFragment
 
 
 
-class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val fragmentManager: FragmentManager) : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
+class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val context: Context) : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
     private var itemClickListener: ((Object) -> Unit)? = null
     private var onClickListener: OnClickListener?= null
 
@@ -42,9 +43,8 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val fr
         holder.recenzioni.rating=ItemsViewModelSearch.recenzione
         holder.itemView.setOnClickListener{
             onClickListener?.onClick(position,ItemsViewModelSearch)
-        }
-        holder.cv_search.setOnClickListener{
-
+            val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
+            navController.navigate(R.id.action_reciclerViewSearch_to_placeFragment)
         }
     }
 

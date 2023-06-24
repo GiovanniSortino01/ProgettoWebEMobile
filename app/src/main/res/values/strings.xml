@@ -8,6 +8,9 @@
     <string name="Buttom_navigation_bar_account">Profilo</string>
 
     <!-- Login -->
+
+    <string name="home_singin">Se non hai un\'account clicca qui</string>
+
     <string name="login_email_text">E-mail</string>
     <string name="login_email_hint">Enter your e-mail...</string>
 

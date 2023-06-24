@@ -43,8 +43,6 @@ class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val 
             onClickListener?.onClick(position,ItemsViewModelAccount)
             val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
             navController.navigate(R.id.action_reciclerViewSearch_to_placeFragment)
-
-
         }
     }
 
