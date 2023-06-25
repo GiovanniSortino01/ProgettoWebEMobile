@@ -1,4 +1,4 @@
-package com.example.progettowebemobile.principale
+package com.example.progettowebemobile.principale.search.RecyclerView.Place
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

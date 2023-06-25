@@ -5,29 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".principale.CardFragment">
+    tools:context=".principale.account.navigationDrawer.CardFragment">
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Metodi di Pagamento"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/paymentMethodsSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:prompt="@string/select_payment_method"
-        android:paddingTop="16dp" />
-
-    <TextView
-        android:id="@+id/selectedMethodTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="18sp"
-        android:paddingTop="16dp" />
+ 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

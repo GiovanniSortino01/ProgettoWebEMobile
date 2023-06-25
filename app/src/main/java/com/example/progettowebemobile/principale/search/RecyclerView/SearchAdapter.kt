@@ -55,7 +55,6 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val co
             var nome2=ItemsViewModelSearch.name
             var luogo2=ItemsViewModelSearch.luogo
             getItem(nome2,luogo2)
-
         }
     }
 

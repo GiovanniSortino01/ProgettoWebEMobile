@@ -5,7 +5,7 @@ import java.io.Serializable
 
 class Luogo(id_luogo: Int,nome: String, descrizione: String, numero_cellulare: Long, indirizzo: String,foto: String, valutazione: Float,luogo: String):
     Serializable {
-     var id_luogo: Int = id_luogo
+    public var id_luogo: Int = id_luogo
      var nome: String = nome
      var descrizione: String = descrizione
      var numero_cellulare: Long = numero_cellulare
