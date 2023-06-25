@@ -5,19 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.progettowebemobile.databinding.FragmentMenuBinding
+import com.example.progettowebemobile.databinding.FragmentServiziBinding
 
+class ServiziFragment : Fragment() {
 
-class MenuFragment : Fragment() {
-
-    private lateinit var binding: FragmentMenuBinding
+    private lateinit var binding: FragmentServiziBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentMenuBinding.inflate(inflater,container,false)
+        binding = FragmentServiziBinding.inflate(inflater,container,false)
 
 
 
@@ -25,6 +24,8 @@ class MenuFragment : Fragment() {
 
         return binding.root
     }
+
+
 
 
 }
