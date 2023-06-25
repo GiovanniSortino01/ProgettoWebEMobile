@@ -67,7 +67,7 @@
             android:shadowRadius="10"
             android:textColor="@color/white"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="118dp"
+            android:layout_marginRight="20dp"
             android:textSize="23sp"
             android:textStyle="italic"/>
 

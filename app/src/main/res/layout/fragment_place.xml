@@ -1,29 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:background="@color/background">
 
     <ScrollView
+        android:id="@+id/search_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/tx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ciao"
-                android:textStyle="bold"
-                android:textSize="28sp"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager2"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginBottom="5dp" />
+
+                <TextView
+                    android:id="@+id/search_fragment_nomePosto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/search_Name"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/search_fragment_nomeLuogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="@string/search_name_place"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="italic" />
+
+                <RatingBar
+                    android:id="@+id/search_fragment_ratingBar"
+                    android:layout_width="240dp"
+                    android:layout_height="40dp"
+                    android:gravity="left"
+                    android:layout_marginLeft="18dp"
+                    android:contentDescription="Rating Bar"
+                    android:numStars="5"
+
+                    android:progressBackgroundTint="@color/black"
+                    android:progressTint="@color/button"
+                    android:rating="3.5"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
+                    android:stepSize="0.5"
+                    android:transformPivotX="0dp"
+                    android:translationY="5dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toBottomOf="@+id/search_linearPrincipal">
+
+                    <TextView
+                        android:id="@+id/search_fragment_sito"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/baseline_web_24"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingRight="10dp"
+                        android:text="@string/search_site"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/search_fragment_chiama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/baseline_call_24"
+                        android:gravity="center"
+                        android:text="@string/search_call"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/search_fragment_servizi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/baseline_room_service_24"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:text="@string/search_servizi"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="55dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/search_fragment_tvPrenotazione"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_generalPrenotation"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/search_fragment_btnScegli"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="@string/search_btnScegli"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/baseline_bed_24"
+                    android:drawableRight="@drawable/baseline_people_24"
+                    android:drawablePadding="8dp"
+                    android:backgroundTint="@color/button"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/serch_fragment_tvPrezzo"
+                        android:layout_width="181dp"
+                        android:layout_height="match_parent"
+                        android:gravity="left"
+                        android:layout_weight="1"
+                        android:text="@string/search_generalPrice"
+                        android:textSize="25sp"
+                        android:textColor="@color/white"
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@drawable/baseline_price_check_24"/>
+
+                    <TextView
+                        android:id="@+id/search_fragment_prezzoEffettivo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/search_price"
+                        android:gravity="right"
+                        android:textSize="25sp"
+                        android:textColor="@color/white"
+                        android:drawableRight="@drawable/baseline_euro_24"/>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/search_fragment_btnPrenota"
+                    android:backgroundTint="@color/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="@string/search_btnPrenota"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="55dp">
+
+                <TextView
+                    android:id="@+id/search_fragment_tvZona"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_generalZone"
+                    android:textSize="27sp"
+                    android:layout_marginBottom="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/search_fragment_tvIndirizzoGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_generalAddress"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_place_24"/>
+
+                <TextView
+                    android:id="@+id/search_fragment_tvIndirizzo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_address"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="18dp" />
+
+                <TextView
+                    android:id="@+id/search_fragment_comeGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_generalHowToArrive"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_question_mark_24"/>
+
+                <TextView
+                    android:id="@+id/search_fragment_comeModo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_howToArrive1"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/search_fragment_comeModo2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_howToArrive2"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="40dp"/>
+                <TextView
+                    android:id="@+id/search_fragment_informazioniGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_generalDescription"
+                    android:textSize="27sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:id="@+id/search_fragment_informazioni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_descriptionText"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="18dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="55dp">
+
+                <TextView
+                    android:id="@+id/search_fragment_recensioneGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/search_generalReviews"
+                    android:textSize="27sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/search_fragment_btnRecensioni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="@color/button"
+                    android:text="@string/search_btnReviews"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/search_reviews_Principal" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/search_fragment_rvRecensioni"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:layout_marginTop="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/search_reviews_btn"/>
+
+            </LinearLayout>
 
 
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
