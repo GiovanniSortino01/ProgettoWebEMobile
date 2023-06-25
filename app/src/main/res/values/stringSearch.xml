@@ -47,5 +47,44 @@
     <string name="search_generalReviews">Contribuisci anche tu</string>
     <string name="search_btnReviews">Aggiungi una recensione</string>
 
+    <string name="search_sheet_categoria1">Categoria 1</string>
+    <string name="search_sheet_categoria2">Categoria 2</string>
+    <string name="search_sheet_categoria3">Categoria 3</string>
+
+    <!-- Menu -->
+    <string name="menu_nomePortata">Nome portata</string>
+    <string name="menu_ingredienti">Ingredienti</string>
+    <string name="menu_textGeneral">Menù</string>
+    <string name="menu_btnAntipasti">Antipasti</string>
+    <string name="menu_btnPrimi">Primi</string>
+    <string name="menu_btnSecondi">Secondi</string>
+    <string name="menu_btnDolci">Dolci</string>
+    <string name="menu_btnBevande">Bevande</string>
+
+    <!-- Servizi -->
+    <string name="servizi_text">Servizi</string>
+    <string name="servizi_internet">Internet</string>
+    <string name="servizi_internetSpecifica">Servizi internet</string>
+    <string name="servizi_fitness">Fitness</string>
+    <string name="servizi_fitnessSpecifica">Servizi fitness</string>
+    <string name="servizi_ciboBevande">Cibo e bevande</string>
+    <string name="servizi_ciboBevandeSpecifica">Servizi cibo e bevande</string>
+    <string name="servizi_trasporti">Trasporti</string>
+    <string name="servizi_trasportiSpecifica">Servizi trasporti</string>
+    <string name="servizi_generali">Generali</string>
+    <string name="servizi_generaliSpecifica">Servizi generali</string>
+    <string name="servizi_tipiCamere">Tipi di camere</string>
+    <string name="servizi_tipiCamereSpecifica">Tipi di camere offerte</string>
+    <string name="servizi_inCamera">Servizi in camera</string>
+    <string name="servizi_inCameraSpecifica">Tutti i servizi in camera</string>
+    <string name="servizi_reception">Servizi di reception</string>
+    <string name="servizi_receptionSpecifica">Tutti i servizi di reception</string>
+    <string name="servizi_pulizia">Servizi di pulizia</string>
+    <string name="servizi_puliziaSpecifica">Tutti i servizi pulizia</string>
+
+
+
+
+
 
     </resources>

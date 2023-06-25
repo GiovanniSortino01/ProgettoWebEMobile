@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".principale.search.RecyclerView.ServiziFragment"
+    android:background="@color/background">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:id="@+id/servizi_testo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/servizi_text"
+                android:textSize="27sp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_internetGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_internet"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_wifi_24"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/servizi_internetSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_internetSpecifica"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_fitnessGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_fitness"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_fitness_center_24"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/servizi_fitnessSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_fitnessSpecifica"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_ciboBevandeGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_fastfood_24"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/servizi_ciboBevandeSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_trasportiGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_trasporti"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_directions_car_24"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/servizi_trasportiSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_trasportiSpecifica"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_generaliGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_generali"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_info_24"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/servizi_generaliSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_generaliSpecifica"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_tipiCamereGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_tipiCamere"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_bed_24"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/servizi_tipiCamereSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_tipiCamereSpecifica"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_inCameraGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_inCamera"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/baseline_bed_24"
+                    android:drawablePadding="10dp"
+                    android:textStyle="bold">
+
+                <TextView
+                    android:id="@+id/servizi_inCameraSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_inCameraSpecifica"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_receptionGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_reception"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_home_repair_service_24"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/servizi_receptionSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_receptionSpecifica"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/servizi_puliziaGenerale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_pulizia"
+                    android:textSize="23sp"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/baseline_dry_cleaning_24"
+                    android:drawablePadding="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/servizi_puliziaSpecifiche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/servizi_puliziaSpecifica"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

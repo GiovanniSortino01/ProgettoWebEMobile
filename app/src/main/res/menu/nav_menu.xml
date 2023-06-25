@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:title="Home"
+        android:title="@string/menu_drawer_home"
         android:icon="@drawable/baseline_home_24"/>
     <item
         android:id="@+id/nav_prenotazioni"
-        android:title="Prenotazioni"
+        android:title="@string/menu_drawer_prenotazioni"
         android:icon="@drawable/baseline_restaurant_menu_24"/>
     <item
+        android:id="@+id/nav_pagamenti"
+        android:title="@string/menu_drawer_pagamento"
+        android:icon="@drawable/baseline_payment_24"/>
+    <item
         android:id="@+id/nav_preferiti"
-        android:title="Preferiti"
+        android:title="@string/menu_drawer_preferiti"
         android:icon="@drawable/baseline_favorite_24"/>
     <item
         android:id="@+id/nav_chiSiamo"
-        android:title="Chi siamo"
+        android:title="@string/menu_drawer_chisiamo"
         android:icon="@drawable/baseline_black_question_mark_24"/>
 </menu>
