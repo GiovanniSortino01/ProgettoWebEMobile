@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/search_menu"
-            android:textSize="40sp"/>
+            android:textSize="40sp"
+            android:textStyle="bold"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -41,7 +42,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/menu_btnAntipasti"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_marginRight="15dp"
+                    android:textSize="20sp"/>
 
                 <Button
                     android:id="@+id/menu_btnPrimi"
@@ -49,7 +51,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/menu_btnPrimi"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_marginRight="15dp"
+                    android:textSize="20sp"/>
 
                 <Button
                     android:id="@+id/menu_btnSecondi"
@@ -57,7 +60,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/menu_btnSecondi"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_marginRight="15dp"
+                    android:textSize="20sp"/>
 
                 <Button
                     android:id="@+id/menu_btnDolci"
@@ -65,14 +69,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/menu_btnDolci"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_marginRight="15dp"
+                    android:textSize="20sp"/>
 
                 <Button
                     android:id="@+id/menu_btnBevande"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/menu_btnBevande" />
+                    android:text="@string/menu_btnBevande"
+                    android:textSize="20sp"/>
             </LinearLayout>
         </HorizontalScrollView>
 
