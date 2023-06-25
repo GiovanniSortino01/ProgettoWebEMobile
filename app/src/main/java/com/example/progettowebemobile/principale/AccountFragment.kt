@@ -8,7 +8,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -17,13 +16,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.Buffer
@@ -32,10 +28,6 @@ import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.FragmentAccountBinding
 import com.example.progettowebemobile.principale.account.ItemsViewModelPost
 import com.example.progettowebemobile.principale.account.PersonalAccountAdapter
-import com.example.progettowebemobile.principale.search.RecyclerView.AccountAdapter
-import com.example.progettowebemobile.principale.search.RecyclerView.ItemsViewModelAccount
-import com.example.progettowebemobile.principale.search.RecyclerView.ItemsViewModelSearch
-import com.example.progettowebemobile.principale.search.RecyclerView.SearchAdapter
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -502,13 +494,6 @@ class AccountFragment : Fragment() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, 100)
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Activity.RESULT_OK) {
-            val selectedImageUri = data?.data
-            // Fai qualcosa con l'URI dell'immagine selezionata, ad esempio caricarla o visualizzarla
-        }
-    }
 
     private fun checkCameraPermission(): Boolean {
         val permission = Manifest.permission.CAMERA
@@ -549,19 +534,17 @@ class AccountFragment : Fragment() {
             }
         }
     private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-        if (intent.resolveActivity(requireContext().packageManager) != null) {
-            startActivityForResult(intent, 1001)
-        } else {
-            utils.PopError(getString(R.string.edit_photo_NoCamere_title),getString(R.string.edit_photo_NoCamere_text), requireContext())
-            Log.i("TAG","La foto camera non c'è")
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(takePictureIntent, 1)
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            binding.imageView2.setImageBitmap(imageBitmap)
         }
     }
-
-
-
-
-
 
 }

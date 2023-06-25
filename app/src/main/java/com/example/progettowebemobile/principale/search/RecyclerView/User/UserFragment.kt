@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.progettowebemobile.R
+import com.example.progettowebemobile.databinding.FragmentPlaceBinding
 import com.example.progettowebemobile.databinding.FragmentUserBinding
 import com.example.progettowebemobile.entity.Luogo
 import com.example.progettowebemobile.entity.Persona
@@ -23,7 +24,7 @@ class UserFragment : Fragment() {
         persona = bundle?.getSerializable("itemViewModel") as Persona
 
         binding = FragmentUserBinding.inflate(inflater, container, false)
-        binding.tx.text = persona.nome
+        binding.text.text = persona.nome
 
 
         return binding.root

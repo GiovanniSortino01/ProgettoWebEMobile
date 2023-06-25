@@ -105,21 +105,3 @@ class Registrazione : AppCompatActivity() {
         )
     }
 }
-
-
-/*
-val query = "insert todo utenti (nome,cognome,email,password) value ('${nome}','${cognome}','${email}','${password}');"
-
-ClientNetwork.retrofit.login(query).enqueue(
-object : Callback<JsonObject> {
-
-    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
-        if (response.isSuccessful) { //Se non ci sono stati errori di connessione con il server
-            utils.PopError(getString(R.string.register_new_account_title),getString(R.string.register_new_account_title))
-        }
-    }
-    override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
-        utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),this@Registrazione)
-    }
-}
-)*/
