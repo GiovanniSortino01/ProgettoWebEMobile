@@ -494,13 +494,6 @@ class AccountFragment : Fragment() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, 100)
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Activity.RESULT_OK) {
-            val selectedImageUri = data?.data
-            // Fai qualcosa con l'URI dell'immagine selezionata, ad esempio caricarla o visualizzarla
-        }
-    }
 
     private fun checkCameraPermission(): Boolean {
         val permission = Manifest.permission.CAMERA
@@ -541,19 +534,17 @@ class AccountFragment : Fragment() {
             }
         }
     private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-        if (intent.resolveActivity(requireContext().packageManager) != null) {
-            startActivityForResult(intent, 1001)
-        } else {
-            utils.PopError(getString(R.string.edit_photo_NoCamere_title),getString(R.string.edit_photo_NoCamere_text), requireContext())
-            Log.i("TAG","La foto camera non c'è")
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(takePictureIntent, 1)
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            binding.imageView2.setImageBitmap(imageBitmap)
         }
     }
-
-
-
-
-
 
 }

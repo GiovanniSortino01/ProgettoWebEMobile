@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pleace_error_telephone_title">Errore apertura telefono</string>
+    <string name="pleace_error_telephone_text">Errore durante l\'appertura del telefono</string>
+
+</resources>

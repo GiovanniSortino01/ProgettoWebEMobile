@@ -9,6 +9,8 @@ import android.view.View
 import android.Manifest
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
+import android.content.Context
+import android.location.LocationManager
 import android.util.Log
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
@@ -79,8 +81,10 @@ class GpsFragment : Fragment() {
         }
 
     private fun openGoogleMaps() {
-        val latitude = 38.1157
-        val longitude = 13.3613
+
+        val coordinates: Pair<Double, Double>? = getCoordinates()
+        val latitude = coordinates?.first
+        val longitude = coordinates?.second
 
         val uri = Uri.parse("geo:$latitude,$longitude")
         val intent = Intent(Intent.ACTION_VIEW, uri)
@@ -90,6 +94,32 @@ class GpsFragment : Fragment() {
     private fun navigateToHomeFragment() {
         findNavController().navigate(R.id.action_gpsFragment_to_homeFragment)
     }
+
+    private fun getCoordinates(): Pair<Double, Double>? {
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
+            // Permesso già concesso, puoi accedere al servizio di localizzazione
+            val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            val latitude = location?.latitude
+            val longitude = location?.longitude
+
+            if (latitude != null && longitude != null) {
+                return Pair(latitude, longitude)
+            }
+        } else {
+            // Permesso non concesso, richiedi i permessi all'utente
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                1001
+            )
+        }
+
+        return null
+    }
+
 
 }
 

@@ -95,7 +95,9 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val co
                             val valutazione = utenteJsonObject.get("valutazione").asFloat
                             val foto = utenteJsonObject.get("foto").asString
                             val luogoposto = utenteJsonObject.get("luogo").asString
-                            var luogo = Luogo(id_luogo,nome,descrizione,numero_di_cellulare,indirizzo,foto,valutazione,luogoposto)
+                            val sitoweb = utenteJsonObject.get("sitoweb").asString
+                            val tipo = utenteJsonObject.get("tipo").asString
+                            var luogo = Luogo(id_luogo,nome,descrizione,numero_di_cellulare,indirizzo,foto,valutazione,luogoposto,tipo,sitoweb)
                             val bundle = Bundle()
                             bundle.putSerializable("itemViewModel", luogo) // Passa l'oggetto ItemsViewModelSearch come serializzabile
 

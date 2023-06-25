@@ -3,7 +3,7 @@ package com.example.progettowebemobile.entity
 import java.io.Serializable
 
 
-class Luogo(id_luogo: Int,nome: String, descrizione: String, numero_cellulare: Long, indirizzo: String,foto: String, valutazione: Float,luogo: String):
+class Luogo(id_luogo: Int,nome: String, descrizione: String, numero_cellulare: Long, indirizzo: String,foto: String, valutazione: Float,luogo: String,tipo:String,sitoweb:String):
     Serializable {
     public var id_luogo: Int = id_luogo
      var nome: String = nome
@@ -12,5 +12,7 @@ class Luogo(id_luogo: Int,nome: String, descrizione: String, numero_cellulare: L
      var indirizzo: String = indirizzo
      var valutazione: Float = valutazione
      var foto: String = foto
-     var  luogo: String = luogo
+     var luogo: String = luogo
+    var tipo: String = tipo
+     var sitoweb: String = sitoweb
 }

@@ -1,16 +1,26 @@
 package com.example.progettowebemobile.principale.search.RecyclerView.Place
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.R
+import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.FragmentPlaceBinding
 import com.example.progettowebemobile.databinding.FragmentRecyclerviewSearchBinding
 import com.example.progettowebemobile.entity.Luogo
@@ -29,6 +39,7 @@ class PlaceFragment : Fragment() {
     private lateinit var binding: FragmentPlaceBinding
     private lateinit var luogo: Luogo
     private lateinit var taskViewModel: TaskViewModel
+    private var utils = Utils()
     private var imagesList = mutableListOf<Bitmap>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,19 +60,46 @@ class PlaceFragment : Fragment() {
             NewTaskSheet().show(requireActivity().supportFragmentManager, "newTaskTag")
         }
 
+        var tipo = luogo.tipo
+        var numero = luogo.numero_cellulare
 
-
+        if(tipo.equals("monumento")&&(numero.compareTo(0)==0)){
+            binding.searchFragmentChiama.visibility = View.GONE
+            binding.searchFragmentServizi.visibility = View.GONE
+        }
+        else if(tipo.equals("monumento")){
+            binding.searchFragmentChiama.visibility = View.VISIBLE
+            binding.searchFragmentServizi.visibility = View.GONE
+        }
+        else if(tipo.equals("hotel")){
+            binding.searchFragmentChiama.visibility = View.VISIBLE
+            binding.searchFragmentServizi.visibility = View.VISIBLE
+            binding.searchFragmentServizi.text = "Servizi"
+        }
+        else if(tipo.equals("ristorante")){
+            binding.searchFragmentChiama.visibility = View.VISIBLE
+            binding.searchFragmentServizi.visibility = View.VISIBLE
+            binding.searchFragmentServizi.text = "Menù"
+        }
         binding.searchFragmentChiama.setOnClickListener{
-
+            if (checkTelephonePermission()) {
+                openTelefono(requireContext(),luogo.numero_cellulare)
+            } else {
+                // Richiedi i permessi
+                requestTelephonePermission()
+            }
         }
         binding.searchFragmentSito.setOnClickListener{
+            val url = luogo.sitoweb
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
 
+        }
+        binding.searchFragmentServizi.setOnClickListener{
+            //findNavController().navigate(R.id.a)
         }
         binding.searchFragmentInformazioni.text=luogo.descrizione
         binding.searchFragmentTvIndirizzo.text=luogo.indirizzo
-
-
-
 
         return binding.root
     }
@@ -117,4 +155,46 @@ class PlaceFragment : Fragment() {
         )
     }
 
+
+    private fun checkTelephonePermission(): Boolean {
+        val permission = Manifest.permission.CALL_PHONE
+        val result = ContextCompat.checkSelfPermission(requireContext(), permission)
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestTelephonePermission() {
+        val permission = Manifest.permission.CALL_PHONE
+
+        if (shouldShowRequestPermissionRationale(permission)) {
+            // Spiega all'utente perché sono necessari i permessi
+            val dialogBuilder = AlertDialog.Builder(requireContext())
+            dialogBuilder.setMessage(getString(R.string.dialog_text))
+                .setTitle(getString(R.string.dialog_title))
+                .setPositiveButton(R.string.dialog_concedi) { dialog, _ ->
+                    dialog.dismiss()
+                    requestPermissionLauncher.launch(permission)
+                }
+                .setNegativeButton(R.string.dialog_annulla) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
+        } else {
+            // Richiedi direttamente i permessi
+            requestPermissionLauncher.launch(permission)
+        }
+    }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                openTelefono(requireContext(),luogo.numero_cellulare)
+            }
+        }
+
+    private fun openTelefono(context: Context, phoneNumber: Long) {
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$phoneNumber")
+        startActivity(intent)
+    }
 }
