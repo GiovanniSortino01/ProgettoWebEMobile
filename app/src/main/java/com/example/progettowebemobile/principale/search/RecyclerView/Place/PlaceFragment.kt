@@ -50,7 +50,7 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentBtnScegli.setOnClickListener {
             NewTaskSheet().show(requireActivity().supportFragmentManager, "newTaskTag")
         }
-
+        postToList()
 
 
 

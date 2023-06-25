@@ -21,50 +21,48 @@ class NewTaskSheet : BottomSheetDialogFragment()
         val activity = requireActivity()
         taskViewModel = ViewModelProvider(activity).get(TaskViewModel::class.java)
 
-        binding.minusButtonCamere.setOnClickListener {
+        binding.minusButtonCategoria1.setOnClickListener {
             if (numberCamere > 0) {
                 numberCamere--
-                binding.numberTextViewCamere.text = numberCamere.toString()
+                binding.numberTextViewCategoria1.text = numberCamere.toString()
             }
         }
 
-        binding.plusButtonCamere.setOnClickListener {
+        binding.plusButtonCategoria1.setOnClickListener {
             numberCamere++
-            numberAdulti++
-            binding.numberTextViewCamere.text = numberCamere.toString()
-            binding.numberTextViewAdulti.text = numberAdulti.toString()
+            binding.numberTextViewCategoria1.text = numberCamere.toString()
         }
-        binding.saveButton.setOnClickListener {
+        binding.searchSheetSaveButton.setOnClickListener {
             saveAction()
         }
 
-        binding.minusButtonAdulti.setOnClickListener {
+        binding.minusButtonCategoria2.setOnClickListener {
             if (numberAdulti > 0) {
                 numberAdulti--
-                binding.numberTextViewAdulti.text = numberAdulti.toString()
+                binding.numberTextViewCategoria2.text = numberAdulti.toString()
             }
         }
 
-        binding.plusButtonAdulti.setOnClickListener {
+        binding.plusButtonCategoria2.setOnClickListener {
             numberAdulti++
-            binding.numberTextViewAdulti.text = numberAdulti.toString()
+            binding.numberTextViewCategoria2.text = numberAdulti.toString()
         }
-        binding.saveButton.setOnClickListener {
+        binding.searchSheetSaveButton.setOnClickListener {
             saveAction()
         }
 
-        binding.minusButtonBambini.setOnClickListener {
+        binding.minusButtonCategoria3.setOnClickListener {
             if (numberBambini > 0) {
                 numberBambini--
-                binding.numberTextViewBambini.text = numberBambini.toString()
+                binding.numberTextViewCategoria3.text = numberBambini.toString()
             }
         }
 
-        binding.plusButtonBambini.setOnClickListener {
+        binding.plusButtonCategoria3.setOnClickListener {
             numberBambini++
-            binding.numberTextViewBambini.text = numberBambini.toString()
+            binding.numberTextViewCategoria3.text = numberBambini.toString()
         }
-        binding.saveButton.setOnClickListener {
+        binding.searchSheetSaveButton.setOnClickListener {
             saveAction()
         }
     }
@@ -77,9 +75,9 @@ class NewTaskSheet : BottomSheetDialogFragment()
 
     private fun saveAction()
     {
-        taskViewModel.camere.value = binding.numberTextViewCamere.text.toString()
-        taskViewModel.adulti.value = binding.numberTextViewAdulti.text.toString()
-        taskViewModel.bambini.value = binding.numberTextViewBambini.text.toString()
+        taskViewModel.categoria1.value = binding.numberTextViewCategoria1.text.toString()
+        taskViewModel.categoria2.value = binding.numberTextViewCategoria2.text.toString()
+        taskViewModel.categoria3.value = binding.numberTextViewCategoria3.text.toString()
         dismiss()
     }
 

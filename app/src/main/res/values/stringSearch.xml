@@ -47,5 +47,9 @@
     <string name="search_generalReviews">Contribuisci anche tu</string>
     <string name="search_btnReviews">Aggiungi una recensione</string>
 
+    <string name="search_sheet_categoria1">Categoria 1</string>
+    <string name="search_sheet_categoria2">Categoria 2</string>
+    <string name="search_sheet_categoria3">Categoria 3</string>
+
 
     </resources>

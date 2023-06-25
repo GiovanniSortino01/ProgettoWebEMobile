@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.progettowebemobile.R
-import com.example.progettowebemobile.databinding.FragmentPlaceBinding
+import com.example.progettowebemobile.databinding.FragmentUserBinding
 import com.example.progettowebemobile.entity.Luogo
 import com.example.progettowebemobile.entity.Persona
 
 class UserFragment : Fragment() {
 
-    private lateinit var binding: FragmentPlaceBinding
+    private lateinit var binding: FragmentUserBinding
     private lateinit var persona: Persona
 
     override fun onCreateView(
@@ -22,7 +22,7 @@ class UserFragment : Fragment() {
         val bundle = arguments
         persona = bundle?.getSerializable("itemViewModel") as Persona
 
-        binding = FragmentPlaceBinding.inflate(inflater, container, false)
+        binding = FragmentUserBinding.inflate(inflater, container, false)
         binding.tx.text = persona.nome
 
 
