@@ -95,12 +95,13 @@
                         android:clickable="true"
                         android:drawableLeft="@drawable/baseline_web_24"
                         android:ellipsize="none"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:maxLines="1"
                         android:paddingRight="10dp"
                         android:text="@string/search_site"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:drawablePadding="10dp"/>
 
                     <TextView
                         android:id="@+id/search_fragment_chiama"
@@ -109,10 +110,11 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:drawableLeft="@drawable/baseline_call_24"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:text="@string/search_call"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:drawablePadding="10dp"/>
 
                     <TextView
                         android:id="@+id/search_fragment_servizi"
@@ -121,11 +123,12 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:drawableLeft="@drawable/baseline_room_service_24"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:paddingLeft="10dp"
                         android:text="@string/search_servizi"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:drawablePadding="10dp"/>
                 </LinearLayout>
 
             </LinearLayout>

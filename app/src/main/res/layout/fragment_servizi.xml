@@ -211,8 +211,7 @@
                     android:textColor="@color/white"
                     android:drawableLeft="@drawable/baseline_bed_24"
                     android:drawablePadding="10dp"
-                    android:textStyle="bold">
-
+                    android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/servizi_inCameraSpecifiche"
                     android:layout_width="match_parent"
