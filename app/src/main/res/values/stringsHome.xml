@@ -22,5 +22,11 @@
 
     <string name="back_yes">Si</string>
     <string name="back_no">No</string>
+
+    <string name="menu_drawer_home">Home</string>
+    <string name="menu_drawer_prenotazioni">Prenotazioni</string>
+    <string name="menu_drawer_pagamento">Metodi di pagamento</string>
+    <string name="menu_drawer_preferiti">Preferiti</string>
+    <string name="menu_drawer_chisiamo">Chi siamo</string>
 </resources>
 

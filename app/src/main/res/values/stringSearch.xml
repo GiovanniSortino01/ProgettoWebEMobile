@@ -51,5 +51,16 @@
     <string name="search_sheet_categoria2">Categoria 2</string>
     <string name="search_sheet_categoria3">Categoria 3</string>
 
+    <string name="menu_nomePortata">Nome portata</string>
+    <string name="menu_ingredienti">Ingredienti</string>
+    <string name="menu_textGeneral">Menù</string>
+    <string name="menu_btnAntipasti">Antipasti</string>
+    <string name="menu_btnPrimi">Primi</string>
+    <string name="menu_btnSecondi">Secondi</string>
+    <string name="menu_btnDolci">Dolci</string>
+    <string name="menu_btnBevande">Bevande</string>
+
+
+
 
     </resources>
