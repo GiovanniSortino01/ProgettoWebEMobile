@@ -18,7 +18,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/reviews_imageUser"
@@ -34,7 +37,7 @@
                 <TextView
                     android:id="@+id/reviews_name"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/user_name"
                     android:textSize="22sp" />
@@ -42,7 +45,7 @@
                 <TextView
                     android:id="@+id/reviews_surname"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/user_surname"
                     android:textSize="22sp" />
@@ -54,7 +57,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
 
             <RatingBar
                 android:id="@+id/reviews_ratingBar"
@@ -80,14 +86,14 @@
                 <TextView
                     android:id="@+id/reviews_titleReviews"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/reviews_title"
                     android:textSize="28sp"/>
 
                 <TextView
                     android:id="@+id/reviews_textReviews"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/reviews_text"
                     android:textSize="22sp"/>
             </LinearLayout>
