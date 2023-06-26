@@ -1,0 +1,62 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="@android:color/white"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/textViewAuthorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Nome"
+                android:textColor="@android:color/black"/>
+
+            <RatingBar
+                android:id="@+id/search_fragment_ratingBar"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:gravity="left"
+                android:layout_marginLeft="18dp"
+                android:contentDescription="Rating Bar"
+                android:numStars="5"
+                android:progressBackgroundTint="@color/black"
+                android:progressTint="@color/ratingBar"
+                android:rating="3.5"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:stepSize="0.5"
+                android:transformPivotX="0dp"
+                android:translationY="5dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewReviewText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:text="Recenzione"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

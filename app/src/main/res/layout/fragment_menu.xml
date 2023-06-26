@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".principale.search.RecyclerView.MenuFragment"
+    tools:context=".principale.search.RecyclerView.Place.Menu.MenuFragment"
     android:background="@color/background">
 
     <LinearLayout

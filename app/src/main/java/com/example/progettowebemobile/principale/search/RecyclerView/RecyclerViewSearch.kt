@@ -115,7 +115,7 @@ class RecyclerViewSearch : Fragment() {
                             getImageProfilo(item.get("fotoPrincipale").asString) { avatar ->
                                 completedCount++
                                 if (avatar != null) {
-                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat,item.get("tipo").asString,item.get("sitoweb").asString))
+                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat,item.get("tipo").asString,item.get("sitoweb").asString,item.get("comearrivarci").asString))
                                 }
                                 // Verifica se tutte le chiamate sono state completate
                                 if (completedCount == queryset.size()) {
@@ -159,7 +159,7 @@ class RecyclerViewSearch : Fragment() {
                             getImageProfilo(item.get("fotoPrincipale").asString) { avatar ->
                                 completedCount++
                                 if (avatar != null) {
-                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat,item.get("tipo").asString,item.get("sitoweb").asString))
+                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat,item.get("tipo").asString,item.get("sitoweb").asString,item.get("come_arrivarci").asString))
                                 }
                                 // Verifica se tutte le chiamate sono state completate
                                 if (completedCount == queryset.size()) {

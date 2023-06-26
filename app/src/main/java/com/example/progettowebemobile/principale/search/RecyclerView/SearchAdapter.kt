@@ -4,22 +4,14 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.db_connection.ClientNetwork
-import com.example.db_connection.RequestLogin
-import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.SearchItemBinding
 import com.example.progettowebemobile.entity.Luogo
-import com.example.progettowebemobile.entity.Utente
-import com.example.progettowebemobile.principale.SearchFragment
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -97,7 +89,8 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val co
                             val luogoposto = utenteJsonObject.get("luogo").asString
                             val sitoweb = utenteJsonObject.get("sitoweb").asString
                             val tipo = utenteJsonObject.get("tipo").asString
-                            var luogo = Luogo(id_luogo,nome,descrizione,numero_di_cellulare,indirizzo,foto,valutazione,luogoposto,tipo,sitoweb)
+                            val come_arrivarci = utenteJsonObject.get("comearrivarci").asString
+                            var luogo = Luogo(id_luogo,nome,descrizione,numero_di_cellulare,indirizzo,foto,valutazione,luogoposto,tipo,sitoweb,come_arrivarci)
                             val bundle = Bundle()
                             bundle.putSerializable("itemViewModel", luogo) // Passa l'oggetto ItemsViewModelSearch come serializzabile
 

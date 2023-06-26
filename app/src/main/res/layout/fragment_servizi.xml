@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".principale.search.RecyclerView.ServiziFragment"
+    tools:context=".principale.search.RecyclerView.Place.Servizi.ServiziFragment"
     android:background="@color/background">
 
 

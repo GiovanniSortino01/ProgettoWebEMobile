@@ -3,4 +3,25 @@
     <string name="pleace_error_telephone_title">Errore apertura telefono</string>
     <string name="pleace_error_telephone_text">Errore durante l\'appertura del telefono</string>
 
+
+    <string name="Place_TvPrenotazioni_Evento">Compra un biglietto</string>
+    <string name="Place_TvPrenotazioni_Hotel">Prenota una o più stanze</string>
+    <string name="Place_TvPrenotazioni_Ristorante">Prenota un tavolo</string>
+    <string name="Place_TvPrenotazioni_Monumento">Compra un biglietto</string>
+
+    <string name="Place_btnCompra_Evento">Compra biglietto</string>
+    <string name="Place_btnCompra_Hotel">Scegli camera</string>
+    <string name="Place_btnCompra_Ristorante">Prenota tavolo</string>
+    <string name="Place_btnCompra_Monumento">Compra biglietto</string>
+
+    <string name="Place_btnPrenota_Evento">COMPRA</string>
+    <string name="Place_btnPrenota_Hotel">PRENOTA</string>
+    <string name="Place_btnPrenota_Ristorante">PRENOTA</string>
+    <string name="Place_btnPrenota_Monumento">COMPRA</string>
+
+    <string name="Place_TvInformazioni_Evento">Informazioni su questo evento </string>
+    <string name="Place_TvInformazioni_Hotel">Informazioni su questo hotel</string>
+    <string name="Place_TvInformazioni_Ristorante">Informazioni su questo ristorante</string>
+    <string name="Place_TvInformazioni_Monumento">Informazioni su questo monumento</string>
+
 </resources>

@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progettowebemobile.databinding.PostItemBinding
-import com.example.progettowebemobile.principale.search.RecyclerView.ItemsViewModelSearch
-import com.example.progettowebemobile.principale.search.RecyclerView.SearchAdapter
+import com.example.progettowebemobile.principale.search.RecyclerView.Place.ItemsViewModelRecenzioni
 
-class PersonalAccountAdapter (private val mList: List<ItemsViewModelPost>) : RecyclerView.Adapter<PersonalAccountAdapter.ViewHolder>(){
+class PersonalAccountAdapter(private val mList: ArrayList<ItemsViewModelPost>) : RecyclerView.Adapter<PersonalAccountAdapter.ViewHolder>(){
 
     private var onClickListener: OnClickListener?= null
 

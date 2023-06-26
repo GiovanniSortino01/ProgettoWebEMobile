@@ -73,6 +73,7 @@
                     android:scaleY="0.6"
                     android:stepSize="0.5"
                     android:transformPivotX="0dp"
+                    android:isIndicator="true"
                     android:translationY="5dp" />
 
                 <LinearLayout
@@ -84,7 +85,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-
+                    android:layout_gravity="right"
                     app:layout_constraintTop_toBottomOf="@+id/search_linearPrincipal">
 
                     <TextView
@@ -256,21 +257,14 @@
                     android:drawableLeft="@drawable/baseline_question_mark_24"/>
 
                 <TextView
-                    android:id="@+id/search_fragment_comeModo1"
+                    android:id="@+id/search_fragment_comeModo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/search_howToArrive1"
                     android:textSize="20sp"
                     android:textColor="@color/white"
                     android:layout_marginBottom="10dp"/>
-                <TextView
-                    android:id="@+id/search_fragment_comeModo2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/search_howToArrive2"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="40dp"/>
+
                 <TextView
                     android:id="@+id/search_fragment_informazioniGenerale"
                     android:layout_width="match_parent"
@@ -331,8 +325,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/search_fragment_rvRecensioni"
                     android:layout_width="match_parent"
-                    android:layout_height="450dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"

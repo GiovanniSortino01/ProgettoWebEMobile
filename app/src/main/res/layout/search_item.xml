@@ -80,6 +80,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:numStars="5"
+            android:isIndicator="true"
 
             android:progressBackgroundTint="@color/black"
             android:progressTint="@color/ratingBar"
