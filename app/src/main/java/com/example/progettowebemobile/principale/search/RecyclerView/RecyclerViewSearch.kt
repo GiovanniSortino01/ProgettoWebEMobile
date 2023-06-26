@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.db_connection.ClientNetwork
+import com.example.progettowebemobile.Buffer.Companion.utente
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.FragmentRecyclerviewSearchBinding

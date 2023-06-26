@@ -24,4 +24,17 @@
     <string name="Place_TvInformazioni_Ristorante">Informazioni su questo ristorante</string>
     <string name="Place_TvInformazioni_Monumento">Informazioni su questo monumento</string>
 
+    <!-- Recenzione -->
+
+    <string name="Place_Recenione_delete">Cancella recenzione</string>
+
+    <string name="Place_newRecenzione_btn_back">Torna Indietro</string>
+    <string name="Place_newRecenzione_btn_add">Aggiungi</string>
+    <string name="Place_newRecenzione_title">Lascia una recenzione</string>
+    <string name="Place_newRecenzione_hint_commento">Scrivi la tua recenzione</string>
+
+    <string name="Place_RecenzoneError_title">Inserisci tutti i campi</string>
+    <string name="Place_RecenzioneError_text">Inserisci il commento e la valutazione</string>
+
+
 </resources>

@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Place_newRecenzione_title"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+
+    <RatingBar
+        android:id="@+id/recenzione_ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="47dp"
+        android:contentDescription="Rating Bar"
+
+        android:numStars="5"
+        android:progressBackgroundTint="@color/black"
+        android:progressTint="@color/ratingBar"
+        android:rating="5"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:stepSize="0.5"
+        android:transformPivotX="0dp"
+        android:translationY="5dp" />
+    <EditText
+        android:id="@+id/Et_luogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Place_newRecenzione_hint_commento"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF1744"
+            android:text="@string/Place_newRecenzione_btn_back"
+            android:id="@+id/close_button"
+            android:gravity="center" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00C853"
+            android:text="@string/Place_newRecenzione_btn_add"
+            android:id="@+id/add_botton"
+            android:gravity="center" />
+    </LinearLayout>
+
+</LinearLayout>

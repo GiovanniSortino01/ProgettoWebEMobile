@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.db_connection.ClientNetwork
+import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.SearchItemBinding
 import com.example.progettowebemobile.entity.Luogo
+import com.example.progettowebemobile.entity.Utente
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,6 +23,7 @@ import retrofit2.Response
 class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val context: Context) : RecyclerView.Adapter<SearchAdapter.ViewHolder>(){
     private var itemClickListener: ((Object) -> Unit)? = null
     private var onClickListener: OnClickListener?= null
+    private var buffer = Buffer()
 
 
     class ViewHolder(binding: SearchItemBinding):RecyclerView.ViewHolder(binding.root){
@@ -93,7 +96,8 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val co
                             var luogo = Luogo(id_luogo,nome,descrizione,numero_di_cellulare,indirizzo,foto,valutazione,luogoposto,tipo,sitoweb,come_arrivarci)
                             val bundle = Bundle()
                             bundle.putSerializable("itemViewModel", luogo) // Passa l'oggetto ItemsViewModelSearch come serializzabile
-
+                            var utente:Utente? = buffer.getUtente()
+                            bundle.putSerializable("utente", utente)
                             val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
                             navController.navigate(R.id.action_reciclerViewSearch_to_placeFragment,bundle)
 

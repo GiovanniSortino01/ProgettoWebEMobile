@@ -15,6 +15,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RatingBar
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -22,16 +25,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.db_connection.ClientNetwork
+import com.example.progettowebemobile.Buffer.Companion.utente
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.FragmentPlaceBinding
 import com.example.progettowebemobile.entity.Luogo
+import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.account.ItemsViewModelPost
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
 
 class PlaceFragment : Fragment() {
     private lateinit var binding: FragmentPlaceBinding
@@ -46,16 +52,13 @@ class PlaceFragment : Fragment() {
         binding = FragmentPlaceBinding.inflate(inflater, container, false)
         val bundle = arguments
         luogo = bundle?.getSerializable("itemViewModel") as Luogo
+        utente = bundle?.getSerializable("utente") as Utente
 
         viewpage2()
         setting()
         loadRecyclerViewData()
 
         binding.searchFragmentRvRecensioni.layoutManager = LinearLayoutManager(requireContext())
-
-
-
-
 
         binding.searchFragmentChiama.setOnClickListener{
             if (checkTelephonePermission()) {
@@ -75,7 +78,9 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentServizi.setOnClickListener{
             //findNavController().navigate(R.id.a)
         }
-
+        binding.searchFragmentBtnRecensioni.setOnClickListener{
+            popAdd(utente!!)
+        }
 
         return binding.root
     }
@@ -313,6 +318,71 @@ class PlaceFragment : Fragment() {
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                     // Chiamata alla callback con valore null in caso di fallimento
                     callback(data)
+                }
+            }
+        )
+    }
+
+    private fun popAdd(utente: Utente){
+
+        val inflater = LayoutInflater.from(context)
+        val popupView = inflater.inflate(R.layout.pop_new_recenzione, null)
+        val ratingbar= popupView.findViewById<RatingBar>(R.id.recenzione_ratingBar)
+        val descrizione = popupView.findViewById<EditText>(R.id.Et_luogo)
+        val BtnBack = popupView.findViewById<Button>(R.id.close_button)
+        val BtnAdd = popupView.findViewById<Button>(R.id.add_botton)
+        val alertDialogBuilder = AlertDialog.Builder(context).setView(popupView)
+        val alertDialog = alertDialogBuilder.create()
+        BtnBack.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        BtnAdd.setOnClickListener {
+            var descrizione = descrizione.text.toString()
+            var valore = ratingbar.rating
+            if (descrizione.isEmpty() || valore.compareTo(0)==0 ||valore.compareTo(0.5)==0) {
+                utils.PopError(
+                    getString(R.string.Place_RecenzoneError_title),
+                    getString(R.string.Place_RecenzioneError_text),
+                    requireContext()
+                )
+            } else {
+                var nome = utente.nome + " " + utente.cognome
+                insert(luogo.id_luogo, descrizione, valore,utente.id,nome)
+                alertDialog.dismiss()
+            }
+        }
+        val builder = AlertDialog.Builder(context)
+        builder.setView(popupView)
+
+        //visualizza il pop-up
+        alertDialog.show()
+    }
+
+    private fun insert(id_luogo: Int, descrizione: String, valutazione: Float,id_persona: Int,nome:String) {
+
+        val currentDate = LocalDate.now()
+        val query = "INSERT INTO recenzioni (id_luogo, descrizione,valutazione,id_persona,nome, data_publicazione) VALUES ('$id_luogo', '$descrizione', '$valutazione', '$id_persona','$nome','$currentDate');"
+        Log.i("LOG", "Query creata:$query ")
+
+        ClientNetwork.retrofit.insert(query).enqueue(
+            object : Callback<JsonObject> {
+                override fun onResponse(
+                    call: Call<JsonObject>,
+                    response: Response<JsonObject>
+                ) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
+                    Log.i("LOG", "Query creata:$query ")
+                    if (response.isSuccessful) { //Se non ci sono stati errori di connessione con il server
+                        // utils.PopError(getString(R.string.register_new_account_title),getString(R.string.register_new_account_title),this@Registrazione)
+                    } else {
+                        Log.i("LOG", "Errore durante l'inserimento ")
+                    }
+                }
+                override fun onFailure(
+                    call: Call<JsonObject>,
+                    t: Throwable
+                ) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+
+                    //utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),this@Registrazione)
                 }
             }
         )
