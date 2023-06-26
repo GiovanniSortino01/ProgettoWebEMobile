@@ -26,7 +26,7 @@
 
     <!-- Recenzione -->
 
-    <string name="Place_Recenione_delete">Cancella recenzione</string>
+    <string name="Place_Recenzione_delete">Cancella recenzione</string>
 
     <string name="Place_newRecenzione_btn_back">Torna Indietro</string>
     <string name="Place_newRecenzione_btn_add">Aggiungi</string>
@@ -36,5 +36,12 @@
     <string name="Place_RecenzoneError_title">Inserisci tutti i campi</string>
     <string name="Place_RecenzioneError_text">Inserisci il commento e la valutazione</string>
 
+    <string name="Place_RecenzioneConfirm_title">Conferma</string>
+    <string name="Place_RecenzioneConfirm_text">Confermi di voler cancellare?</string>
+    <string name="Place_RecenzioneConfirm_yes">Si</string>
+    <string name="Place_RecenzioneConfirm_no">No</string>
+
+    <string name="Place_RecenzioneConfirm2_title">Cancellazione avvenuta</string>
+    <string name="Place_RecenzioneConfirm2_text">La cancellazione è avvenuta con successo</string>
 
 </resources>

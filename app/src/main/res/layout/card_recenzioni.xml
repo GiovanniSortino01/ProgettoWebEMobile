@@ -37,6 +37,7 @@
                 android:contentDescription="Rating Bar"
                 android:isIndicator="true"
                 android:numStars="5"
+                android:stepSize="0.5"
                 android:progressBackgroundTint="@color/black"
                 android:progressTint="@color/ratingBar"
                 android:rating="3.5"
@@ -61,7 +62,7 @@
             android:layout_height="match_parent"
             android:backgroundTint="#FF1744"
             android:visibility="gone"
-            android:text="@string/Place_Recenione_delete"/>
+            android:text="@string/Place_Recenzione_delete"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

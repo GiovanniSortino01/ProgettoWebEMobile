@@ -257,7 +257,7 @@ class PlaceFragment : Fragment() {
     private fun loadRecyclerViewData() {
         var id=luogo.id_luogo
         getItems(id) { data ->
-            val adapter = RecenzioniAdapter(data)
+            val adapter = RecenzioniAdapter(data,requireContext())
             binding.searchFragmentRvRecensioni.adapter = adapter
             adapter.setOnClickListener(object : RecenzioniAdapter.OnClickListener {
                 override fun onClick(position: Int, model: ItemsViewModelPost) {
@@ -372,7 +372,8 @@ class PlaceFragment : Fragment() {
                 ) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
                     Log.i("LOG", "Query creata:$query ")
                     if (response.isSuccessful) { //Se non ci sono stati errori di connessione con il server
-                        // utils.PopError(getString(R.string.register_new_account_title),getString(R.string.register_new_account_title),this@Registrazione)
+                        loadRecyclerViewData()
+                      //  utils.PopError(getString(R.string.register_new_account_title),getString(R.string.register_new_account_title),this@Registrazione)
                     } else {
                         Log.i("LOG", "Errore durante l'inserimento ")
                     }
