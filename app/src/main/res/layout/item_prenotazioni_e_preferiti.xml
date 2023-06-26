@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/prefPren_item_image"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:contentDescription="Carta di credito"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="top"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/prefPren_item_nomeCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/prenotazioni_rvNome"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/prefPren_item_tvTavoloNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/prenotazioni_rvNome"
+                android:textSize="20sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:id="@+id/pagamenti_item_costoPosto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pagamenti_numCarta"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_weight="1"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/baseline_remove_24"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="Rimuovi"/>
+</androidx.cardview.widget.CardView>

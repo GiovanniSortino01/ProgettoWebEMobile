@@ -34,6 +34,22 @@
     <string name="pagamenti_tvGenerale">Portafoglio</string>
     <string name="pagamenti_tvSecond">Le tue carte</string>
 
-    <string name="prenotazioni_rvTipologia">Mastercard</string>
+    <string name="pagamenti_rvTipologia">Mastercard</string>
+
+    <string name="prenotazioni_rvNome">Nome</string>
+    <string name="prenotazioni_rvTavolo">Tavolo o stanza prenotata</string>
+    <string name="prenotazioni_rvCosto">Costo</string>
+    <string name="prenotazioni_popup_text">Vuoi annullare la prenotazione?</string>
+    <string name="pagamenti_popup_text">Sei sicuro di eliminare la carta?</string>
+    <string name="no_text">No</string>
+    <string name="si_text">Si</string>
+
+    <string name="preferiti_categoria">Categoria posto</string>
+    <string name="preferiti_luogo">Nome luogo</string>
+
+    <string name="pagamenti_titolare">Nome e cognome titolare</string>
+    <string name="pagamenti_numCarta">0000 0000 0000 0000</string>
+    <string name="pagamenti_scadenza">12/99</string>
+
 </resources>
 
