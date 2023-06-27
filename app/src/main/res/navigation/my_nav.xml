@@ -42,7 +42,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.progettowebemobile.principale.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_pagamentiFragment"
+            app:destination="@id/pagamentiFragment" />
+    </fragment>
     <fragment
         android:id="@+id/reciclerViewSearch"
         android:name="com.example.progettowebemobile.principale.search.RecyclerView.RecyclerViewSearch"
@@ -81,4 +85,9 @@
         android:name="com.example.progettowebemobile.principale.search.RecyclerView.Place.Servizi.ServiziFragment"
         android:label="fragment_servizi"
         tools:layout="@layout/fragment_servizi" />
+    <fragment
+        android:id="@+id/pagamentiFragment"
+        android:name="com.example.progettowebemobile.principale.home.pagamenti.PagamentiFragment"
+        android:label="fragment_pagamenti"
+        tools:layout="@layout/fragment_pagamenti" />
 </navigation>

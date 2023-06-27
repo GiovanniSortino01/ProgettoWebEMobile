@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.findNavController
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.ActivityMainBinding
 import com.example.progettowebemobile.databinding.FragmentAccountBinding
@@ -53,15 +54,18 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                R.id.nav_prenotazioni -> Toast.makeText(
+                R.id.nav_prenotazioni ->Toast.makeText(
                     requireContext(),
-                    "Clicked Prenotazioni",
+                    "Clicked Home",
                     Toast.LENGTH_SHORT
                 ).show()
 
-                R.id.nav_preferiti -> Toast.makeText(
+                R.id.nav_pagamenti ->
+                    findNavController().navigate(R.id.action_homeFragment_to_pagamentiFragment)
+
+                R.id.nav_preferiti ->Toast.makeText(
                     requireContext(),
-                    "Clicked Preferti",
+                    "Clicked Home",
                     Toast.LENGTH_SHORT
                 ).show()
 
