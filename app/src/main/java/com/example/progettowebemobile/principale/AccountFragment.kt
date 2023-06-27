@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -35,6 +36,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 import java.time.LocalDate
 
 class AccountFragment : Fragment() {
@@ -555,24 +557,24 @@ class AccountFragment : Fragment() {
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             binding.imageView2.setImageBitmap(imageBitmap)
+        }else if(requestCode == 100 && resultCode == Activity.RESULT_OK){
+            if (data != null) {
+                val selectedImage: Uri? = data.data
+                if (selectedImage != null) {
+                    val imageBitmap = getBitmapFromUri(selectedImage)
+                    binding.imageView2.setImageBitmap(imageBitmap)
+                }
+            }
         }
     }
-    /*override fun onBackPressed() {
-        // Esegui le azioni desiderate qui
-        // ad esempio, mostra un dialog per confermare l'uscita dall'applicazione
-        showDialogToConfirmExit()
-    }*/
-    private fun showDialogToConfirmExit() {
-        val builder = androidx.appcompat.app.AlertDialog.Builder(requireActivity())
-        builder.setTitle(getString(R.string.back_title))
-        builder.setMessage(getString(R.string.back_text))
-        builder.setPositiveButton(getString(R.string.back_yes)) { dialog, which ->
-            requireActivity().finish()
+    private fun getBitmapFromUri(uri: Uri): Bitmap? {
+        return try {
+            val inputStream = requireContext().contentResolver.openInputStream(uri)
+            BitmapFactory.decodeStream(inputStream)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
         }
-        builder.setNegativeButton(getString(R.string.back_no)) { dialog, which ->
-            dialog.dismiss()
-        }
-        val dialog = builder.create()
-        dialog.show()
     }
+
 }
