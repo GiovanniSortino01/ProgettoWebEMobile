@@ -19,53 +19,12 @@ import com.google.android.material.navigation.NavigationView
 class MainPrincipale : AppCompatActivity() {
     private lateinit var binding: ActivityMainPrincipaleBinding
     private var buffer = Buffer()
-    private lateinit var toggle: ActionBarDrawerToggle
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainPrincipaleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Navigation Drawer
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
-
-
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.nav_home -> Toast.makeText(
-                    applicationContext,
-                    "Clicked Home",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                R.id.nav_prenotazioni -> Toast.makeText(
-                    applicationContext,
-                    "Clicked Prenotazioni",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                R.id.nav_preferiti -> Toast.makeText(
-                    applicationContext,
-                    "Clicked Preferti",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                R.id.nav_chiSiamo -> Toast.makeText(
-                    applicationContext,
-                    "Clicked Chi siamo",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            true
-        }
-
-        //fine Navigation Drawer
 
         //Bottom Navigation View
 
@@ -108,12 +67,4 @@ class MainPrincipale : AppCompatActivity() {
 
 
     }
-    //funzione Navigation Drawer
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)){
-            return true}
-
-        return super.onOptionsItemSelected(item)
-    }
-
 }
