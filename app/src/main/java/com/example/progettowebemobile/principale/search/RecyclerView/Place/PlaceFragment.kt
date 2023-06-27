@@ -84,8 +84,20 @@ class PlaceFragment : Fragment() {
 
         return binding.root
     }
-
-    private fun getItems(id: Int) {
+    private fun viewpage2(){
+        var id = luogo.id_luogo
+        getItemsImage(id) { data ->
+            var adapter = ViewPagerAdapter(data)
+            binding.viewPager2.adapter = adapter
+            binding.viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
+            adapter.notifyDataSetChanged()
+        }
+        binding.searchFragmentBtnScegli.setOnClickListener {
+            NewTaskSheet().show(requireActivity().supportFragmentManager, "newTaskTag")
+        }
+    }
+    private fun getItemsImage(id: Int,callback: (ArrayList<Bitmap>) -> Unit) {
         val query = "select * from immagini where id_immagini = '$id';"
 
         ClientNetwork.retrofit.login(query).enqueue(
@@ -99,10 +111,14 @@ class PlaceFragment : Fragment() {
                         var foto1 = item.get("foto1").asString
                         var foto2 = item.get("foto2").asString
                         var foto3 = item.get("foto3").asString
+                        val url = listOf(foto1, foto2, foto3)
 
-                        getImage(foto1)
-                        getImage(foto2)
-                        getImage(foto3)
+
+                        getImage(url) { images ->
+                            callback(images)
+                            // Puoi eseguire ulteriori operazioni con la lista completa di immagini qui
+                        }
+
                     }
                 }
 
@@ -111,30 +127,36 @@ class PlaceFragment : Fragment() {
             }
         )
     }
-    private fun getImage(url: String) {
-        ClientNetwork.retrofit.getAvatar(url).enqueue(
-            object : Callback<ResponseBody> {
-                override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
-                ) {
-                    if (response.isSuccessful) {
-                        var avatar: Bitmap? = null
-                        if (response.body() != null) {
-                            avatar = BitmapFactory.decodeStream(response.body()?.byteStream())
-                            imagesList.add(avatar)
+    private fun getImage(urlList: List<String>, callback: (ArrayList<Bitmap>) -> Unit) {
+        var count = 0
+        val data = ArrayList<Bitmap>()
+        for (url in urlList) {
+            ClientNetwork.retrofit.getAvatar(url).enqueue(
+                object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        if (response.isSuccessful) {
+                            var avatar: Bitmap? = null
+                            if (response.body() != null) {
+                                avatar = BitmapFactory.decodeStream(response.body()?.byteStream())
+                                data.add(avatar)
+                            }
+                        }
+
+                        count++
+                        if (count == urlList.size) {
+                            callback(data)
                         }
                     }
-                }
 
-                override fun onFailure(
-                    call: Call<ResponseBody>,
-                    t: Throwable
-                ) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        // Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+                    }
                 }
-            }
-        )
+            )
+        }
+
     }
+
 
 
     private fun checkTelephonePermission(): Boolean {
@@ -242,18 +264,7 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentServizi.text = "Menù"
     }
 
-    private fun viewpage2(){
-        var id = luogo.id_luogo
-        getItems(id)
 
-        binding.viewPager2.adapter = ViewPagerAdapter(imagesList)
-        binding.viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
-
-        binding.searchFragmentBtnScegli.setOnClickListener {
-            NewTaskSheet().show(requireActivity().supportFragmentManager, "newTaskTag")
-        }
-    }
     private fun loadRecyclerViewData() {
         var id=luogo.id_luogo
         getItems(id) { data ->
@@ -267,6 +278,7 @@ class PlaceFragment : Fragment() {
             adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
         }
     }
+
     private fun getItems(id: Int, callback: (ArrayList<ItemsViewModelRecenzioni>) -> Unit) {
         val query = "select * from recenzioni where id_luogo = '$id';"
         val data = ArrayList<ItemsViewModelRecenzioni>()
