@@ -113,24 +113,7 @@ class MainPrincipale : AppCompatActivity() {
         if (toggle.onOptionsItemSelected(item)){
             return true}
 
-        return super.onOptionsItemSelected(item) }
-    override fun onBackPressed() {
-        // Esegui le azioni desiderate qui
-        // ad esempio, mostra un dialog per confermare l'uscita dall'applicazione
-        showDialogToConfirmExit()
-    }
-    private fun showDialogToConfirmExit() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle(getString(R.string.back_title))
-        builder.setMessage(getString(R.string.back_text))
-        builder.setPositiveButton(getString(R.string.back_yes)) { dialog, which ->
-            finish()
-        }
-        builder.setNegativeButton(getString(R.string.back_no)) { dialog, which ->
-            dialog.dismiss()
-        }
-        val dialog = builder.create()
-        dialog.show()
+        return super.onOptionsItemSelected(item)
     }
 
 }

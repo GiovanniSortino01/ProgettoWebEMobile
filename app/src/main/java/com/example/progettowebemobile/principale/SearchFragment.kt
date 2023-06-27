@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
@@ -44,7 +46,18 @@ class SearchFragment : Fragment() {
             setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
             findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Esegui le azioni desiderate qui
+                // ad esempio, torna indietro o chiudi il Fragment
+                findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
 
         return binding.root
     }
+
+
 }

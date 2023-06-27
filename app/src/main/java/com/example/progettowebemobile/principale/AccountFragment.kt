@@ -16,9 +16,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.entity.Utente
@@ -70,6 +72,15 @@ class AccountFragment : Fragment() {
         binding.btnAddPost.setOnClickListener {
             popAdd()
         }
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Esegui le azioni desiderate qui
+                // ad esempio, torna indietro o chiudi il Fragment
+                findNavController().navigate(R.id.action_accountFragment_to_homeFragment)
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
 
         return binding.root
     }
@@ -546,5 +557,22 @@ class AccountFragment : Fragment() {
             binding.imageView2.setImageBitmap(imageBitmap)
         }
     }
-
+    /*override fun onBackPressed() {
+        // Esegui le azioni desiderate qui
+        // ad esempio, mostra un dialog per confermare l'uscita dall'applicazione
+        showDialogToConfirmExit()
+    }*/
+    private fun showDialogToConfirmExit() {
+        val builder = androidx.appcompat.app.AlertDialog.Builder(requireActivity())
+        builder.setTitle(getString(R.string.back_title))
+        builder.setMessage(getString(R.string.back_text))
+        builder.setPositiveButton(getString(R.string.back_yes)) { dialog, which ->
+            requireActivity().finish()
+        }
+        builder.setNegativeButton(getString(R.string.back_no)) { dialog, which ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
 }
