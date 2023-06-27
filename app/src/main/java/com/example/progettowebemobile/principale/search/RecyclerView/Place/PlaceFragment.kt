@@ -11,6 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,10 +19,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.db_connection.ClientNetwork
@@ -45,6 +48,8 @@ class PlaceFragment : Fragment() {
     private lateinit var taskViewModel: TaskViewModel
     private var utils = Utils()
     private var imagesList = mutableListOf<Bitmap>()
+    private var backButtonEnabled=false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,12 +81,30 @@ class PlaceFragment : Fragment() {
         }
 
         binding.searchFragmentServizi.setOnClickListener{
-            //findNavController().navigate(R.id.a)
+            if(luogo.tipo.equals("ristorante")){
+                findNavController().navigate(R.id.action_placeFragment_to_menuFragment)
+
+            }else if(luogo.tipo.equals("hotel")) {
+                findNavController().navigate(R.id.action_placeFragment_to_serviziFragment)
+            }
         }
         binding.searchFragmentBtnRecensioni.setOnClickListener{
             popAdd(utente!!)
         }
 
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Handler().postDelayed({
+                    backButtonEnabled = true
+                }, 1000)
+                if (backButtonEnabled) {
+                    // Esegui l'azione di "Torna indietro" se il pulsante è abilitato
+                    findNavController().navigateUp()
+                    backButtonEnabled = false
+                }
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         return binding.root
     }
     private fun viewpage2(){

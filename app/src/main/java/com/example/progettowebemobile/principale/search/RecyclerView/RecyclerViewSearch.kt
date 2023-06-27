@@ -4,12 +4,16 @@ import android.content.ContentValues.TAG
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.Buffer.Companion.utente
@@ -25,18 +29,20 @@ import retrofit2.Response
 
 class RecyclerViewSearch : Fragment() {
     private var objectList = emptyList<Object>()
-
     private lateinit var binding: FragmentRecyclerviewSearchBinding
     private lateinit var utils: Utils
     private var tipo: String =""
     private lateinit var avatar: Bitmap
+    private var backButtonEnabled=false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRecyclerviewSearchBinding.inflate(inflater, container, false)
+        backButtonEnabled=false
 
+        binding = FragmentRecyclerviewSearchBinding.inflate(inflater, container, false)
+        loadRecyclerViewData()
         binding.searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         setFragmentResultListener("requestKey") { requestKey, bundle ->
@@ -60,6 +66,21 @@ class RecyclerViewSearch : Fragment() {
                 adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
             }
         }
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Handler().postDelayed({
+                    backButtonEnabled = true
+                }, 1000)
+                if (backButtonEnabled) {
+                    // Esegui l'azione di "Torna indietro" se il pulsante è abilitato
+                    findNavController().navigateUp()
+                    backButtonEnabled = false
+                }
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
 
         return binding.root
     }

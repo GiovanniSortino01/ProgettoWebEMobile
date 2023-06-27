@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -16,6 +17,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -35,6 +38,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 import java.time.LocalDate
 
 class AccountFragment : Fragment() {
@@ -125,7 +129,7 @@ class AccountFragment : Fragment() {
     }
 
     private fun getItems(id: Int, callback: (ArrayList<ItemsViewModelPost>) -> Unit) {
-        val query = "select * from post where id_persona = '$id';"
+        val query = "select * from post where id_persona = '$id' ORDER BY data ASC;"
         val data = ArrayList<ItemsViewModelPost>()
 
         ClientNetwork.retrofit.login(query).enqueue(
@@ -140,28 +144,30 @@ class AccountFragment : Fragment() {
 
                         for (i in 0 until queryset.size()) {
                             val item = queryset.get(i).asJsonObject
-                            var foto = item.get("foto").asString
-                            getImageProfiloRecyclerView(foto) { avatar ->
-                                completedCount++
-                                if (avatar != null) {
-                                    data.add(
-                                        ItemsViewModelPost(
-                                            item.get("id_post").asInt,
-                                            utente.nome,
-                                            utente.cognome,
-                                            avatar,
-                                            item.get("descrizione").asString,
-                                            item.get("luogo").asString,
-                                            item.get("data").asString
+                                var foto = item.get("foto").asString
+
+                                getImageProfiloRecyclerView(foto) { avatar ->
+                                    completedCount++
+                                    if (avatar != null) {
+                                        data.add(
+                                            ItemsViewModelPost(
+                                                item.get("id_post").asInt,
+                                                utente.nome,
+                                                utente.cognome,
+                                                avatar,
+                                                item.get("descrizione").asString,
+                                                item.get("luogo").asString,
+                                                item.get("data").asString
+                                            )
                                         )
-                                    )
-                                }
-                                // Verifica se tutte le chiamate sono state completate
-                                if (completedCount == queryset.size()) {
-                                    callback(data)
+                                    }
+                                    // Verifica se tutte le chiamate sono state completate
+                                    if (completedCount == queryset.size()) {
+                                        callback(data)
+                                    }
                                 }
                             }
-                        }
+
                     } else {
                         callback(data)
                     }
@@ -196,7 +202,7 @@ class AccountFragment : Fragment() {
 
         val currentDate = LocalDate.now()
         val query =
-            "INSERT INTO post (id_persona, descrizione , luogo, data) VALUES ('${id}', '${descrizione}', '${luogo}', '$currentDate');"
+            "INSERT INTO post (id_persona, descrizione , luogo, data,foto) VALUES ('${id}', '${descrizione}', '${luogo}', '$currentDate','media/images/nessuna_immagine.jpg');"
         Log.i("LOG", "Query creata:$query ")
 
         ClientNetwork.retrofit.insert(query).enqueue(
@@ -211,7 +217,7 @@ class AccountFragment : Fragment() {
                     Log.i("LOG", "Query creata:$query ")
                     if (response.isSuccessful) { //Se non ci sono stati errori di connessione con il server
                         // utils.PopError(getString(R.string.register_new_account_title),getString(R.string.register_new_account_title),this@Registrazione)
-
+                        loadRecyclerViewData()
                     } else {
                         Log.i("LOG", "Errore durante la registrazione ")
                     }
@@ -438,6 +444,7 @@ class AccountFragment : Fragment() {
         val popupView = inflater.inflate(R.layout.pop_up_post, null)
         val popupButtonClose = popupView.findViewById<Button>(R.id.close_button)
         val popupButtonAdd = popupView.findViewById<Button>(R.id.add_botton)
+        val fotoImage=popupView.findViewById<ImageView>(R.id.image_view)
         val Et_descrizione = popupView.findViewById<EditText>(R.id.Et_descrizione)
         val Et_luogo = popupView.findViewById<EditText>(R.id.Et_luogo)
         val alertDialogBuilder = AlertDialog.Builder(context).setView(popupView)
@@ -459,6 +466,40 @@ class AccountFragment : Fragment() {
                 alertDialog.dismiss()
             }
         }
+
+        fotoImage.setOnClickListener{
+            val popupView = inflater.inflate(R.layout.pop_up_photo, null)
+            val popupButtonGalley = popupView.findViewById<Button>(R.id.btn_galley)
+            val popupButtonCamera = popupView.findViewById<Button>(R.id.btn_camera)
+            val alertDialogBuilder = AlertDialog.Builder(context).setView(popupView)
+            val alertDialog2 = alertDialogBuilder.create()
+            val builder = AlertDialog.Builder(context)
+
+            popupButtonGalley.setOnClickListener{
+                if (checkGalleryPermission()) {
+                    // apri galleria
+                    openGallery()
+                } else {
+                    // Richiedi i permessi
+                    requestGalleryPermission()
+                }
+            }
+
+            popupButtonCamera.setOnClickListener{
+                if (checkCameraPermission()) {
+                    openCamera()
+                } else {
+                    // Richiedi i permessi
+                    requestCameraPermission()
+                }
+            }
+
+            builder.setView(popupView)
+            alertDialog2.show()
+        }
+
+
+
         val builder = AlertDialog.Builder(context)
         builder.setView(popupView)
 
@@ -555,24 +596,24 @@ class AccountFragment : Fragment() {
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             binding.imageView2.setImageBitmap(imageBitmap)
+        }else if(requestCode == 100 && resultCode == Activity.RESULT_OK){
+            if (data != null) {
+                val selectedImage: Uri? = data.data
+                if (selectedImage != null) {
+                    val imageBitmap = getBitmapFromUri(selectedImage)
+                    binding.imageView2.setImageBitmap(imageBitmap)
+                }
+            }
         }
     }
-    /*override fun onBackPressed() {
-        // Esegui le azioni desiderate qui
-        // ad esempio, mostra un dialog per confermare l'uscita dall'applicazione
-        showDialogToConfirmExit()
-    }*/
-    private fun showDialogToConfirmExit() {
-        val builder = androidx.appcompat.app.AlertDialog.Builder(requireActivity())
-        builder.setTitle(getString(R.string.back_title))
-        builder.setMessage(getString(R.string.back_text))
-        builder.setPositiveButton(getString(R.string.back_yes)) { dialog, which ->
-            requireActivity().finish()
+    private fun getBitmapFromUri(uri: Uri): Bitmap? {
+        return try {
+            val inputStream = requireContext().contentResolver.openInputStream(uri)
+            BitmapFactory.decodeStream(inputStream)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
         }
-        builder.setNegativeButton(getString(R.string.back_no)) { dialog, which ->
-            dialog.dismiss()
-        }
-        val dialog = builder.create()
-        dialog.show()
     }
+
 }
