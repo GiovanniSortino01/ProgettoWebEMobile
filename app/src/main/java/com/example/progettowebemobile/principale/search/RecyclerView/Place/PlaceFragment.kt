@@ -11,6 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +48,8 @@ class PlaceFragment : Fragment() {
     private lateinit var taskViewModel: TaskViewModel
     private var utils = Utils()
     private var imagesList = mutableListOf<Bitmap>()
+    private var backButtonEnabled=false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -89,7 +92,19 @@ class PlaceFragment : Fragment() {
             popAdd(utente!!)
         }
 
-
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Handler().postDelayed({
+                    backButtonEnabled = true
+                }, 1000)
+                if (backButtonEnabled) {
+                    // Esegui l'azione di "Torna indietro" se il pulsante è abilitato
+                    findNavController().navigateUp()
+                    backButtonEnabled = false
+                }
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         return binding.root
     }
     private fun viewpage2(){

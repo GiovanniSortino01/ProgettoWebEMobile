@@ -44,6 +44,7 @@
         android:layout_gravity="center"
         android:src="@drawable/baseline_camera_alt_24" />
     <TextView
+        android:id="@+id/TV_foto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_text_add_new_post"
