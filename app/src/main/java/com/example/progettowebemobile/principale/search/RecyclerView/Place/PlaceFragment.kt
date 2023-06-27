@@ -18,10 +18,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.db_connection.ClientNetwork
@@ -76,11 +78,17 @@ class PlaceFragment : Fragment() {
         }
 
         binding.searchFragmentServizi.setOnClickListener{
-            //findNavController().navigate(R.id.a)
+            if(luogo.tipo.equals("ristorante")){
+                findNavController().navigate(R.id.action_placeFragment_to_menuFragment)
+
+            }else if(luogo.tipo.equals("hotel")) {
+                findNavController().navigate(R.id.action_placeFragment_to_serviziFragment)
+            }
         }
         binding.searchFragmentBtnRecensioni.setOnClickListener{
             popAdd(utente!!)
         }
+
 
         return binding.root
     }

@@ -36,7 +36,7 @@ class RecyclerViewSearch : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRecyclerviewSearchBinding.inflate(inflater, container, false)
-
+        loadRecyclerViewData()
         binding.searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         setFragmentResultListener("requestKey") { requestKey, bundle ->
