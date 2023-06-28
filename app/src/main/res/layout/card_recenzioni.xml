@@ -11,7 +11,7 @@
     app:cardUseCompatPadding="true">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/reviews_btnDelete"
+        android:id="@+id/RecenzioneBtnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
