@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user_text_add_new_post"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:textColor="@color/buttonBack"
         android:layout_marginBottom="5dp"
         android:textStyle="bold"
@@ -68,15 +68,18 @@
         android:text="@string/user_botton_back"
         android:id="@+id/close_button"
         android:textSize="17sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
         android:gravity="center" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/buttonChange"
         android:text="@string/user_botton_add"
         android:textSize="17sp"
         android:id="@+id/add_botton"
         android:gravity="center"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"/>
 
 </LinearLayout>
