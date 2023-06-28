@@ -32,22 +32,22 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text="@string/menu_nomePortata"
+                android:textColor="@color/black"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/menu_prezzo"
-                android:layout_width="220dp"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="150dp"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:drawablePadding="2dp"
+                android:layout_gravity="right"
                 android:drawableRight="@drawable/baseline_euro_24"
+                android:drawablePadding="2dp"
+                android:gravity="right"
                 android:text="@string/search_price"
                 android:textColor="@color/black"
-                android:textSize="22sp"
-                android:layout_gravity="right"/>
-
+                android:textSize="22sp" />
         </LinearLayout>
 
         <TextView

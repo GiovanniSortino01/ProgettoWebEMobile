@@ -7,8 +7,8 @@
     <string name="user_surname">Cognome</string>
     <string name="user_password">Password</string>
     <string name="user_email">Email</string>
-    <string name="user_generalRegistrationDate"> Data di registrazione:</string>
-    <string name="user_registrationDate"> 00-00-0000</string>
+    <string name="user_generalRegistrationDate"> Iscritto nel</string>
+    <string name="user_registrationDate"> 2023</string>
     <string name="user_tvProfile">Modifica Profilo</string>
 
     <string name="user_btnEdit">Modifica profilo</string>
