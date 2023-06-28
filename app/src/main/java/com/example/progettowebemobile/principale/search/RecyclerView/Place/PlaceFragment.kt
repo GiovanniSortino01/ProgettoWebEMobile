@@ -21,9 +21,11 @@ import android.widget.EditText
 import android.widget.RatingBar
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
@@ -82,7 +84,10 @@ class PlaceFragment : Fragment() {
 
         binding.searchFragmentServizi.setOnClickListener{
             if(luogo.tipo.equals("ristorante")){
-                findNavController().navigate(R.id.action_placeFragment_to_menuFragment)
+                val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
+                val bundle = Bundle()
+                bundle.putSerializable("itemViewModel", luogo) // Passa l'oggetto ItemsViewModelSearch come serializzabile
+                navController.navigate(R.id.action_placeFragment_to_menuFragment,bundle)
 
             }else if(luogo.tipo.equals("hotel")) {
                 findNavController().navigate(R.id.action_placeFragment_to_serviziFragment)
@@ -227,6 +232,7 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentNomePosto.text=luogo.nome
         binding.searchFragmentInformazioni.text=luogo.descrizione
         binding.searchFragmentTvIndirizzo.text=luogo.indirizzo
+        binding.searchFragmentNomeLuogo.text =luogo.luogo
         var tipo = luogo.tipo
         var numero = luogo.numero_cellulare
         val valueFromDatabase = luogo.come_arrivarci
@@ -293,7 +299,7 @@ class PlaceFragment : Fragment() {
             val adapter = RecenzioniAdapter(data,requireContext())
             binding.searchFragmentRvRecensioni.adapter = adapter
             adapter.setOnClickListener(object : RecenzioniAdapter.OnClickListener {
-                override fun onClick(position: Int, model: ItemsViewModelPost) {
+                override fun onClick(position: Int, model: ItemsViewModelRecenzioni) {
                     Log.i(TAG,"Index ${position + 1}")
                 }
             })
