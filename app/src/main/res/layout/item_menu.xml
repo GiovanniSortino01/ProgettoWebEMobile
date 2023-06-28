@@ -23,7 +23,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+
             android:orientation="horizontal">
 
             <TextView
@@ -38,9 +38,10 @@
 
             <TextView
                 android:id="@+id/menu_prezzo"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:gravity="right"
+                android:drawablePadding="2dp"
                 android:drawableRight="@drawable/baseline_euro_24"
                 android:text="@string/search_price"
                 android:textColor="@color/black"
