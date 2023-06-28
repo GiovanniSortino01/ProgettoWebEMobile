@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
-    app:cardElevation="1dp"
+    app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Nome Utente"
-                android:textSize="25sp"
+                android:textSize="23sp"
                 android:layout_marginLeft="16dp"
                 android:textStyle="bold" />
 
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Altra Informazione"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginRight="16dp"
                 android:textStyle="bold"
                 android:layout_gravity="end"/>
