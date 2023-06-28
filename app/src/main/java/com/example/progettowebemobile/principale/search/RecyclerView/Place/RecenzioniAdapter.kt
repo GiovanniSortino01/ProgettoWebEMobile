@@ -78,7 +78,7 @@ class RecenzioniAdapter (private val mList: ArrayList<ItemsViewModelRecenzioni>,
     }
 
     interface OnClickListener {
-        fun onClick(position: Int, model: ItemsViewModelPost)
+        fun onClick(position: Int, model: ItemsViewModelRecenzioni)
     }
 
     fun setOnClickListener(onClickListener: OnClickListener) {
