@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".principale.PrenotazioniFragment"
-    android:background="@color/background2">
+    android:background="@color/background">
 
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -26,7 +26,8 @@
             android:text="@string/prenotazioni_tvGenerale"
             android:layout_marginBottom="20dp"
             android:gravity="left"
-            android:textSize="25sp"
+            android:textSize="30sp"
+            android:layout_marginTop="15dp"
             android:textColor="@color/white"
             android:textStyle="bold"/>
 

@@ -47,11 +47,6 @@ class HomeFragment : Fragment() {
 
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_home -> Toast.makeText(
-                    requireContext(),
-                    "Clicked Home",
-                    Toast.LENGTH_SHORT
-                ).show()
 
                 R.id.nav_prenotazioni -> Toast.makeText(
                     requireContext(),

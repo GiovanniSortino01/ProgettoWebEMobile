@@ -2,16 +2,18 @@
 <resources>
 
     <!-- Profile -->
-    <string name="user_image">Profile picture</string>
-    <string name="user_name">Name</string>
-    <string name="user_surname">Surname</string>
+    <string name="user_image">Immagine profilo</string>
+    <string name="user_name">Nome</string>
+    <string name="user_surname">Cognome</string>
     <string name="user_password">Password</string>
     <string name="user_email">Email</string>
-    <string name="user_RegistrationDate">Registration date</string>
+    <string name="user_RegistrationDate"> Data di registrazione</string>
     <string name="user_tvProfile">Modifica Profilo</string>
 
     <string name="user_btnEdit">Modifica profilo</string>
     <string name="user_btnPlus">+</string>
+    <string name="content_add">Pulsante di aggiunta</string>
+    <string name="content_close">Pulsante di chiusura</string>
 
     <!-- Post -->
     <string name="user_title_new_post">Aggiungi un nuovo post</string>
@@ -28,9 +30,9 @@
     <string name="user_edit_btnPhoto">Cambia foto</string>
     <string name="user_edit_btnCredentials">Modifica</string>
     <string name="user_generalEdit">Edit</string>
-    <string name="user_generalEditText">Enter your changes</string>
-    <string name="user_edit_btnChange">CHANGE</string>
-    <string name="user_edit_btnClose">CLOSE</string>
+    <string name="user_generalEditText">Inserisci le modifiche</string>
+    <string name="user_edit_btnChange">CAMBIA</string>
+    <string name="user_edit_btnClose">CHIUDI</string>
 
     <string name="user_tvNome">Nome</string>
     <string name="user_tvCognome">Cognome</string>
@@ -85,8 +87,8 @@
 
 
     <!-- Reviews -->
-    <string name="reviews_title">Title reviews</string>
-    <string name="reviews_text">Text reviews</string>
+    <string name="reviews_title">Titolo recensione</string>
+    <string name="reviews_text">Testo recensione</string>
     <string name="reviews_ratingDescription">Rating bar</string>
 
 

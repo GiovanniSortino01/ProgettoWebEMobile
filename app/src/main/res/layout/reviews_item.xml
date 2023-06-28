@@ -10,6 +10,20 @@
     app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/reviews_btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/ristorante"
+        android:clickable="true"
+        android:contentDescription="Rimuovi"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/baseline_remove_24" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +49,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/reviews_name"
+                    android:id="@+id/textViewAuthorName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -43,11 +57,11 @@
                     android:textSize="22sp" />
 
                 <TextView
-                    android:id="@+id/reviews_surname"
+                    android:id="@+id/textViewDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/user_surname"
+                    android:text="@string/user_RegistrationDate"
                     android:textSize="22sp" />
 
             </LinearLayout>
@@ -63,7 +77,7 @@
             android:layout_marginBottom="10dp">
 
             <RatingBar
-                android:id="@+id/reviews_ratingBar"
+                android:id="@+id/search_fragment_ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
@@ -84,14 +98,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/reviews_titleReviews"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reviews_title"
-                    android:textSize="28sp"/>
-
-                <TextView
-                    android:id="@+id/reviews_textReviews"
+                    android:id="@+id/textViewReviewText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/reviews_text"

@@ -7,6 +7,7 @@
     <string name="search_btnPerson">Profili utenti</string>
 
     <string name="search_svHint">Cerca...</string>
+    <string name="search_svText">cerca</string>
     <string name="search_name_restaurant">Restaurant name</string>
     <string name="search_name_hotel">Hotel name</string>
     <string name="search_name_monument">Monument name</string>

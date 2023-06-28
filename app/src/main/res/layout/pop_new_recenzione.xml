@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Place_newRecenzione_title"
-        android:textSize="20sp"
-        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:gravity="center"
         android:paddingBottom="8dp" />
@@ -20,7 +20,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginLeft="47dp"
-        android:contentDescription="Rating Bar"
+        android:contentDescription="@string/reviews_ratingDescription"
 
         android:numStars="5"
         android:progressBackgroundTint="@color/black"
@@ -33,32 +33,39 @@
         android:translationY="5dp" />
     <EditText
         android:id="@+id/Et_luogo"
+        android:inputType="text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="@string/Place_newRecenzione_hint_commento"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:gravity="center"
         android:paddingBottom="8dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FF1744"
+            android:backgroundTint="@color/buttonBack"
             android:text="@string/Place_newRecenzione_btn_back"
             android:id="@+id/close_button"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="17sp"
+            android:layout_marginLeft="20dp"/>
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#00C853"
+            android:textSize="17sp"
+            android:backgroundTint="@color/buttonChange"
             android:text="@string/Place_newRecenzione_btn_add"
             android:id="@+id/add_botton"
-            android:gravity="center" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
     </LinearLayout>
 
 </LinearLayout>
