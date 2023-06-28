@@ -11,7 +11,7 @@
     app:cardUseCompatPadding="true">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/RecenzioneBtnDelete"
+        android:id="@+id/reviewsBtnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
@@ -39,15 +39,16 @@
 
             <ImageView
                 android:id="@+id/reviews_imageUser"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
                 android:contentDescription="@string/user_image"
                 android:background="@drawable/rounded_image_background"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="80dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:id="@+id/textViewAuthorName"
@@ -55,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/user_name"
-                    android:textSize="22sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textViewDate"
@@ -63,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/user_RegistrationDate"
-                    android:textSize="22sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -85,8 +86,8 @@
                 android:progressTint="@color/ratingBar"
                 android:rating="3.5"
 
-                android:scaleX="0.6"
-                android:scaleY="0.6"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
                 android:progressBackgroundTint="@color/black"
                 android:stepSize="0.5"
                 android:transformPivotX="0dp"
@@ -98,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/reviews_text"
-                android:textSize="22sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </LinearLayout>
