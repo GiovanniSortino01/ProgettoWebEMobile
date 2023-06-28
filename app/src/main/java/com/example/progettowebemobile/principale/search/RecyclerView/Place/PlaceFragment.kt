@@ -177,7 +177,6 @@ class PlaceFragment : Fragment() {
                 }
             )
         }
-
     }
 
 
@@ -322,8 +321,10 @@ class PlaceFragment : Fragment() {
                             var recenzioni = item.get("valutazione").asFloat
                             var descrizione = item.get("descrizione").asString
                             var nome = item.get("nome").asString
+                            var data_publicazione = item.get("data_publicazione").asString
                             var id_luogo = luogo.id_luogo
-
+                            var immagine = utente?.immagine
+                            if(immagine!=null){
                             data.add(
                                 ItemsViewModelRecenzioni(
                                     id_recenzione,
@@ -331,9 +332,12 @@ class PlaceFragment : Fragment() {
                                     id_luogo,
                                     nome,
                                     descrizione,
-                                    recenzioni
+                                    recenzioni,
+                                    data_publicazione,
+                                    immagine
                                 )
                             )
+                            }
 
                             // Incrementa completedCount dopo aver aggiunto un elemento a data
                             completedCount++

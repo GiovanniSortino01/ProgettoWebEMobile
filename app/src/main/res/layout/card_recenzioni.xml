@@ -37,8 +37,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp">
 
-            <ImageView
-                android:id="@+id/reviews_imageUser"
+            <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/reviews_imageUser"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:contentDescription="@string/user_image"
