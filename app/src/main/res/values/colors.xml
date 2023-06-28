@@ -3,24 +3,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="bottom_nav_icon_color">#FF5252</color>
+    <color name="bottom_nav_icon_color">#FFFFFF</color>
     <color name="bottom_nav_text_color">#FFFFFF</color>
     <color name="login_textView">#3C3232</color>
     <color name="login_backgroundButton">#947914</color>
 
-    <color name="button">#6DD6CD</color>
-    <color name="background">#3B3DC0</color>
-    <color name="background2">#5057BC</color>
+    <color name="button">#2C44CC</color>
+    <color name="background">#5C94C1</color>
+
+    <color name="buttonChange">#00C853</color>
+    <color name="buttonBack">#F44336</color>
+
 
     <color name="ratingBar">#FFC107</color>
     <color name="ristorante">#DF2702</color>
-    <color name="eventi">#06D306</color>
+    <color name="eventi">#0FDA00</color>
     <color name="hotel">#E6CFB607</color>
     <color name="persone">#0486C1</color>
-    <color name="button_mod">#918E8E</color>
-
-    <color name="buttoncolor">#6671af</color>
-
 
 
 

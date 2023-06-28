@@ -71,6 +71,7 @@
         android:layout_weight="1"
         android:clickable="true"
         app:fabSize="mini"
+        android:backgroundTint="@color/ristorante"
         app:srcCompat="@drawable/baseline_remove_24"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"

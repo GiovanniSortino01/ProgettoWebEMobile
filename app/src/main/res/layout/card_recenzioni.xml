@@ -1,68 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="4dp"
     app:cardCornerRadius="8dp"
-    app:cardBackgroundColor="@android:color/white"
-    android:layout_margin="8dp">
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/reviews_btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/buttonBack"
+        android:clickable="true"
+        android:contentDescription="Rimuovi"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/baseline_remove_24" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
 
-            <TextView
-                android:id="@+id/textViewAuthorName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="Nome"
-                android:textColor="@android:color/black"/>
+            <ImageView
+                android:id="@+id/reviews_imageUser"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:contentDescription="@string/user_image"
+                android:background="@drawable/rounded_image_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewAuthorName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/user_name"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/textViewDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/user_RegistrationDate"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
 
             <RatingBar
                 android:id="@+id/search_fragment_ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:contentDescription="Rating Bar"
-                android:isIndicator="true"
                 android:numStars="5"
-                android:stepSize="0.5"
-                android:progressBackgroundTint="@color/black"
                 android:progressTint="@color/ratingBar"
                 android:rating="3.5"
-                style="?android:attr/ratingBarStyleIndicator"
-                android:layout_gravity="center_vertical"/>
 
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                android:progressBackgroundTint="@color/black"
+                android:stepSize="0.5"
+                android:transformPivotX="0dp"
+                android:translationY="0dp"
+                android:contentDescription="@string/reviews_ratingDescription"/>
+
+            <TextView
+                android:id="@+id/textViewReviewText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reviews_text"
+                android:textSize="22sp" />
 
         </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/textViewReviewText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="14sp"
-            android:text="Recenzione"
-            android:textColor="@android:color/black"/>
-        <Button
-            android:id="@+id/Recenzione_btnDelete"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="#FF1744"
-            android:visibility="gone"
-            android:text="@string/Place_Recenzione_delete"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
