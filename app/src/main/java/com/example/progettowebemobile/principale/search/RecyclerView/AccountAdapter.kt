@@ -11,10 +11,12 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.db_connection.ClientNetwork
+import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.AccountItemBinding
 import com.example.progettowebemobile.entity.Luogo
 import com.example.progettowebemobile.entity.Persona
+import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.search.RecyclerView.Place.PlaceFragment
 import com.google.gson.JsonObject
 import retrofit2.Call
@@ -24,7 +26,7 @@ import retrofit2.Response
 
 class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val context: Context) : RecyclerView.Adapter<AccountAdapter.ViewHolder>(){
     private var itemClickListener = emptyList<Object>()
-
+    private var buffer = Buffer()
     private var onClickListener: OnClickListener?= null
     private var lastClickTime: Long = 0
     private val DOUBLE_CLICK_TIME_DELTA: Long = 300 // Tempo di doppio clic desiderato in millisecondi
@@ -83,14 +85,14 @@ class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val 
                             val id = utenteJsonObject.get("id").asInt
                             val nome = utenteJsonObject.get("nome").asString
                             val cognome = utenteJsonObject.get("cognome").asString
-                            val data = utenteJsonObject.get("data").asString
+                            val data = utenteJsonObject.get("datainscrizione").asString
                             val immagine = utenteJsonObject.get("immagine").asString
                             var persona = Persona(id,nome,cognome,data,immagine)
                             val bundle = Bundle()
                             bundle.putSerializable("itemViewModel", persona) // Passa l'oggetto ItemsViewModelSearch come serializzabile
 
                             val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
-                            navController.navigate(R.id.action_reciclerViewSearch_to_placeFragment,bundle)
+                            navController.navigate(R.id.action_reciclerViewSearch_to_userFragment,bundle)
 
                         } else {
                             // utils.PopError(getString(R.string.login_credenziali_errate_titolo), getString(R.string.login_credenziali_errate),this@Login)
@@ -105,7 +107,6 @@ class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val 
             }
         )
     }
-
 
 
 
