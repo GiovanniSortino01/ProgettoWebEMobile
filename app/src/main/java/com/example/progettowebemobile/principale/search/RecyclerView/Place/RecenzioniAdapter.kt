@@ -2,6 +2,8 @@ package com.example.progettowebemobile.principale.search.RecyclerView.Place
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +20,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.Utils
 import com.google.gson.JsonObject
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,7 +36,8 @@ class RecenzioniAdapter (private val mList: ArrayList<ItemsViewModelRecenzioni>,
         val descrizione = binding.textViewReviewText
         val ratingbar = binding.searchFragmentRatingBar
         val btnDelete = binding.reviewsBtnDelete
-
+        val immagine = binding.reviewsImageUser
+        val data_pubblicazione = binding.textViewDate
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecenzioniAdapter.ViewHolder {
@@ -46,6 +50,11 @@ class RecenzioniAdapter (private val mList: ArrayList<ItemsViewModelRecenzioni>,
         holder.nome.text = itemsViewModelRecenzioni.nome
         holder.descrizione.text = itemsViewModelRecenzioni.descriziona
         holder.ratingbar.rating = itemsViewModelRecenzioni.recenzioni
+        holder.data_pubblicazione.text = itemsViewModelRecenzioni.data_pubblicazione
+        getImage(itemsViewModelRecenzioni.foto){
+            data -> holder.immagine.setImageBitmap(data)
+        }
+
         var a = itemsViewModelRecenzioni.recenzioni
         Log.i(TAG,"$a ")
         holder.nome.setOnClickListener{
@@ -114,6 +123,22 @@ class RecenzioniAdapter (private val mList: ArrayList<ItemsViewModelRecenzioni>,
             override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                 // Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
                 // Gestisci l'errore di connessione o visualizza un messaggio di errore appropriato.
+            }
+        })
+    }
+    private fun getImage(url: String, callback: (Bitmap?) -> Unit) {
+        ClientNetwork.retrofit.getAvatar(url).enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    val bitmap = BitmapFactory.decodeStream(response.body()?.byteStream())
+                    callback(bitmap)
+                } else {
+                    callback(null)
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                callback(null)
             }
         })
     }
