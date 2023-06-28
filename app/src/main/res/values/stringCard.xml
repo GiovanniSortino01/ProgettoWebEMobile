@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="card_newCard_title">Aggiungi una nuova carta</string>
+    <string name="card_newCard_hint_titolare">Inserisci il nome del titolare</string>
+    <string name="card_newCard_hint_number">Numero</string>
+    <string name="card_newCard_hint_data">Scadenza (12/34)</string>
+    <string name="card_newCard_hint_cvv">CVV</string>
+
+    <string name="card_newCard_error_title">Inserisci tutti i campi</string>
+    <string name="card_newCard_error_text">Tutti i campi devono essere compilati</string>
+
+    <string name="card_newCard_error_general">Dati non validi</string>
+
+    <string name="card_newCard_error_numberExist">La carta è già presente</string>
+    <string name="card_newCard_error_numberError">Il numero della carta non valido</string>
+    <string name="card_newCard_error_cvvError">Il cvv non è valido</string>
+    <string name="card_newCard_error_dataError">La carta è scaduta</string>
+    <string name="card_newCard_error_dataMeseError">La data non è valida</string>
+
+
+</resources>

@@ -62,24 +62,22 @@
     android:orientation="horizontal">
 
     <Button
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/buttonBack"
         android:text="@string/user_botton_back"
         android:id="@+id/close_button"
-        android:layout_marginLeft="20dp"
         android:textSize="17sp"
         android:gravity="center" />
     <Button
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/buttonChange"
         android:text="@string/user_botton_add"
         android:textSize="17sp"
         android:id="@+id/add_botton"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_marginLeft="15dp"/>
 
 </LinearLayout>
 

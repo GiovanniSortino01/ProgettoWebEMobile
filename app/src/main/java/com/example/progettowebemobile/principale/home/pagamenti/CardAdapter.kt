@@ -51,10 +51,7 @@ import java.util.Locale
         holder.numero.text=modifiedString.toString()
         holder.titolare.text=ItemViewModelCard.nome
         holder.immagine.setImageResource(R.drawable.cartacredito)
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val dataScadenza = dateFormat.parse(ItemViewModelCard.data_scadenza)
-        val formattedDate = SimpleDateFormat("yyyy-MM", Locale.getDefault()).format(dataScadenza)
-        holder.scadenza.text = formattedDate
+        holder.scadenza.text = ItemViewModelCard.data_scadenza
         holder.btnDelete.setOnClickListener{
             showDialogToConfirmExit(ItemViewModelCard.numero, position)
         }
@@ -88,7 +85,7 @@ import java.util.Locale
     }
 
     private fun delete(id: String, position: Int) {
-        val query = "DELETE FROM carte WHERE numero = '$id'"
+        val query = "DELETE FROM carte WHERE numero_carta = '$id'"
         Log.i("LOG", "Query creata: $query")
 
         ClientNetwork.retrofit.remove(query).enqueue(object : Callback<JsonObject> {

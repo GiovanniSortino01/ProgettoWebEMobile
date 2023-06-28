@@ -32,7 +32,7 @@ class RecenzioniAdapter (private val mList: ArrayList<ItemsViewModelRecenzioni>,
         val nome = binding.textViewAuthorName
         val descrizione = binding.textViewReviewText
         val ratingbar = binding.searchFragmentRatingBar
-        val btnDelete = binding.RecenzioneBtnDelete
+        val btnDelete = binding.reviewsBtnDelete
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecenzioniAdapter.ViewHolder {
