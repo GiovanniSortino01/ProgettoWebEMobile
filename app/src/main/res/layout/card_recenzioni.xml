@@ -41,7 +41,8 @@
                 android:id="@+id/reviews_imageUser"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:contentDescription="@string/user_image"/>
+                android:contentDescription="@string/user_image"
+                android:background="@drawable/rounded_image_background"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
