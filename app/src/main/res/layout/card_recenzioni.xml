@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
-    app:cardElevation="15dp"
+    app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,7 +31,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="70dp"
             android:orientation="horizontal"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -39,8 +39,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/reviews_imageUser"
-                android:layout_width="85dp"
-                android:layout_height="85dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:contentDescription="@string/user_image"
                 android:background="@drawable/rounded_image_background"/>
 
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:orientation="vertical"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp">
 
                 <TextView
@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/user_name"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/data_pubblicazione"
-                    android:textSize="17sp"
+                    android:textSize="16sp"
                     android:layout_marginTop="5dp"/>
 
             </LinearLayout>
@@ -77,30 +77,30 @@
             android:orientation="vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="5dp">
 
             <RatingBar
                 android:id="@+id/search_fragment_ratingBar"
                 android:layout_width="wrap_content"
-                android:layout_height="39dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left"
                 android:contentDescription="@string/reviews_ratingDescription"
                 android:numStars="5"
                 android:progressBackgroundTint="@color/black"
-
                 android:progressTint="@color/ratingBar"
                 android:rating="3.5"
                 android:scaleX="0.5"
                 android:scaleY="0.5"
                 android:stepSize="0.5"
                 android:transformPivotX="0dp"
-                android:translationY="0dp" />
+                android:translationY="5dp" />
 
             <TextView
                 android:id="@+id/textViewReviewText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/reviews_text"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
     </LinearLayout>

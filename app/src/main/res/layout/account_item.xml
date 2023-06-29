@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
-    app:cardElevation="15dp"
+    app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -34,15 +34,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/textViewFullName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/user_name"
-                    android:textSize="24sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
 
@@ -58,7 +58,7 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/user_generalRegistrationDate"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/textViewDate"
@@ -67,7 +67,7 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/user_registrationDate"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_marginLeft="3dp" />
                 </LinearLayout>
 
