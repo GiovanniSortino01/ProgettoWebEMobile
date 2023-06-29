@@ -59,17 +59,32 @@ class RecyclerViewSearch : Fragment() {
 
         binding.btnSearch.setOnClickListener{
             var text = binding.searchSearchView.query.toString()
+            var id = utente?.id
 
-            getItems(tipo,text) { data ->
-                val adapter = SearchAdapter(data,requireContext())
-                binding.searchRecyclerView.adapter = adapter
+            if(tipo == "persona" && id != null){
+                getPersone(id,text) { data ->
+                    val adapter = AccountAdapter(data,requireContext())
+                    binding.searchRecyclerView.adapter = adapter
 
-                adapter.setOnClickListener(object : SearchAdapter.OnClickListener {
-                    override fun onClick(position: Int, model: ItemsViewModelSearch) {
-                        Log.i(TAG, "Index ${position + 1}")
-                    }
-                })
-                adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
+                    adapter.setOnClickListener(object : AccountAdapter.OnClickListener {
+                        override fun onClick(position: Int, model: ItemsViewModelAccount) {
+                            Log.i(TAG, "Index ${position + 1}")
+                        }
+                    })
+                    adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
+                }
+            }else{
+                getItems(tipo,text) { data ->
+                    val adapter = SearchAdapter(data,requireContext())
+                    binding.searchRecyclerView.adapter = adapter
+
+                    adapter.setOnClickListener(object : SearchAdapter.OnClickListener {
+                        override fun onClick(position: Int, model: ItemsViewModelSearch) {
+                            Log.i(TAG, "Index ${position + 1}")
+                        }
+                    })
+                    adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
+                }
             }
         }
 
@@ -269,4 +284,51 @@ class RecyclerViewSearch : Fragment() {
             )
             return data
         }
+    private fun getPersone (id:Int,text:String,callback: (ArrayList<ItemsViewModelAccount>) -> Unit): ArrayList<ItemsViewModelAccount>{
+
+        val query = "select * from utenti where id <> '$id' and (nome LIKE '%$text%' or cognome LIKE '%$text%');"
+        Log.i("LOG", "Query creata:$query ")
+        val data = ArrayList<ItemsViewModelAccount>()
+
+        ClientNetwork.retrofit.login(query).enqueue(
+            object : Callback<JsonObject> {
+
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
+                    Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
+                    if (response.isSuccessful) {
+                        val queryset = response.body()?.getAsJsonArray("queryset")
+                        if (queryset?.size()!! >= 1) {
+                            binding.imageView3.visibility = View.GONE
+                            binding.textView6.visibility = View.GONE
+                            var completedCount = 0 // Contatore per tenere traccia del numero di chiamate completate
+
+                            for (i in 0 until queryset.size()) {
+                                val item = queryset.get(i).asJsonObject
+                                getImageProfilo(item.get("immagine").asString) { avatar ->
+                                    completedCount++
+                                    if (avatar != null) {
+                                        data.add(ItemsViewModelAccount(item.get("id").asInt,avatar, item.get("nome").asString, item.get("cognome").asString, item.get("datainscrizione").asString))
+                                    }
+                                    // Verifica se tutte le chiamate sono state completate
+                                    if (completedCount == queryset.size()) {
+                                        callback(data)
+                                    }
+                                }
+                            }
+                        } else {
+                            callback(data)
+                            binding.imageView3.visibility = View.VISIBLE
+                            binding.textView6.visibility = View.VISIBLE
+                        }
+                    }
+                }
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+                    //Toast.makeText( this@MainActivity,"onFailure1", Toast.LENGTH_SHORT).show()
+                    Log.i("onFailure", "Sono dentro al onFailure")
+                    utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),requireContext())
+                }
+            }
+        )
+        return data
+    }
 }
