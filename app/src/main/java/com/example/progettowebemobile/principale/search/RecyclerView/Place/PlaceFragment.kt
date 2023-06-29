@@ -308,7 +308,7 @@ class PlaceFragment : Fragment() {
     }
 
     private fun getItems(id: Int, callback: (ArrayList<ItemsViewModelRecenzioni>) -> Unit) {
-        val query = "select * from recenzioni where id_luogo = '$id';"
+        val query = "SELECT * FROM recenzioni r, utenti u WHERE r.id_luogo = '$id' AND r.id_persona = u.id;"
         val data = ArrayList<ItemsViewModelRecenzioni>()
 
         ClientNetwork.retrofit.login(query).enqueue(
@@ -329,7 +329,7 @@ class PlaceFragment : Fragment() {
                             var nome = item.get("nome").asString
                             var data_publicazione = item.get("data_publicazione").asString
                             var id_luogo = luogo.id_luogo
-                            var immagine = utente?.immagine
+                            var immagine = item.get("immagine").asString
                             if(immagine!=null){
                             data.add(
                                 ItemsViewModelRecenzioni(

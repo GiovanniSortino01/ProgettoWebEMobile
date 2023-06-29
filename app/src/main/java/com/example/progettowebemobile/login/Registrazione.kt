@@ -45,6 +45,7 @@ class Registrazione : AppCompatActivity() {
                         utils.PopError(getString(R.string.register_email_exist_title),getString(R.string.register_email_exist_text),this)
                     } else if (emailExists == false) {
                         insert(nome,cognome,email,password1)
+                        finish()
                     } else {
                         // Il valore è null (errore di connessione o fallimento)
                     }
@@ -79,8 +80,8 @@ class Registrazione : AppCompatActivity() {
         )
     }
     fun insert(nome: String,cognome:String, email: String, password: String){
-        val currentDate = LocalDate.now()
-        val query = "INSERT INTO utenti (nome, cognome, datainscrizione, email, password) VALUES ('${nome}', '${cognome}', '$currentDate', '${email}', '${password}');"
+        val currentDate = LocalDate.now().year
+        val query = "INSERT INTO utenti (nome, cognome, datainscrizione, email, password,immagine) VALUES ('${nome}', '${cognome}', '$currentDate', '${email}', '${password}','media/images/nessunaImmagine.jpeg');"
         Log.i("LOG", "Query creata:$query ")
 
         ClientNetwork.retrofit.insert(query).enqueue(

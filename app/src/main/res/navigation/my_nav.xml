@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_reciclerViewSearch_to_placeFragment"
             app:destination="@id/placeFragment" />
+        <action
+            android:id="@+id/action_reciclerViewSearch_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
     <fragment
         android:id="@+id/placeFragment"
@@ -69,6 +72,9 @@
         <action
             android:id="@+id/action_placeFragment_to_serviziFragment"
             app:destination="@id/serviziFragment" />
+        <action
+            android:id="@+id/action_placeFragment_self"
+            app:destination="@id/placeFragment" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -90,4 +96,8 @@
         android:name="com.example.progettowebemobile.principale.home.pagamenti.PagamentiFragment"
         android:label="fragment_pagamenti"
         tools:layout="@layout/fragment_pagamenti" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.progettowebemobile.principale.search.RecyclerView.User.UserFragment"
+        android:label="UserFragment" />
 </navigation>

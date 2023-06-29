@@ -16,6 +16,7 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.db_connection.ClientNetwork
+import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.Buffer.Companion.utente
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
@@ -31,8 +32,8 @@ class RecyclerViewSearch : Fragment() {
     private var objectList = emptyList<Object>()
     private lateinit var binding: FragmentRecyclerviewSearchBinding
     private lateinit var utils: Utils
-    private var tipo: String =""
-    private lateinit var avatar: Bitmap
+    private var items = Buffer()
+    private var tipo: String = ""
     private var backButtonEnabled=false
 
     override fun onCreateView(
@@ -42,13 +43,18 @@ class RecyclerViewSearch : Fragment() {
         backButtonEnabled=false
 
         binding = FragmentRecyclerviewSearchBinding.inflate(inflater, container, false)
-        loadRecyclerViewData()
+        var item = items.getUtente()
+        if (item != null) {
+            loadRecyclerViewData(item.id)
+        }
         binding.searchRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         setFragmentResultListener("requestKey") { requestKey, bundle ->
             tipo = bundle.getString("bundleKey").toString()
             // Chiamata alla funzione per caricare i dati nella RecyclerView
-            loadRecyclerViewData()
+            if (item != null) {
+                loadRecyclerViewData(item.id)
+            }
         }
 
         binding.btnSearch.setOnClickListener{
@@ -85,7 +91,7 @@ class RecyclerViewSearch : Fragment() {
         return binding.root
     }
 
-    private fun loadRecyclerViewData() {
+    private fun loadRecyclerViewData(id: Int) {
         if (tipo.equals("ristorante") || tipo.equals("hotel") || tipo.equals("monumento")) {
             getItems(tipo) { data ->
                 val adapter = SearchAdapter(data,requireContext())
@@ -99,7 +105,7 @@ class RecyclerViewSearch : Fragment() {
                 adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
             }
         }else if(tipo.equals("persona")){
-            getPersone() { data ->
+            getPersone(id) { data ->
                 val adapter = AccountAdapter(data,requireContext())
                 binding.searchRecyclerView.adapter = adapter
 
@@ -220,9 +226,9 @@ class RecyclerViewSearch : Fragment() {
             }
         })
     }
-        private fun getPersone (callback: (ArrayList<ItemsViewModelAccount>) -> Unit): ArrayList<ItemsViewModelAccount>{
+        private fun getPersone (id:Int,callback: (ArrayList<ItemsViewModelAccount>) -> Unit): ArrayList<ItemsViewModelAccount>{
 
-            val query = "select * from utenti;"
+            val query = "select * from utenti where id <> '$id';"
             Log.i("LOG", "Query creata:$query ")
             val data = ArrayList<ItemsViewModelAccount>()
 
