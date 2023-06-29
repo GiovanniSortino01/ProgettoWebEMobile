@@ -43,5 +43,6 @@
 
     <string name="Place_RecenzioneConfirm2_title">Cancellazione avvenuta</string>
     <string name="Place_RecenzioneConfirm2_text">La cancellazione è avvenuta con successo</string>
+    <string name="data_pubblicazione">Pubblicato il 00-00-2023</string>
 
 </resources>

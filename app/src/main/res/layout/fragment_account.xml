@@ -25,9 +25,10 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="150dp"
-                    android:layout_height="120dp"
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
 
                     android:contentDescription="@string/user_image"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -86,8 +87,7 @@
                             android:layout_marginTop="15dp"
                             android:text="@string/user_generalRegistrationDate"
                             android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/user_registrationDate"
@@ -97,8 +97,7 @@
                             android:text="@string/user_registrationDate"
                             android:textColor="@color/white"
                             android:textSize="18sp"
-                            android:layout_marginLeft="3dp"
-                            android:textStyle="bold" />
+                            android:layout_marginLeft="3dp" />
                     </LinearLayout>
 
                 </LinearLayout>
