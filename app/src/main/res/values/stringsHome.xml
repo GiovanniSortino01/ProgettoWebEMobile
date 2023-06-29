@@ -28,6 +28,7 @@
     <string name="menu_drawer_pagamento">Metodi di pagamento</string>
     <string name="menu_drawer_preferiti">Preferiti</string>
     <string name="menu_drawer_chisiamo">Chi siamo</string>
+    <string name="menu_drawer_logout">Logout</string>
 
     <string name="prenotazioni_tvGenerale">Prenotazioni</string>
     <string name="preferiti_tvGenerale">Preferiti</string>
