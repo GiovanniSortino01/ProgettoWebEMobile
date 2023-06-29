@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".principale.home.PreferitiFragment">
+    tools:context=".principale.home.preferiti.PreferitiFragment">
 
 
     <LinearLayout
@@ -32,6 +32,7 @@
             android:layout_marginBottom="20dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_homeFragment_to_pagamentiFragment"
             app:destination="@id/pagamentiFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_preferitiFragment"
+            app:destination="@id/preferitiFragment" />
     </fragment>
     <fragment
         android:id="@+id/reciclerViewSearch"
@@ -100,4 +103,13 @@
         android:id="@+id/userFragment"
         android:name="com.example.progettowebemobile.principale.search.RecyclerView.User.UserFragment"
         android:label="UserFragment" />
+    <fragment
+        android:id="@+id/preferitiFragment"
+        android:name="com.example.progettowebemobile.principale.home.preferiti.PreferitiFragment"
+        android:label="fragment_preferiti"
+        tools:layout="@layout/fragment_preferiti" >
+        <action
+            android:id="@+id/action_preferitiFragment_to_placeFragment"
+            app:destination="@id/placeFragment" />
+    </fragment>
 </navigation>

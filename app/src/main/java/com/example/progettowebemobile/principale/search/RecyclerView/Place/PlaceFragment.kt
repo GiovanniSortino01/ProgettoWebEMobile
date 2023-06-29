@@ -37,6 +37,7 @@ import com.example.progettowebemobile.databinding.FragmentPlaceBinding
 import com.example.progettowebemobile.entity.Luogo
 import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.account.ItemsViewModelPost
+import com.example.progettowebemobile.principale.search.RecyclerView.ItemsViewModelSearch
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -60,6 +61,12 @@ class PlaceFragment : Fragment() {
         val bundle = arguments
         luogo = bundle?.getSerializable("itemViewModel") as Luogo
         utente = bundle?.getSerializable("utente") as Utente
+        var preferito = luogo.preferito
+        if(preferito){
+            binding.searchFavoriteButton.setImageResource(R.drawable.baseline_favorite_24)
+        }else{
+            binding.searchFavoriteButton.setImageResource(R.drawable.baseline_favorite_border_24)
+        }
 
         viewpage2()
         setting()
@@ -73,6 +80,17 @@ class PlaceFragment : Fragment() {
             } else {
                 // Richiedi i permessi
                 requestTelephonePermission()
+            }
+        }
+        binding.searchFavoriteButton.setOnClickListener{
+            if(preferito){
+                preferito = false
+                delete(luogo.id_luogo, utente!!.id)
+                binding.searchFavoriteButton.setImageResource(R.drawable.baseline_favorite_border_24)
+            }else{
+                preferito = true
+                insert(luogo.id_luogo, utente!!.id)
+                binding.searchFavoriteButton.setImageResource(R.drawable.baseline_favorite_24)
             }
         }
 
@@ -432,5 +450,59 @@ class PlaceFragment : Fragment() {
                 }
             }
         )
+    }
+    private fun insert(id_luogo: Int, id_utente: Int) {
+        val query = "INSERT INTO preferiti (id_persona, id_luogo) VALUES ('$id_utente', '$id_luogo');"
+        Log.i("LOG", "Query creata:$query ")
+
+        ClientNetwork.retrofit.insert(query).enqueue(
+            object : Callback<JsonObject> {
+
+
+                override fun onResponse(
+
+                    call: Call<JsonObject>,
+                    response: Response<JsonObject>
+                ) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
+                    Log.i("LOG", "Query creata:$query ")
+                    Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
+                    if (response.isSuccessful) { //Se non ci sono stati errori di connessione con il server
+
+                    } else {
+                        Log.i("LOG", "Errore durante la registrazione ")
+                    }
+                }
+
+                override fun onFailure(
+                    call: Call<JsonObject>,
+                    t: Throwable
+                ) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+                    Log.i("LOG", "Errore durante l'inserimento")
+                    //utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),this@Registrazione)
+                }
+            }
+        )
+    }
+
+    private fun delete(id_luogo: Int, id_utente: Int) {
+        val query = "DELETE FROM preferiti WHERE id_luogo = '$id_luogo' and id_persona = '$id_utente'"
+        Log.i("LOG", "Query creata: $query")
+
+        ClientNetwork.retrofit.remove(query).enqueue(object : Callback<JsonObject> {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                Log.i("LOG", "Query creata: $query")
+                Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
+                if (response.isSuccessful) {
+                    // Aggiorna l'immagine dell'elemento preferito nell'adapter
+                } else {
+                    Log.i("LOG", "Errore durante la cancellazione")
+                }
+            }
+
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                Log.i("LOG", "Errore durante la cancellazione")
+                // Gestisci l'errore di connessione o visualizza un messaggio di errore appropriato.
+            }
+        })
     }
 }

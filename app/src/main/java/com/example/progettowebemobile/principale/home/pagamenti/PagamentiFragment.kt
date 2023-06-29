@@ -205,9 +205,6 @@ class PagamentiFragment : Fragment() {
     }
 
     private fun insert(id:Int, numero: String, dataScadenza: String, cvv: String, titolare: String) {
-
-
-
         val query =
             "INSERT INTO carte (id_persona, numero_carta, cvv, data_scadenza, titolare) VALUES ('$id', '$numero', '$cvv', '$dataScadenza', '$titolare');"
         Log.i("LOG", "Query creata:$query ")

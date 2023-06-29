@@ -26,6 +26,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Thread.sleep
 
 
 class RecyclerViewSearch : Fragment() {
@@ -158,8 +159,14 @@ class RecyclerViewSearch : Fragment() {
                             getImageProfilo(item.get("fotoPrincipale").asString) { avatar ->
                                 completedCount++
                                 if (avatar != null) {
-                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat,item.get("tipo").asString,item.get("sitoweb").asString,item.get("comearrivarci").asString))
-                                }
+                                    var id_utente = utente?.id
+                                    if(id_utente!=null){
+                                        var pref =false
+                                        preferito(id_utente,item.get("id_luogo").asInt){ prefe ->
+                                            pref=prefe
+                                        }
+                                    data.add(ItemsViewModelSearch(avatar,item.get("id_luogo").asInt, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat,item.get("tipo").asString,item.get("sitoweb").asString,item.get("comearrivarci").asString,pref))
+                                }}
                                 // Verifica se tutte le chiamate sono state completate
                                 if (completedCount == queryset.size()) {
                                     callback(data)
@@ -182,7 +189,7 @@ class RecyclerViewSearch : Fragment() {
         tipo: String,text:String,
         callback: (ArrayList<ItemsViewModelSearch>) -> Unit // Callback per restituire il risultato nullable
     ) {
-        val query = "select * from luoghi where tipo = '$tipo' and (nome LIKE '%$text%' or luogo LIKE '%$text%' or indirizzo LIKE '%$text%');"
+        val query = "select * from luoghi l,preferiti p where l.tipo = '$tipo' and (l.nome LIKE '%$text%' or l.luogo LIKE '%$text%' or l.indirizzo LIKE '%$text%');"
         val data = ArrayList<ItemsViewModelSearch>()
 
         ClientNetwork.retrofit.login(query).enqueue(
@@ -202,12 +209,26 @@ class RecyclerViewSearch : Fragment() {
                             getImageProfilo(item.get("fotoPrincipale").asString) { avatar ->
                                 completedCount++
                                 if (avatar != null) {
-                                    data.add(ItemsViewModelSearch(avatar, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat,item.get("tipo").asString,item.get("sitoweb").asString,item.get("comearrivarci").asString))
-                                }
-                                // Verifica se tutte le chiamate sono state completate
-                                if (completedCount == queryset.size()) {
-                                    callback(data)
+                                    var id_utente = utente?.id
+                                    if (id_utente != null) {
+                                        preferito(id_utente, item.get("id_luogo").asInt) { pref ->
+                                            // Aggiungi l'oggetto ItemsViewModelSearch con il risultato di preferito()
+                                            data.add(ItemsViewModelSearch(avatar, item.get("id_luogo").asInt, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat, item.get("tipo").asString, item.get("sitoweb").asString, item.get("comearrivarci").asString, pref))
 
+                                            // Verifica se tutte le chiamate sono state completate
+                                            if (completedCount == queryset.size()) {
+                                                callback(data)
+                                            }
+                                        }
+                                    } else {
+                                        // Aggiungi l'oggetto ItemsViewModelSearch senza il risultato di preferito()
+                                        data.add(ItemsViewModelSearch(avatar, item.get("id_luogo").asInt, item.get("nome").asString, item.get("luogo").asString, item.get("valutazione").asFloat, item.get("tipo").asString, item.get("sitoweb").asString, item.get("comearrivarci").asString, false))
+
+                                        // Verifica se tutte le chiamate sono state completate
+                                        if (completedCount == queryset.size()) {
+                                            callback(data)
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -241,49 +262,49 @@ class RecyclerViewSearch : Fragment() {
             }
         })
     }
-        private fun getPersone (id:Int,callback: (ArrayList<ItemsViewModelAccount>) -> Unit): ArrayList<ItemsViewModelAccount>{
+    private fun getPersone (id:Int,callback: (ArrayList<ItemsViewModelAccount>) -> Unit): ArrayList<ItemsViewModelAccount>{
 
-            val query = "select * from utenti where id <> '$id';"
-            Log.i("LOG", "Query creata:$query ")
-            val data = ArrayList<ItemsViewModelAccount>()
+        val query = "select * from utenti where id <> '$id';"
+        Log.i("LOG", "Query creata:$query ")
+        val data = ArrayList<ItemsViewModelAccount>()
 
-            ClientNetwork.retrofit.login(query).enqueue(
-                object : Callback<JsonObject> {
+        ClientNetwork.retrofit.login(query).enqueue(
+            object : Callback<JsonObject> {
 
-                    override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
-                        Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
-                        if (response.isSuccessful) {
-                            val queryset = response.body()?.getAsJsonArray("queryset")
-                            if (queryset?.size()!! >= 1) {
-                                var completedCount = 0 // Contatore per tenere traccia del numero di chiamate completate
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
+                    Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
+                    if (response.isSuccessful) {
+                        val queryset = response.body()?.getAsJsonArray("queryset")
+                        if (queryset?.size()!! >= 1) {
+                            var completedCount = 0 // Contatore per tenere traccia del numero di chiamate completate
 
-                                for (i in 0 until queryset.size()) {
-                                    val item = queryset.get(i).asJsonObject
-                                    getImageProfilo(item.get("immagine").asString) { avatar ->
-                                        completedCount++
-                                        if (avatar != null) {
-                                            data.add(ItemsViewModelAccount(item.get("id").asInt,avatar, item.get("nome").asString, item.get("cognome").asString, item.get("datainscrizione").asString))
-                                        }
-                                        // Verifica se tutte le chiamate sono state completate
-                                        if (completedCount == queryset.size()) {
-                                            callback(data)
-                                        }
+                            for (i in 0 until queryset.size()) {
+                                val item = queryset.get(i).asJsonObject
+                                getImageProfilo(item.get("immagine").asString) { avatar ->
+                                    completedCount++
+                                    if (avatar != null) {
+                                        data.add(ItemsViewModelAccount(item.get("id").asInt,avatar, item.get("nome").asString, item.get("cognome").asString, item.get("datainscrizione").asString))
+                                    }
+                                    // Verifica se tutte le chiamate sono state completate
+                                    if (completedCount == queryset.size()) {
+                                        callback(data)
                                     }
                                 }
-                            } else {
-                                //Non ci sono oggetti da aggiungere alla recyclerView
                             }
+                        } else {
+                            //Non ci sono oggetti da aggiungere alla recyclerView
                         }
                     }
-                    override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
-                        //Toast.makeText( this@MainActivity,"onFailure1", Toast.LENGTH_SHORT).show()
-                        Log.i("onFailure", "Sono dentro al onFailure")
-                        utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),requireContext())
-                    }
                 }
-            )
-            return data
-        }
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+                    //Toast.makeText( this@MainActivity,"onFailure1", Toast.LENGTH_SHORT).show()
+                    Log.i("onFailure", "Sono dentro al onFailure")
+                    utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),requireContext())
+                }
+            }
+        )
+        return data
+    }
     private fun getPersone (id:Int,text:String,callback: (ArrayList<ItemsViewModelAccount>) -> Unit): ArrayList<ItemsViewModelAccount>{
 
         val query = "select * from utenti where id <> '$id' and (nome LIKE '%$text%' or cognome LIKE '%$text%');"
@@ -331,4 +352,31 @@ class RecyclerViewSearch : Fragment() {
         )
         return data
     }
+
+    fun preferito(id_utente:Int,id_luogo:Int,callback: (Boolean) -> Unit){
+        val query2 = "select * from preferiti where id_persona = '$id_utente' and id_luogo = '$id_luogo'"
+        Log.i("LOG", "Query creata:$query2 ")
+
+        ClientNetwork.retrofit.login(query2).enqueue(
+            object : Callback<JsonObject> {
+
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
+                    Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
+                    if (response.isSuccessful) {
+                        val queryset = response.body()?.getAsJsonArray("queryset")
+                        if (queryset?.size()!! >= 1) {
+                            callback(true)
+                        } else {
+                            callback(false)
+                        }
+                    }
+                }
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+                    //Toast.makeText( this@MainActivity,"onFailure1", Toast.LENGTH_SHORT).show()
+                    Log.i("onFailure", "Sono dentro al onFailure")
+                    callback(false)                }
+            }
+        )
+    }
 }
+

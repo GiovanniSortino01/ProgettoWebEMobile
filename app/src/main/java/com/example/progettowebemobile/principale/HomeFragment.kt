@@ -58,11 +58,8 @@ class HomeFragment : Fragment() {
                 R.id.nav_pagamenti ->
                     findNavController().navigate(R.id.action_homeFragment_to_pagamentiFragment)
 
-                R.id.nav_preferiti ->Toast.makeText(
-                    requireContext(),
-                    "Clicked Home",
-                    Toast.LENGTH_SHORT
-                ).show()
+                R.id.nav_preferiti ->
+                    findNavController().navigate(R.id.action_homeFragment_to_preferitiFragment)
 
                 R.id.nav_chiSiamo -> Toast.makeText(
                     requireContext(),
