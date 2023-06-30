@@ -1,5 +1,6 @@
 package com.example.progettowebemobile.principale
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,17 +11,21 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.ActivityMainBinding
 import com.example.progettowebemobile.databinding.FragmentAccountBinding
 import com.example.progettowebemobile.databinding.FragmentHomeBinding
+import com.example.progettowebemobile.login.Login
+import com.example.progettowebemobile.login.Registrazione
 import com.google.android.material.navigation.NavigationView
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var intent :Intent
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,21 +34,24 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
+        toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // Esegui le azioni desiderate qui
                 // ad esempio, torna indietro o chiudi il Fragment
+                drawerLayout.closeDrawer(GravityCompat.START)
                 showDialogToConfirmExit()
             }
         }
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
 
 
-        toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+
 
 
         navView.setNavigationItemSelectedListener {
@@ -66,6 +74,21 @@ class HomeFragment : Fragment() {
                     "Clicked Chi siamo",
                     Toast.LENGTH_SHORT
                 ).show()
+                R.id.nav_logout -> {
+                    val dialogBuilder = android.app.AlertDialog.Builder(requireContext())
+                dialogBuilder.setMessage(getString(R.string.log_out_text))
+                    .setTitle(getString(R.string.log_out_title))
+                    .setPositiveButton(R.string.log_out_yes) { dialog, _ ->
+                        dialog.dismiss()
+                        intent = Intent(requireContext(), Login::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                    .setNegativeButton(R.string.log_out_no) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()}
             }
             true
         }
