@@ -4,24 +4,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
-    tools:context=".principale.search.RecyclerView.Place.NewTaskSheet">
+    android:layout_height="wrap_content"
+    tools:context=".principale.search.RecyclerView.Place.NewTaskSheet"
+    android:background="@color/background">
 
 
     <TextView
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Prenota"
         android:textSize="30sp"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
@@ -39,10 +40,11 @@
                 <TextView
                     android:id="@+id/search_sheet_categoria1"
                     android:layout_width="200dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/search_sheet_categoria1"
-                    android:textSize="23dp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -53,6 +55,7 @@
                         android:id="@+id/minusButton_categoria1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/button"
                         android:src="@drawable/baseline_remove_24"
                         android:text="-" />
 
@@ -62,13 +65,15 @@
                         android:layout_height="60dp"
                         android:gravity="center"
                         android:text="0"
-                        android:textSize="20dp" />
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/plusButton_categoria1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/baseline_add_24"
+                        android:backgroundTint="@color/button"
                         android:text="+" />
                 </LinearLayout>
 
@@ -88,9 +93,10 @@
             <TextView
                 android:id="@+id/search_sheet_categoria2"
                 android:layout_width="200dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="@string/search_sheet_categoria2"
-                android:textSize="23dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -103,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_remove_24"
+                    android:backgroundTint="@color/button"
                     android:text="-" />
 
                 <TextView
@@ -111,13 +118,15 @@
                     android:layout_height="60dp"
                     android:gravity="center"
                     android:text="0"
-                    android:textSize="20dp" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/plusButton_categoria2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_add_24"
+                    android:backgroundTint="@color/button"
                     android:text="+" />
             </LinearLayout>
 
@@ -132,9 +141,10 @@
             <TextView
                 android:id="@+id/search_sheet_categoria3"
                 android:layout_width="200dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="@string/search_sheet_categoria3"
-                android:textSize="23dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -147,6 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_remove_24"
+                    android:backgroundTint="@color/button"
                     android:text="-" />
 
                 <TextView
@@ -155,13 +166,15 @@
                     android:layout_height="60dp"
                     android:gravity="center"
                     android:text="0"
-                    android:textSize="20dp" />
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/plusButton_categoria3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_add_24"
+                    android:backgroundTint="@color/button"
                     android:text="+" />
             </LinearLayout>
 
@@ -169,24 +182,49 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/prezzo"
-            android:layout_width="40dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="20dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/search_sheet_saveButton"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="20dp"
-            android:text="Save"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/serch_fragment_tvPrezzo"
+                    android:layout_width="181dp"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:layout_weight="1"
+                    android:text="@string/search_generalPrice"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@drawable/baseline_price_check_24"/>
+
+                <TextView
+                    android:id="@+id/prezzo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/search_price"
+                    android:gravity="right"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    android:drawableRight="@drawable/baseline_eurobianco_24"/>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/search_sheet_saveButton"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:backgroundTint="@color/button"
+                android:text="Save"
+                android:textColor="@color/buttonText"
+                android:textSize="20sp"
+                android:layout_marginBottom="20dp"/>
         </LinearLayout>
 
     </LinearLayout>

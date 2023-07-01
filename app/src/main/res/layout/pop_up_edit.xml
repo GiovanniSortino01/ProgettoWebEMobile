@@ -68,7 +68,7 @@
                 android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:hint="@string/user_name"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:layout_marginBottom="15dp"/>
 
