@@ -112,10 +112,10 @@ class PlaceFragment : Fragment() {
             val nome1:String
             val nome2:String
             val nome3:String
-            if(luogo.tipo  == "ristorante"){
-                nome1= "Tavolo da 2"
-                nome2= "Tavolo da 6"
-                nome3= "Tavolo da 8"
+            if(luogo.tipo  == "evento"){
+                nome1= "Biglietto anni 0-12"
+                nome2= "Biglietto anni 12-21"
+                nome3= "Biglietto anni 22++"
                 NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,0,0,0,luogo.tipo,this).show(requireActivity().supportFragmentManager, "newTaskTag")
 
             }else{
@@ -319,6 +319,12 @@ class PlaceFragment : Fragment() {
 
         binding.searchFragmentChiama.visibility = View.GONE
         binding.searchFragmentServizi.visibility = View.GONE
+
+        binding.searchFragmentBtnScegli.visibility = View.VISIBLE
+        binding.searchFragmentBtnPrenota.visibility = View.VISIBLE
+        binding.searchFragmentTvPrenotazione.visibility = View.VISIBLE
+        binding.serchFragmentTvPrezzo.visibility = View.VISIBLE
+        binding.searchFragmentPrezzoEffettivo.visibility = View.VISIBLE
     }
     private fun evento(){
         binding.searchFragmentTvPrenotazione.text=getString(R.string.Place_TvPrenotazioni_Evento)
@@ -328,6 +334,12 @@ class PlaceFragment : Fragment() {
 
         binding.searchFragmentChiama.visibility = View.VISIBLE
         binding.searchFragmentServizi.visibility = View.GONE
+
+        binding.searchFragmentBtnScegli.visibility = View.VISIBLE
+        binding.searchFragmentBtnPrenota.visibility = View.VISIBLE
+        binding.searchFragmentTvPrenotazione.visibility = View.VISIBLE
+        binding.serchFragmentTvPrezzo.visibility = View.VISIBLE
+        binding.searchFragmentPrezzoEffettivo.visibility = View.VISIBLE
     }
     private fun hotel(){
         binding.searchFragmentTvPrenotazione.text=getString(R.string.Place_TvPrenotazioni_Hotel)
@@ -338,6 +350,12 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentChiama.visibility = View.VISIBLE
         binding.searchFragmentServizi.visibility = View.VISIBLE
         binding.searchFragmentServizi.text = "Servizi"
+
+        binding.searchFragmentBtnScegli.visibility = View.VISIBLE
+        binding.searchFragmentBtnPrenota.visibility = View.VISIBLE
+        binding.searchFragmentTvPrenotazione.visibility = View.VISIBLE
+        binding.serchFragmentTvPrezzo.visibility = View.VISIBLE
+        binding.searchFragmentPrezzoEffettivo.visibility = View.VISIBLE
     }
     private fun ristorante(){
         binding.searchFragmentTvPrenotazione.text=getString(R.string.Place_TvPrenotazioni_Ristorante)
@@ -348,6 +366,12 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentChiama.visibility = View.VISIBLE
         binding.searchFragmentServizi.visibility = View.VISIBLE
         binding.searchFragmentServizi.text = "Menù"
+
+        binding.searchFragmentBtnScegli.visibility = View.GONE
+        binding.searchFragmentBtnPrenota.visibility = View.GONE
+        binding.searchFragmentTvPrenotazione.visibility = View.GONE
+        binding.serchFragmentTvPrezzo.visibility = View.GONE
+        binding.searchFragmentPrezzoEffettivo.visibility = View.GONE
     }
 
 
@@ -634,7 +658,7 @@ class PlaceFragment : Fragment() {
         spinner.adapter = adapter
 
         popupButtonPay.setOnClickListener {
-            insertPrenotazione(utente!!.id, luogo.id_luogo, luogo.nome, data, prezzo)
+            insertPrenotazione( luogo.id_luogo,utente!!.id, luogo.nome, data, prezzo)
             alertDialog.dismiss()
         }
 

@@ -122,5 +122,9 @@
         android:id="@+id/prenotazioniFragment2"
         android:name="com.example.progettowebemobile.principale.home.prenotazioni.PrenotazioniFragment"
         android:label="fragment_prenotazioni"
-        tools:layout="@layout/fragment_prenotazioni" />
+        tools:layout="@layout/fragment_prenotazioni" >
+        <action
+            android:id="@+id/action_prenotazioniFragment2_to_placeFragment"
+            app:destination="@id/placeFragment" />
+    </fragment>
 </navigation>

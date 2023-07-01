@@ -1,6 +1,8 @@
 package com.example.progettowebemobile.principale
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
+import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.ActivityMainBinding
 import com.example.progettowebemobile.databinding.FragmentAccountBinding
@@ -22,6 +25,10 @@ import com.example.progettowebemobile.databinding.FragmentHomeBinding
 import com.example.progettowebemobile.login.Login
 import com.example.progettowebemobile.login.Registrazione
 import com.google.android.material.navigation.NavigationView
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
@@ -38,6 +45,7 @@ class HomeFragment : Fragment() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val menuIcon: ImageView = binding.menuIcon
+
         toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
         drawerLayout.addDrawerListener(toggle)
 
@@ -131,4 +139,21 @@ class HomeFragment : Fragment() {
 
           return super.onOptionsItemSelected(item)
       }
+
+    private fun getImage(url: String, callback: (Bitmap?) -> Unit) {
+        ClientNetwork.retrofit.getAvatar(url).enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    val bitmap = BitmapFactory.decodeStream(response.body()?.byteStream())
+                    callback(bitmap)
+                } else {
+                    callback(null)
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                callback(null)
+            }
+        })
+    }
 }
