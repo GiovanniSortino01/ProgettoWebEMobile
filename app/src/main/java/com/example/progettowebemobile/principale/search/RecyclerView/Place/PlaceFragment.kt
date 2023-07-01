@@ -55,7 +55,6 @@ class PlaceFragment : Fragment() {
     private var item = Buffer()
     var prezzo = 0
     var data = ""
-    private var imagesList = mutableListOf<Bitmap>()
     private var backButtonEnabled=false
 
     override fun onCreateView(
@@ -78,7 +77,7 @@ class PlaceFragment : Fragment() {
         loadRecyclerViewData()
 
 
-
+        binding.searchFragmentRatingBar.rating = luogo.valutazione
 
         binding.searchFragmentBtnPrenota.setOnClickListener{
             var carte=utente?.carte

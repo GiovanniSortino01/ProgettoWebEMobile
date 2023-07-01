@@ -28,15 +28,45 @@ class ServiziFragment : Fragment() {
         binding = FragmentServiziBinding.inflate(inflater,container,false)
         val bundle = arguments
         var servizi = bundle?.getSerializable("itemViewModel") as Servizi
-        binding.serviziFitnessSpecifiche.text= servizi.fitness
-        binding.serviziGeneraliSpecifiche.text= servizi.generali
-        binding.serviziInternetSpecifiche.text= servizi.wifi
-        binding.serviziPuliziaSpecifiche.text= servizi.serviziopulizia
-        binding.serviziReceptionSpecifiche.text= servizi.servizioreception
-        binding.serviziInCameraSpecifiche.text= servizi.servizioincamera
-        binding.serviziCiboBevandeSpecifiche.text= servizi.ciboebevande
-        binding.serviziTrasportiSpecifiche.text= servizi.trasporti
-        binding.serviziTipiCamereSpecifiche.text= servizi.tipidicamere
+
+        var textView = servizi.fitness.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziFitnessSpecifiche.text=textView
+
+         textView = servizi.generali.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziGeneraliSpecifiche.text= textView
+
+         textView = servizi.wifi.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziInternetSpecifiche.text=textView
+
+        textView =  servizi.fitness.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziFitnessSpecifiche.text=textView
+
+         textView = servizi.serviziopulizia.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziPuliziaSpecifiche.text=textView
+
+        textView = servizi.servizioreception.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziReceptionSpecifiche.text= textView
+
+         textView = servizi.servizioincamera.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziInCameraSpecifiche.text= textView
+
+         textView = servizi.ciboebevande.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziCiboBevandeSpecifiche.text= textView
+
+         textView = servizi.trasporti.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziTrasportiSpecifiche.text= textView
+
+         textView = servizi.tipidicamere.replace("\\n", "\n").replace("\\u2022", "•")
+        binding.serviziTipiCamereSpecifiche.text=textView
+
+
+
+
+
+
+
+
+
 
         return binding.root
     }
