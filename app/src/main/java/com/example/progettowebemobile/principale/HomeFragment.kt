@@ -25,7 +25,7 @@ import com.google.android.material.navigation.NavigationView
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var intent :Intent
+    private lateinit var intent: Intent
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,47 +35,11 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
         toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
-        binding.navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_prenotazioni -> {
-                    Toast.makeText(requireContext(), "Clicked Home", Toast.LENGTH_SHORT).show()
-                    // Aggiungi qui le azioni da eseguire per l'item "nav_prenotazioni"
-                }
-                R.id.nav_pagamenti -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_pagamentiFragment)
-                }
-                R.id.nav_preferiti -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_preferitiFragment)
-                }
-                R.id.nav_chiSiamo -> {
-                    Toast.makeText(requireContext(), "Clicked Chi siamo", Toast.LENGTH_SHORT).show()
-                    // Aggiungi qui le azioni da eseguire per l'item "nav_chiSiamo"
-                }
-                R.id.nav_logout -> {
-                    val dialogBuilder = AlertDialog.Builder(requireContext())
-                    dialogBuilder.setMessage(getString(R.string.log_out_text))
-                        .setTitle(getString(R.string.log_out_title))
-                        .setPositiveButton(R.string.log_out_yes) { dialog, _ ->
-                            dialog.dismiss()
-                            intent = Intent(requireContext(), Login::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
-                        }
-                        .setNegativeButton(R.string.log_out_no) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        .create()
-                        .show()
-                }
-            }
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            true
-        }
-
+        
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // Esegui le azioni desiderate qui
@@ -85,8 +49,45 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val actionBar = requireActivity().actionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+
+                R.id.nav_prenotazioni ->Toast.makeText(
+                    requireContext(),
+                    "Clicked Home",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                R.id.nav_pagamenti ->
+                    findNavController().navigate(R.id.action_homeFragment_to_pagamentiFragment)
+
+                R.id.nav_preferiti ->
+                    findNavController().navigate(R.id.action_homeFragment_to_preferitiFragment)
+
+                R.id.nav_chiSiamo -> Toast.makeText(
+                    requireContext(),
+                    "Clicked Chi siamo",
+                    Toast.LENGTH_SHORT
+                ).show()
+                R.id.nav_logout -> {
+                    val dialogBuilder = android.app.AlertDialog.Builder(requireContext())
+                dialogBuilder.setMessage(getString(R.string.log_out_text))
+                    .setTitle(getString(R.string.log_out_title))
+                    .setPositiveButton(R.string.log_out_yes) { dialog, _ ->
+                        dialog.dismiss()
+                        intent = Intent(requireContext(), Login::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                    .setNegativeButton(R.string.log_out_no) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()}
+            }
+            true
+        }
 
         //fine Navigation Drawer
 
@@ -94,6 +95,14 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val actionBar = requireActivity().actionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
+    }
 
     private fun showDialogToConfirmExit() {
         val builder = AlertDialog.Builder(requireActivity())
@@ -111,5 +120,10 @@ class HomeFragment : Fragment() {
 
 
     //funzione Navigation Drawer
+     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+          if (toggle.onOptionsItemSelected(item)){
+              return true}
 
+          return super.onOptionsItemSelected(item)
+      }
 }
