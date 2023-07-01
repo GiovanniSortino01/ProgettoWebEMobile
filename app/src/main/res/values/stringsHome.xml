@@ -52,5 +52,10 @@
     <string name="pagamenti_numCarta">0000 0000 0000 0000</string>
     <string name="pagamenti_scadenza">12/99</string>
 
+    <!-- Log out -->
+    <string name="log_out_title">Log out</string>
+    <string name="log_out_text">Vuoi veramente uscire?</string>
+    <string name="log_out_yes">Si</string>
+    <string name="log_out_no">No</string>
 </resources>
 

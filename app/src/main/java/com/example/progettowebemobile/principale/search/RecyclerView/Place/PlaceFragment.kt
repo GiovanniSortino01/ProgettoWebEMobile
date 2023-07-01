@@ -30,11 +30,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.db_connection.ClientNetwork
+import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.Buffer.Companion.utente
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.FragmentPlaceBinding
 import com.example.progettowebemobile.entity.Luogo
+import com.example.progettowebemobile.entity.Servizi
 import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.account.ItemsViewModelPost
 import com.example.progettowebemobile.principale.search.RecyclerView.ItemsViewModelSearch
@@ -50,6 +52,7 @@ class PlaceFragment : Fragment() {
     private lateinit var luogo: Luogo
     private lateinit var taskViewModel: TaskViewModel
     private var utils = Utils()
+    private var item = Buffer()
     private var imagesList = mutableListOf<Bitmap>()
     private var backButtonEnabled=false
 
@@ -93,6 +96,26 @@ class PlaceFragment : Fragment() {
                 binding.searchFavoriteButton.setImageResource(R.drawable.baseline_favorite_24)
             }
         }
+        binding.searchFragmentBtnScegli.setOnClickListener {
+            val nome1:String
+            val nome2:String
+            val nome3:String
+            if(luogo.tipo  == "ristorante"){
+                nome1= "Tavolo da 2"
+                nome2= "Tavolo da 6"
+                nome3= "Tavolo da 8"
+                NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,0,0,0,luogo.tipo).show(requireActivity().supportFragmentManager, "newTaskTag")
+
+            }else{
+                nome1= "Stanza singola"
+                nome2= "Stanza doppia"
+                nome3= "Stanza familiare 4 persone"
+                getPrezzi(luogo.id_luogo){prez->
+                    NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,prez[0],prez[1],prez[2],luogo.tipo).show(requireActivity().supportFragmentManager, "newTaskTag")
+                }
+            }
+
+        }
 
         binding.searchFragmentSito.setOnClickListener{
             val url = luogo.sitoweb
@@ -108,8 +131,13 @@ class PlaceFragment : Fragment() {
                 navController.navigate(R.id.action_placeFragment_to_menuFragment,bundle)
 
             }else if(luogo.tipo.equals("hotel")) {
-                findNavController().navigate(R.id.action_placeFragment_to_serviziFragment)
-            }
+
+                val navController = Navigation.findNavController(context as AppCompatActivity, R.id.fragmentPrincipale)
+                val bundle = Bundle()
+                getSerivizi(luogo.id_luogo){ser ->
+                bundle.putSerializable("itemViewModel", ser) // Passa l'oggetto ItemsViewModelSearch come serializzabile
+                navController.navigate(R.id.action_placeFragment_to_serviziFragment,bundle)
+            }}
         }
         binding.searchFragmentBtnRecensioni.setOnClickListener{
             popAdd(utente!!)
@@ -127,6 +155,8 @@ class PlaceFragment : Fragment() {
                 }
             }
         }
+
+
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
         return binding.root
     }
@@ -139,9 +169,7 @@ class PlaceFragment : Fragment() {
             taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
             adapter.notifyDataSetChanged()
         }
-        binding.searchFragmentBtnScegli.setOnClickListener {
-            NewTaskSheet().show(requireActivity().supportFragmentManager, "newTaskTag")
-        }
+
     }
     private fun getItemsImage(id: Int,callback: (ArrayList<Bitmap>) -> Unit) {
         val query = "select * from immagini where id_immagini = '$id';"
@@ -504,5 +532,75 @@ class PlaceFragment : Fragment() {
                 // Gestisci l'errore di connessione o visualizza un messaggio di errore appropriato.
             }
         })
+    }
+
+    fun getSerivizi(id:Int,callback:(Servizi)->Unit){
+        val query = "SELECT * FROM servizi WHERE id_luogo = '$id'"
+
+        ClientNetwork.retrofit.login(query).enqueue(
+            object : Callback<JsonObject> {
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                    val queryset = response.body()?.getAsJsonArray("queryset")
+
+                    if (queryset?.size()!! >= 1) {
+
+                            val item = queryset.get(0).asJsonObject
+                            var wifi = item.get("wifi").asString
+                            var fitness = item.get("fitness").asString
+                            var ciboebevande = item.get("ciboebevande").asString
+                            var trasporti = item.get("trasporti").asString
+                            var generali = item.get("generali").asString
+                            var tipidicamere = item.get("tipidicamere").asString
+                            var servizioincamera = item.get("servizioincamera").asString
+                            var serviziopulizia = item.get("serviziopulizia").asString
+                            var servizioreception = item.get("servizioreception").asString
+
+                                var data = Servizi(id,
+                                        wifi,
+                                        fitness,
+                                        ciboebevande,
+                                        trasporti,
+                                        generali,
+                                        tipidicamere,
+                                        servizioincamera ,
+                                        serviziopulizia ,
+                                    servizioreception ,
+                                    )
+                        callback(data)
+                    }
+                    else {
+                    }
+                }
+
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                    // Chiamata alla callback con valore null in caso di fallimento
+                }
+            }
+        )
+    }
+
+    private fun getPrezzi(id: Int,callback: (List<Int>) -> Unit) {
+        val query = "select * from stanze where id_luogo = '$id';"
+
+        ClientNetwork.retrofit.login(query).enqueue(
+            object : Callback<JsonObject> {
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                    val queryset = response.body()?.getAsJsonArray("queryset")
+
+                    if (queryset?.size()!! >= 1) {
+
+                        val item = queryset.get(0).asJsonObject
+                        var stanza1 = item.get("stanza1").asInt
+                        var stanza2 = item.get("stanza2").asInt
+                        var stanza4 = item.get("stanza4").asInt
+                        val url = listOf(stanza1, stanza2, stanza4)
+                        callback(url)
+                    }
+                }
+
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                }
+            }
+        )
     }
 }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="500dp"
-    tools:context=".principale.NewTaskSheet">
+    tools:context=".principale.search.RecyclerView.Place.NewTaskSheet">
 
 
     <TextView
@@ -167,6 +167,17 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/prezzo"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="20dp" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/search_sheet_saveButton"
             android:layout_width="250dp"
@@ -176,6 +187,7 @@
             android:text="Save"
             android:textColor="@color/white"
             android:textSize="20dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
