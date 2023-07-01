@@ -169,6 +169,7 @@ class AccountFragment : Fragment() {
                                     // Verifica se tutte le chiamate sono state completate
                                     if (completedCount == queryset.size()) {
                                         callback(data)
+
                                     }
                                 }
                             }

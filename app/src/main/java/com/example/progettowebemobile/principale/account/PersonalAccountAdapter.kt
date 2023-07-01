@@ -10,7 +10,8 @@ class PersonalAccountAdapter(private val mList: ArrayList<ItemsViewModelPost>) :
 
     private var onClickListener: OnClickListener?= null
 
-    class ViewHolder(binding: PostItemBinding): RecyclerView.ViewHolder(binding.root){
+    class ViewHold
+    er(binding: PostItemBinding): RecyclerView.ViewHolder(binding.root){
         val foto = binding.photoImageview
         val nome = binding.userNameTextview
         val luogo = binding.tvLuogo

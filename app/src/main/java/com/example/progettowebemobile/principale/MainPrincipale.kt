@@ -54,6 +54,7 @@ class MainPrincipale : AppCompatActivity() {
                 }
                 R.id.accountFragment -> {
                     navController.popBackStack()
+
                     navController.navigate(R.id.accountFragment)
                     true
                 }

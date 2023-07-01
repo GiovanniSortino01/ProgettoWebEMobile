@@ -21,6 +21,7 @@ class MenuAdapter (private val mList: ArrayList<ItemsViewModelMenu>, private val
         val ingredienti = binding.menuIngredienti
         val prezzo = binding.menuPrezzo
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuAdapter.ViewHolder {
         val view = ItemMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MenuAdapter.ViewHolder(view)

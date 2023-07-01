@@ -58,6 +58,7 @@ class PagamentiFragment : Fragment() {
                     override fun onClick(position: Int, model: ItemViewModelCard) {
                         Log.i(ContentValues.TAG, "Index ${position + 1}")
                     }
+
                 })
                 adapter.notifyDataSetChanged() // Aggiungi questa linea per aggiornare l'adapter
 

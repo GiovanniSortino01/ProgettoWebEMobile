@@ -40,6 +40,7 @@ class RecenzioniAdapter (private val mList: ArrayList<ItemsViewModelRecenzioni>,
         val data_pubblicazione = binding.textViewDate
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecenzioniAdapter.ViewHolder {
         val view = CardRecenzioniBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)

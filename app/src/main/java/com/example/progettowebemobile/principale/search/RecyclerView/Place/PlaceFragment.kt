@@ -643,6 +643,7 @@ class PlaceFragment : Fragment() {
                 override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                     val queryset = response.body()?.getAsJsonArray("queryset")
 
+
                     if (queryset?.size()!! >= 1) {
 
                         var completedCount =

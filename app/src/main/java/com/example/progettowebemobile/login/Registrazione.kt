@@ -23,6 +23,7 @@ class Registrazione : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         binding = ActivityRegistrazioneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

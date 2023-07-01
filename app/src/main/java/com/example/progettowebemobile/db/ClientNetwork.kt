@@ -5,6 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ClientNetwork {
 
+
     val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("http://10.0.2.2:8000/webmobile/")

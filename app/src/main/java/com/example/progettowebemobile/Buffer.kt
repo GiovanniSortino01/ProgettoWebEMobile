@@ -19,6 +19,7 @@ class Buffer {
         return prezzo
     }
 
+
     fun setPrezzo(utente: Int) {
         Companion.prezzo = prezzo
     }

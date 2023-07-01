@@ -25,6 +25,7 @@ class MenuFragment : Fragment() {
     private lateinit var binding: FragmentMenuBinding
     private lateinit var luogo: Luogo
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

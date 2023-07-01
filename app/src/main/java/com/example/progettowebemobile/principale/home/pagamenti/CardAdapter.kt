@@ -88,6 +88,7 @@ import java.util.Locale
         val query = "DELETE FROM carte WHERE numero_carta = '$id'"
         Log.i("LOG", "Query creata: $query")
 
+
         ClientNetwork.retrofit.remove(query).enqueue(object : Callback<JsonObject> {
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                 Log.i("LOG", "Query creata: $query")

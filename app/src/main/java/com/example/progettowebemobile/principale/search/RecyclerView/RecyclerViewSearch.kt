@@ -343,6 +343,7 @@ class RecyclerViewSearch : Fragment() {
                         }
                     }
                 }
+
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
                     //Toast.makeText( this@MainActivity,"onFailure1", Toast.LENGTH_SHORT).show()
                     Log.i("onFailure", "Sono dentro al onFailure")

@@ -69,6 +69,7 @@ class SearchAdapter(private val mList: List<ItemsViewModelSearch>,private val co
             holder.preferito.setImageResource(R.drawable.baseline_favorite_border_24)
         }
 
+
         holder.preferito.setOnClickListener {
             if (id_utente != null) {
                 if (preferito) {

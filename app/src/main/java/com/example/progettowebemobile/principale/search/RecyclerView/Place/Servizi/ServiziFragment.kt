@@ -24,6 +24,7 @@ class ServiziFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
         binding = FragmentServiziBinding.inflate(inflater,container,false)
         val bundle = arguments
         var servizi = bundle?.getSerializable("itemViewModel") as Servizi

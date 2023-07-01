@@ -41,6 +41,7 @@ class GpsFragment : Fragment() {
         }
         navigateToHomeFragment()
 
+
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // Esegui le azioni desiderate qui

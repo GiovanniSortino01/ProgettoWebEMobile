@@ -104,6 +104,7 @@ class HomeFragment : Fragment() {
 
     }
 
+
     private fun showDialogToConfirmExit() {
         val builder = AlertDialog.Builder(requireActivity())
         builder.setTitle(getString(R.string.back_title))

@@ -40,6 +40,7 @@ class PreferitiAdapter  (private val mList: ArrayList<ItemViewModelPreferiti>, p
             val immagine = binding.preferitiImmagine
         }
 
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PreferitiAdapter.ViewHolder {
             val view = ItemPreferitiBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return ViewHolder(view)

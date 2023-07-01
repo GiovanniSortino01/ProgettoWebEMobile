@@ -32,6 +32,7 @@ class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val 
     private val DOUBLE_CLICK_TIME_DELTA: Long = 300 // Tempo di doppio clic desiderato in millisecondi
 
 
+
     class ViewHolder(binding: AccountItemBinding): RecyclerView.ViewHolder(binding.root){
         val imageView = binding.imageViewProfile
         val name = binding.textViewFullName

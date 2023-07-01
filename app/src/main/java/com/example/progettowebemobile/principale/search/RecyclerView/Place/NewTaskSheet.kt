@@ -34,6 +34,7 @@ class NewTaskSheet(var id_luogo:Int,var nome1:String,var nome2:String,var nome3:
             binding.prezzo.visibility = View.GONE
         }
 
+
         binding.minusButtonCategoria1.setOnClickListener {
             if (numberCamere > 0) {
                 numberCamere--

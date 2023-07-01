@@ -2,7 +2,8 @@ package com.example.progettowebemobile.entity
 
 import java.io.Serializable
 
-class Servizi( id_luogo:Int, wifi:String, fitness:String, ciboebevande:String,  trasporti:String, generali:String,
+class
+Servizi( id_luogo:Int, wifi:String, fitness:String, ciboebevande:String,  trasporti:String, generali:String,
                tipidicamere:String , servizioincamera:String,serviziopulizia:String,servizioreception:String)
     : Serializable {
         public var id_luogo: Int = id_luogo

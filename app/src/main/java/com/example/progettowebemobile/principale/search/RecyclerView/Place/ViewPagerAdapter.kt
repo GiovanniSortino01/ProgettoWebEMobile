@@ -22,6 +22,7 @@ class ViewPagerAdapter(private val images: List<Bitmap>) :
         return PagerViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         val image = images[position]
         holder.imageView.setImageBitmap(image)

@@ -36,6 +36,7 @@ class UserFragment : Fragment() {
         val bundle = arguments
         persona = bundle?.getSerializable("itemViewModel") as Persona
 
+
         binding = FragmentUserBinding.inflate(inflater, container, false)
         binding.userName.text = persona.nome
         binding.userSurname.text = persona.cognome

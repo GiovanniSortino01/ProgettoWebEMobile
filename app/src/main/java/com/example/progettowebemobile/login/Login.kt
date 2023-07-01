@@ -63,6 +63,7 @@ class Login : AppCompatActivity() {
         ClientNetwork.retrofit.login(query).enqueue(
             object : Callback<JsonObject> {
 
+
                 override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
                     Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
                     if (response.isSuccessful) {

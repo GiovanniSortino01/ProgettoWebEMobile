@@ -28,6 +28,7 @@ class PreferitiFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
         binding = FragmentPreferitiBinding.inflate(inflater, container, false)
         var utente = item.getUtente()
         var id = utente?.id
