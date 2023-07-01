@@ -591,15 +591,16 @@ class PlaceFragment : Fragment() {
             }
         )
     }
-
-    private fun getPrezzi(id: Int, callback: (List<Int>) -> Unit) {
+    fun getPrezzi(id:Int,callback:(List<Int>)->Unit){
         val query = "select * from stanze where id_luogo = '$id';"
 
-        ClientNetwork.retrofit.login(query).enqueue(object : Callback<JsonObject> {
-            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                if (response.isSuccessful) {
-                    val queryset = response.body()?.getAsJsonArray("results")
-                    if (queryset != null && queryset.size() > 0) {
+        ClientNetwork.retrofit.login(query).enqueue(
+            object : Callback<JsonObject> {
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                    val queryset = response.body()?.getAsJsonArray("queryset")
+
+                    if (queryset?.size()!! >= 1) {
+                        Log.i(TAG,"$id"+"ddddddd")
                         val item = queryset.get(0).asJsonObject
                         val stanza1 = item.get("stanza1").asInt
                         val stanza2 = item.get("stanza2").asInt
@@ -609,15 +610,13 @@ class PlaceFragment : Fragment() {
                     } else {
                         callback(emptyList()) // Nessun risultato trovato
                     }
-                } else {
-                    callback(emptyList()) // Risposta non riuscita
+                }
+
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                    // Chiamata alla callback con valore null in caso di fallimento
                 }
             }
-
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                callback(emptyList()) // Errore di rete o fallimento della chiamata
-            }
-        })
+        )
     }
 
 
@@ -636,44 +635,81 @@ class PlaceFragment : Fragment() {
 
         popupButtonPay.setOnClickListener {
             insertPrenotazione(utente!!.id, luogo.id_luogo, luogo.nome, data, prezzo)
-            alertDialog.show()
+            alertDialog.dismiss()
         }
 
         popupButtonAdd.setOnClickListener{
             if(utente!=null && luogo!=null) {
                 findNavController().navigate(R.id.action_placeFragment_to_pagamentiFragment)
+                alertDialog.dismiss()
             }
         }
 
         alertDialog.show()
     }
+
+
     private fun insertPrenotazione(id_luogo: Int, id_utente: Int, nome_luogo: String, data: String, prezzo: Int) {
-        val query =
-            "INSERT INTO prenotazioni (id_persona, id_luogo, nome_luogo, data, prezzo) VALUES ('$id_utente', '$id_luogo','$nome_luogo', '$data','$prezzo');"
+        val query = "INSERT INTO prenotazioni (id_persona, id_luogo, nome_luogo, data, prezzo) VALUES ('$id_utente', '$id_luogo','$nome_luogo', '$data','$prezzo');"
         Log.i("LOG", "Query creata:$query ")
 
-        ClientNetwork.retrofit.insert(query).enqueue(object : Callback<JsonObject> {
-            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                if (response.isSuccessful) {
-                    val queryset = response.body()?.getAsJsonArray("queryset")
-                    if (queryset != null && queryset.size() >= 1) {
-                        utils.PopError(
-                            getString(R.string.Place_pagamento_confermato_title),
-                            getString(R.string.Place_pagamento_confermato_text),
-                            requireContext()
-                        )
+        ClientNetwork.retrofit.insert(query).enqueue(
+            object : Callback<JsonObject> {
+
+
+                override fun onResponse(
+
+                    call: Call<JsonObject>,
+                    response: Response<JsonObject>
+                ) {// Questo metodo viene chiamato quando la risposta HTTP viene ricevuta con successo dal server
+                    Log.i("LOG", "Query creata:$query ")
+                    Log.i("onResponse", "Sono dentro la onResponse e l'esito sarà: ${response.isSuccessful}")
+                    if (response.isSuccessful) { //Se non ci sono stati errori di connessione con il server
+                            utils.PopError(
+                                getString(R.string.Place_pagamento_confermato_title),
+                                getString(R.string.Place_pagamento_confermato_text),
+                                requireContext()
+                            )
+
                     } else {
-                        Log.i("LOG", "Errore durante la registrazione")
+                        Log.i("LOG", "Errore durante la registrazione ")
                     }
-                } else {
-                    Log.i("LOG", "Errore durante la registrazione")
+                }
+
+                override fun onFailure(
+                    call: Call<JsonObject>,
+                    t: Throwable
+                ) { //Questo metodo viene chiamato quando si verifica un errore durante la chiamata HTTP.
+                    Log.i("LOG", "Errore durante l'inserimento")
+                    //utils.PopError(getString(R.string.login_db_error_title), getString(R.string.login_db_error),this@Registrazione)
                 }
             }
-
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                Log.i("LOG", "Errore durante l'inserimento")
-            }
-        })
+        )
     }
+//    private fun insertPrenotazione(id_luogo: Int, id_utente: Int, nome_luogo: String, data: String, prezzo: Int) {
+//        val query = "INSERT INTO prenotazioni (id_persona, id_luogo, nome_luogo, data, prezzo) VALUES ('$id_utente', '$id_luogo','$nome_luogo', '$data','$prezzo');"
+//        Log.i("LOG", "Query creata:$query ")
+//
+//        ClientNetwork.retrofit.insert(query).enqueue(object : Callback<JsonObject> {
+//            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+//                if (response.isSuccessful) {
+//                    val queryset = response.body()?.getAsJsonArray("queryset")
+//                    if (queryset != null && queryset.size() >= 1) {
+//                        utils.PopError(
+//                            getString(R.string.Place_pagamento_confermato_title),
+//                            getString(R.string.Place_pagamento_confermato_text),
+//                            requireContext()
+//                        )
+//                    } else {
+//                        Log.i("LOG", "Errore durante la registrazione")
+//                    }
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+//                Log.i("LOG", "Errore durante l'inserimento")
+//            }
+//        })
+//    }
 
 }

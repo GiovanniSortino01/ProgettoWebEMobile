@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_homeFragment_to_preferitiFragment"
             app:destination="@id/preferitiFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_prenotazioniFragment2"
+            app:destination="@id/prenotazioniFragment2" />
     </fragment>
     <fragment
         android:id="@+id/reciclerViewSearch"
@@ -115,4 +118,9 @@
             android:id="@+id/action_preferitiFragment_to_placeFragment"
             app:destination="@id/placeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/prenotazioniFragment2"
+        android:name="com.example.progettowebemobile.principale.home.prenotazioni.PrenotazioniFragment"
+        android:label="fragment_prenotazioni"
+        tools:layout="@layout/fragment_prenotazioni" />
 </navigation>

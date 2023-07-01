@@ -1,4 +1,4 @@
-package com.example.progettowebemobile.principale.home
+package com.example.progettowebemobile.principale.home.prenotazioni
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -60,11 +60,9 @@ class HomeFragment : Fragment() {
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
 
-                R.id.nav_prenotazioni ->Toast.makeText(
-                    requireContext(),
-                    "Clicked Home",
-                    Toast.LENGTH_SHORT
-                ).show()
+                R.id.nav_prenotazioni ->
+                    findNavController().navigate(R.id.action_homeFragment_to_prenotazioniFragment2)
+
 
                 R.id.nav_pagamenti ->
                     findNavController().navigate(R.id.action_homeFragment_to_pagamentiFragment)
@@ -101,7 +99,6 @@ class HomeFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
