@@ -28,7 +28,8 @@
             android:gravity="left"
             android:textSize="25sp"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"

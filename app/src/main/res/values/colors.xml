@@ -8,8 +8,10 @@
     <color name="login_textView">#3C3232</color>
     <color name="login_backgroundButton">#947914</color>
 
-    <color name="button">#2C44CC</color>
-    <color name="background">#5C94C1</color>
+    <color name="button">#FFDE00</color>
+    <color name="background">#08306E</color>
+    <color name="background2">#001B45</color>
+    <color name="buttonText">#08306E</color>
 
     <color name="buttonChange">#00C853</color>
     <color name="buttonBack">#F44336</color>

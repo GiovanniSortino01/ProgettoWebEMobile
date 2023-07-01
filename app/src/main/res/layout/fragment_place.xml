@@ -173,12 +173,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="@string/search_btnScegli"
+                    android:textColor="@color/buttonText"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_marginBottom="15dp"
                     android:layout_gravity="center"
-                    android:drawableLeft="@drawable/baseline_bed_24"
-                    android:drawableRight="@drawable/baseline_people_24"
+                    android:drawableLeft="@drawable/baseline_bedblu_24"
+                    android:drawableRight="@drawable/baseline_peopleblu_24"
                     android:drawablePadding="8dp"
                     android:backgroundTint="@color/button"/>
 
@@ -214,13 +215,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/search_fragment_btnPrenota"
-                    android:backgroundTint="@color/button"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/button"
                     android:text="@string/search_btnPrenota"
-                    android:textStyle="bold"
+                    android:textColor="@color/buttonText"
                     android:textSize="18sp"
-                    android:layout_gravity="center" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -307,7 +309,7 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="55dp">
+                android:layout_marginTop="35dp">
 
                 <TextView
                     android:id="@+id/search_fragment_recensioneGenerale"
@@ -328,6 +330,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:textColor="@color/buttonText"
                     android:layout_marginBottom="20dp"
                     android:backgroundTint="@color/button"
                     android:text="@string/search_btnReviews"

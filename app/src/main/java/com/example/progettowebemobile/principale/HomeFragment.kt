@@ -10,18 +10,18 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import com.example.progettowebemobile.R
-import com.example.progettowebemobile.databinding.ActivityMainBinding
-import com.example.progettowebemobile.databinding.FragmentAccountBinding
 import com.example.progettowebemobile.databinding.FragmentHomeBinding
 import com.google.android.material.navigation.NavigationView
+import androidx.core.view.GravityCompat
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private lateinit var toggle: ActionBarDrawerToggle
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,10 +40,13 @@ class HomeFragment : Fragment() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
 
-
         toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
         drawerLayout.addDrawerListener(toggle)
+
+
+
         toggle.syncState()
+        //actionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         navView.setNavigationItemSelectedListener {
@@ -101,10 +104,10 @@ class HomeFragment : Fragment() {
 
 
     //funzione Navigation Drawer
-     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-          if (toggle.onOptionsItemSelected(item)){
-              return true}
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (toggle.onOptionsItemSelected(item)) {
+            true
+        } else super.onOptionsItemSelected(item)
+            }
 
-          return super.onOptionsItemSelected(item)
-      }
 }

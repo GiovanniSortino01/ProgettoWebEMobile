@@ -4,7 +4,7 @@
     <string name="search_btnRestaurant">Ristoranti</string>
     <string name="search_btnHotel">Hotel</string>
     <string name="search_btnMonument">Monumenti/Eventi</string>
-    <string name="search_btnPerson">Profili utenti</string>
+    <string name="search_btnPerson">Profili utente</string>
 
     <string name="search_svHint">Cerca...</string>
     <string name="search_svText">cerca</string>

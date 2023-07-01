@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -70,6 +71,8 @@ class AccountFragment : Fragment() {
 
         loadRecyclerViewData()
 
+        activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
+
         binding.userBtnEdit.setOnClickListener {
             popEdit()
         }
@@ -88,6 +91,8 @@ class AccountFragment : Fragment() {
 
         return binding.root
     }
+
+
 
     private fun loadRecyclerViewData() {
         getItems(utente.id) { data ->

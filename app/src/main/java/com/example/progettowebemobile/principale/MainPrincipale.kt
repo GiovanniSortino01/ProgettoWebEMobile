@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
@@ -25,6 +26,7 @@ class MainPrincipale : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainPrincipaleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
         //Bottom Navigation View

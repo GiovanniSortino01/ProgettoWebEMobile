@@ -6,19 +6,33 @@
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".principale.HomeFragment">
+    tools:context=".principale.HomeFragment"
+    android:background="@color/white">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu" >
+
+    </com.google.android.material.navigation.NavigationView>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,115 +40,193 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:gravity="center"
-                android:text="@string/home_title"
-                android:textSize="50sp"
-                android:textColor="#EEEEEE"
-                android:background="@drawable/sfondohomeprincipale"
-                android:radius="1000dp"
-                android:textStyle="bold" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="35sp"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:text="@string/home_vasco_title" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:padding="10sp"
-                    android:src="@drawable/evento2" />
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/home_tvGeneral"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/home_vasco_text"
-                    android:textStyle="italic"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="35sp"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:text="@string/home_teatroMassimo_title" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:padding="10sp"
-                    android:src="@drawable/evento1" />
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:text="Muoviti con noi"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/home_tbsubGeneral"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/home_teatroMassimo_text"
+                    android:layout_marginBottom="50dp"
+                    android:gravity="center"
+                    android:text="tutto sarà più semplice"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/home_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    tools:src="@drawable/edittext_background"
+                    android:background="@drawable/edittext_background"/>
+
+                <ImageView
+                    android:id="@+id/home_imageMonument"
+                    android:layout_width="match_parent"
+                    android:layout_height="195dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/monumentohome" />
+
+                <TextView
+                    android:id="@+id/home_tvMonument"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Prenota l'accesso ai"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/home_tvsubMonument"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:text="monumenti migliori"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/home_line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:src="@drawable/edittext_background"
+                    android:background="@drawable/edittext_background"/>
+
             </LinearLayout>
-            <TextView
-                android:id="@+id/textView3"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:textColor="#EEEEEE"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/picchu"
-                android:gravity="center"
-                android:text="@string/home_title_monument"
-                android:textSize="35sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/home_imageHotel"
+                        android:layout_width="210dp"
+                        android:layout_height="150dp"
+                        tools:src="@drawable/hotelhome2"
+                        android:background="@drawable/hotelhome2"/>
+
+                    <TextView
+                        android:id="@+id/hoe_tvHotel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Trova la stanza adatta a te e alla tua famiglia"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/home_line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    tools:src="@drawable/edittext_background"
+                    android:background="@drawable/edittext_background"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/home_tvRestaurant"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="30dp"
+                        android:gravity="right"
+                        android:text="Prenota un tavolo nel ristorante dei tuoi sogni"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:textStyle="italic" />
+
+                    <ImageView
+                        android:id="@+id/home_imageRestaurant"
+                        android:layout_width="210dp"
+                        android:layout_height="160dp"
+                        tools:src="@drawable/ristorantehome"
+                        android:background="@drawable/ristorantehome"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/home_line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/edittext_background"
+                    tools:src="@drawable/edittext_background" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="20sp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="20dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/home_tvEvents"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="35dp"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:text="@string/home_colosseo_title" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:src="@drawable/colosseo" />
+                    android:gravity="center"
+                    android:text="Vai agli eventi che preferisci"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="italic" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="140dp"
-                    android:textStyle="italic"
-                    android:text="@string/home_colosseo_text" />
+                    android:id="@+id/home_tvsubEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:text="e vivi nuove esperienze"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/home_imageEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:src="@drawable/sfondohomeprincipale" />
+
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:id="@+id/nav_view"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu"
-        android:fitsSystemWindows="true"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
