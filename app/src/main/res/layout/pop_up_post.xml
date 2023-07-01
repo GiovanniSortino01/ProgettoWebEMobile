@@ -74,7 +74,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/buttonChange"
+        android:backgroundTint="@color/button"
+        android:textColor="@color/buttonText"
         android:text="@string/user_botton_add"
         android:textSize="17sp"
         android:id="@+id/add_botton"
