@@ -73,8 +73,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
-                    tools:src="@drawable/edittext_background"
-                    android:background="@drawable/edittext_background"/>
+                    tools:src="@drawable/line"
+                    android:background="@drawable/line"/>
 
                 <ImageView
                     android:id="@+id/home_imageMonument"
@@ -109,8 +109,8 @@
                     android:id="@+id/home_line2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:src="@drawable/edittext_background"
-                    android:background="@drawable/edittext_background"/>
+                    tools:src="@drawable/line"
+                    android:background="@drawable/line"/>
 
             </LinearLayout>
 
@@ -150,8 +150,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
-                    tools:src="@drawable/edittext_background"
-                    android:background="@drawable/edittext_background"/>
+                    tools:src="@drawable/line"
+                    android:background="@drawable/line"/>
 
 
                 <LinearLayout
@@ -186,8 +186,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="30dp"
-                    android:background="@drawable/edittext_background"
-                    tools:src="@drawable/edittext_background" />
+                    android:background="@drawable/line"
+                    tools:src="@drawable/line" />
             </LinearLayout>
 
             <LinearLayout
