@@ -42,8 +42,7 @@ class SearchFragment : Fragment() {
             findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }
         binding.searchBtnPeople.setOnClickListener {
-            val result
-            String = "persona"
+            val resultString = "persona"
             setFragmentResult("requestKey", bundleOf("bundleKey" to resultString))
             findNavController().navigate(R.id.action_searchFragment_to_reciclerViewSearch)
         }

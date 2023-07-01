@@ -9,10 +9,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.text.toSpanned
 import androidx.recyclerview.widget.RecyclerView
 import com.example.db_connection.ClientNetwork
+import com.example.progettowebemobile.Buffer.Companion.utente
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
 import com.example.progettowebemobile.databinding.AccountItemBinding
 import com.example.progettowebemobile.databinding.ItemPagamentiBinding
+import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.account.ItemsViewModelPost
 import com.example.progettowebemobile.principale.search.RecyclerView.AccountAdapter
 import com.example.progettowebemobile.principale.search.RecyclerView.ItemsViewModelAccount
@@ -24,7 +26,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-    class CardAdapter(private val mList: ArrayList<ItemViewModelCard>, private val context: Context) : RecyclerView.Adapter<CardAdapter.ViewHolder>(){
+    class CardAdapter(private val mList: ArrayList<ItemViewModelCard>, private val context: Context,utente: Utente) : RecyclerView.Adapter<CardAdapter.ViewHolder>(){
     private var onClickListener: CardAdapter.OnClickListener? = null
     private var utils= Utils()
 
@@ -98,6 +100,18 @@ import java.util.Locale
                         context.getString(R.string.Place_RecenzioneConfirm2_text),
                         context
                     )
+
+
+
+// Ora l'ArrayList conterrà solo ["Elemento 1", "Elemento 3"]
+                    val elementoDaCercare = "Elemento 2"
+                    val posizione = utente?.card?.indexOf(elementoDaCercare)
+
+                    if (posizione != -1) {
+                        if (posizione != null) {
+                            utente?.card?.removeAt(posizione)
+                        }
+                    }
                     mList.removeAt(position) // Rimuovi l'elemento dalla lista
                     notifyItemRemoved(position) // Notifica l'adapter della rimozione dell'elemento
                 } else {

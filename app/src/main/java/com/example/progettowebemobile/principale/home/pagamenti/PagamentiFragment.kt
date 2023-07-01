@@ -51,7 +51,7 @@ class PagamentiFragment : Fragment() {
     private fun loadRecyclerViewData() {
         utente?.let {
             getItems(it.id) { data ->
-                val adapter = CardAdapter(data,requireContext())
+                val adapter = CardAdapter(data,requireContext(), utente!!)
                 binding.pagamentiRv.adapter = adapter
 
                 adapter.setOnClickListener(object : CardAdapter.OnClickListener {
@@ -222,7 +222,8 @@ class PagamentiFragment : Fragment() {
                     Log.i("LOG", "Query creata:$query ")
                     if (response.isSuccessful) { //Se non ci sono stati errori di connessione con il server
                         // utils.PopError(getString(R.string.register_new_account_title),getString(R.string.register_new_account_title),this@Registrazione)
-                        loadRecyclerViewData()
+                        utente?.card?.add(numero)
+                       loadRecyclerViewData()
                     } else {
                         Log.i("LOG", "Errore durante la registrazione ")
                     }
@@ -278,6 +279,7 @@ class PagamentiFragment : Fragment() {
             }
         )
     }
+
     fun verificaFormatoStringa(data: String): Boolean {
         val regexPattern = """^\d{2}/\d{2}$""".toRegex()
         return regexPattern.matches(data)

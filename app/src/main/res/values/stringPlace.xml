@@ -48,11 +48,10 @@
     <!-- Pagamento -->
     <string name="Place_pagamento_title">Inserisci il metodo di pagamento</string>
     <string name="Place_pagamento_btn">Paga</string>
-    <string name="Place_pagamento_confermato_title">Si</string>
-    <string name="Place_pagamento_confermato_text">No</string>
+    <string name="Place_pagamento_conferma_title">Si</string>
+    <string name="Place_pagamento_conferma_text">No</string>
 
-    <string-array name="spinnerItems">
-        <item></item>
-    </string-array>
+    <string name="Place_pagamento_confermato_title">Pagamento confermato</string>
+    <string name="Place_pagamento_confermato_text">Il pagamento è stato eseguito con successo</string>
 
 </resources>

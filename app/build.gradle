@@ -76,10 +76,4 @@ dependencies {
     //immagini tonde
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-
-
-
-
-
-
 }

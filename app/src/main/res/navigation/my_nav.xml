@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_placeFragment_self"
             app:destination="@id/placeFragment" />
+        <action
+            android:id="@+id/action_placeFragment_to_pagamentiFragment"
+            app:destination="@id/pagamentiFragment" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"

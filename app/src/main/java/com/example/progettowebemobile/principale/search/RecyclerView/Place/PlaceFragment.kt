@@ -54,6 +54,7 @@ class PlaceFragment : Fragment() {
     private var utils = Utils()
     private var item = Buffer()
     var prezzo = 0
+    var data = ""
     private var imagesList = mutableListOf<Bitmap>()
     private var backButtonEnabled=false
 
@@ -82,7 +83,7 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentBtnPrenota.setOnClickListener{
             var carte=utente?.carte
             if(carte?.size!!>0) {
-                showPopupWithSpinner(carte)
+                popCard(carte)
             }
         }
 
@@ -591,32 +592,36 @@ class PlaceFragment : Fragment() {
         )
     }
 
-    private fun getPrezzi(id: Int,callback: (List<Int>) -> Unit) {
+    private fun getPrezzi(id: Int, callback: (List<Int>) -> Unit) {
         val query = "select * from stanze where id_luogo = '$id';"
 
-        ClientNetwork.retrofit.login(query).enqueue(
-            object : Callback<JsonObject> {
-                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                    val queryset = response.body()?.getAsJsonArray("queryset")
-
-                    if (queryset?.size()!! >= 1) {
-
+        ClientNetwork.retrofit.login(query).enqueue(object : Callback<JsonObject> {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                if (response.isSuccessful) {
+                    val queryset = response.body()?.getAsJsonArray("results")
+                    if (queryset != null && queryset.size() > 0) {
                         val item = queryset.get(0).asJsonObject
-                        var stanza1 = item.get("stanza1").asInt
-                        var stanza2 = item.get("stanza2").asInt
-                        var stanza4 = item.get("stanza4").asInt
+                        val stanza1 = item.get("stanza1").asInt
+                        val stanza2 = item.get("stanza2").asInt
+                        val stanza4 = item.get("stanza4").asInt
                         val url = listOf(stanza1, stanza2, stanza4)
                         callback(url)
+                    } else {
+                        callback(emptyList()) // Nessun risultato trovato
                     }
-                }
-
-                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                } else {
+                    callback(emptyList()) // Risposta non riuscita
                 }
             }
-        )
+
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                callback(emptyList()) // Errore di rete o fallimento della chiamata
+            }
+        })
     }
 
-    private fun popCard(card: Array<String>) {
+
+    private fun popCard(card: ArrayList<String>) {
         val inflater = LayoutInflater.from(context)
         val popupView = inflater.inflate(R.layout.pop_up_pagamento, null)
         val popupButtonAdd = popupView.findViewById<FloatingActionButton>(R.id.Add)
@@ -626,87 +631,49 @@ class PlaceFragment : Fragment() {
         val alertDialogBuilder = AlertDialog.Builder(context).setView(popupView)
         val alertDialog = alertDialogBuilder.create()
 
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, card)
+        spinner.adapter = adapter
 
         popupButtonPay.setOnClickListener {
-            utils.PopError(getString(R.string.Place_pagamento_confermato_title), getString(R.string.Place_pagamento_confermato_text), requireContext())
+            insertPrenotazione(utente!!.id, luogo.id_luogo, luogo.nome, data, prezzo)
             alertDialog.show()
+        }
+
+        popupButtonAdd.setOnClickListener{
+            if(utente!=null && luogo!=null) {
+                findNavController().navigate(R.id.action_placeFragment_to_pagamentiFragment)
+            }
         }
 
         alertDialog.show()
     }
+    private fun insertPrenotazione(id_luogo: Int, id_utente: Int, nome_luogo: String, data: String, prezzo: Int) {
+        val query =
+            "INSERT INTO prenotazioni (id_persona, id_luogo, nome_luogo, data, prezzo) VALUES ('$id_utente', '$id_luogo','$nome_luogo', '$data','$prezzo');"
+        Log.i("LOG", "Query creata:$query ")
 
-    fun getCard(id: Int) {
-        val query = "select * from carte where id_persona = '$id';"
-        var data = ArrayList<String>()
-        ClientNetwork.retrofit.login(query).enqueue(
-            object : Callback<JsonObject> {
-                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+        ClientNetwork.retrofit.insert(query).enqueue(object : Callback<JsonObject> {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                if (response.isSuccessful) {
                     val queryset = response.body()?.getAsJsonArray("queryset")
-
-
-                    if (queryset?.size()!! >= 1) {
-
-                        var completedCount =
-                            0 // Contatore per tenere traccia del numero di chiamate completate
-
-                        for (i in 0 until queryset.size()) {
-                            val item = queryset.get(i).asJsonObject
-                            /*data.add(
-                                ItemsViewModelCard(
-                                    item.get("id_persona").asInt,
-                                    item.get("numero_carta").asString,
-                                    item.get("data_scadenza").asString,
-                                    item.get("cvv").asString,
-                                    item.get("titolare").asString
-                                )
-                            )*/
-                           // Aggiungi un nuovo elemento all'array dello spinner
-                            val newItem = item.get("numero_carta").asString
-                            val modifiedString = StringBuilder(newItem)
-                            modifiedString.replace(0, newItem.length - 4, "**** **** **** ")
-                            data.add(modifiedString.toString())
-
-                            //Verifica se tutte le chiamate sono state completate
-                            if (completedCount == queryset.size()) {
-                                Log.i(TAG,"'$data'")
-                                //showPopupWithSpinner(data)
-                            }
-                        }
+                    if (queryset != null && queryset.size() >= 1) {
+                        utils.PopError(
+                            getString(R.string.Place_pagamento_confermato_title),
+                            getString(R.string.Place_pagamento_confermato_text),
+                            requireContext()
+                        )
+                    } else {
+                        Log.i("LOG", "Errore durante la registrazione")
                     }
+                } else {
+                    Log.i("LOG", "Errore durante la registrazione")
                 }
-                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                }
-            }
-        )
-    }
-
-    private fun showPopupWithSpinner(carte: ArrayList<String>) {
-        val inflater = LayoutInflater.from(context)
-        val popupView = inflater.inflate(R.layout.pop_up_pagamento ,null)
-        val spinner = popupView.findViewById<Spinner>(R.id.spinner_cards)
-
-        // Creazione dell'array di dati per lo Spinner
-
-
-        // Creazione dell'adapter per lo Spinner
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, carte)
-        spinner.adapter = adapter
-
-        // Creazione del popup
-        val alertDialogBuilder = AlertDialog.Builder(context)
-            .setView(popupView)
-            .setPositiveButton("OK") { dialog, which ->
-                // Logica da eseguire quando viene premuto il pulsante OK nel popup
-                val selectedOption = spinner.selectedItem as String
-                //Toast.makeText(context, "Opzione selezionata: $selectedOption", Toast.LENGTH_SHORT).show()
-            }
-            .setNegativeButton("Annulla") { dialog, which ->
-                // Logica da eseguire quando viene premuto il pulsante Annulla nel popup
-                dialog.dismiss()
             }
 
-        val alertDialog = alertDialogBuilder.create()
-        alertDialog.show()
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                Log.i("LOG", "Errore durante l'inserimento")
+            }
+        })
     }
 
 }
