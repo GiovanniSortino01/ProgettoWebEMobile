@@ -15,17 +15,14 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import com.example.progettowebemobile.R
-import com.example.progettowebemobile.databinding.ActivityMainBinding
-import com.example.progettowebemobile.databinding.FragmentAccountBinding
 import com.example.progettowebemobile.databinding.FragmentHomeBinding
 import com.example.progettowebemobile.login.Login
-import com.example.progettowebemobile.login.Registrazione
 import com.google.android.material.navigation.NavigationView
 
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var intent: Intent
+    private lateinit var intent : Intent
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +36,7 @@ class HomeFragment : Fragment() {
         toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-        
+
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // Esegui le azioni desiderate qui

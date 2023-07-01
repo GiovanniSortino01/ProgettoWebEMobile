@@ -57,7 +57,7 @@ class Login : AppCompatActivity() {
 
     private fun loginUtente (requestLogin: RequestLogin){
 
-        val query = "select * from utenti where email = '${requestLogin.username}' and password = '${requestLogin.password}';"
+        val query = "SELECT * FROM utenti u, carte c WHERE u.email = '${requestLogin.username}' AND u.password = '${requestLogin.password}' AND u.id = c.id_persona;"
         Log.i("LOG", "Query creata:$query ")
 
         ClientNetwork.retrofit.login(query).enqueue(
@@ -76,7 +76,12 @@ class Login : AppCompatActivity() {
                             val email = utenteJsonObject.get("email").asString
                             val password = utenteJsonObject.get("password").asString
                             val immagine = utenteJsonObject.get("immagine").asString
-                            utente = Utente(id,nome,cognome,data,email,password,immagine)
+                            var carte = ArrayList<String>()
+                            for (i in queryset) {
+                                carte.add(utenteJsonObject.get("numero_carta").asString)
+                            }
+
+                            utente = Utente(id,nome,cognome,data,email,password,immagine,carte)
                             val buffer = Buffer()
                             buffer.setUtente(utente)
                             intentPrincipale.putExtra("Utente", utente);

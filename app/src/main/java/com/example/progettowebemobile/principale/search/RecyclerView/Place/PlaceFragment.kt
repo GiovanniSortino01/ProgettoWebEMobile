@@ -2,7 +2,6 @@ package com.example.progettowebemobile.principale.search.RecyclerView.Place
 
 import android.Manifest
 import android.app.AlertDialog
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -19,10 +18,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.Spinner
-import android.widget.SpinnerAdapter
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -42,8 +39,6 @@ import com.example.progettowebemobile.databinding.FragmentPlaceBinding
 import com.example.progettowebemobile.entity.Luogo
 import com.example.progettowebemobile.entity.Servizi
 import com.example.progettowebemobile.entity.Utente
-import com.example.progettowebemobile.principale.account.ItemsViewModelPost
-import com.example.progettowebemobile.principale.search.RecyclerView.ItemsViewModelSearch
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
@@ -81,8 +76,14 @@ class PlaceFragment : Fragment() {
         setting()
         loadRecyclerViewData()
 
+
+
+
         binding.searchFragmentBtnPrenota.setOnClickListener{
-            popCard()
+            var carte=utente?.carte
+            if(carte?.size!!>0) {
+                showPopupWithSpinner(carte)
+            }
         }
 
         binding.searchFragmentRvRecensioni.layoutManager = LinearLayoutManager(requireContext())
@@ -615,44 +616,28 @@ class PlaceFragment : Fragment() {
         )
     }
 
-    private fun popCard(){
-
+    private fun popCard(card: Array<String>) {
         val inflater = LayoutInflater.from(context)
         val popupView = inflater.inflate(R.layout.pop_up_pagamento, null)
         val popupButtonAdd = popupView.findViewById<FloatingActionButton>(R.id.Add)
         val popupButtonPay = popupView.findViewById<Button>(R.id.btn_pay)
-        val spinner=popupView.findViewById<Spinner>(R.id.spinner_cards)
+        val spinner = popupView.findViewById<Spinner>(R.id.spinner_cards)
 
         val alertDialogBuilder = AlertDialog.Builder(context).setView(popupView)
         val alertDialog = alertDialogBuilder.create()
-        var id = utente?.id
-        val builder = AlertDialog.Builder(context)
-        builder.setView(popupView)
-        if(id!= null) {
-
-            getCard(id){card->
 
 
-            }
-
-
-
-
-            popupButtonPay.setOnClickListener {
-                utils.PopError(getString(R.string.Place_pagamento_confermato_title),getString(R.string.Place_pagamento_confermato_text),requireContext())
-                builder.setView(popupView)
-                alertDialog.show()
-            }
-
-
-                builder.setView(popupView)
-                alertDialog.show()
-            }
+        popupButtonPay.setOnClickListener {
+            utils.PopError(getString(R.string.Place_pagamento_confermato_title), getString(R.string.Place_pagamento_confermato_text), requireContext())
+            alertDialog.show()
         }
 
-    fun getCard(id: Int,callback: (List<ItemsViewModelCard>) -> Unit) {
+        alertDialog.show()
+    }
+
+    fun getCard(id: Int) {
         val query = "select * from carte where id_persona = '$id';"
-        var data = ArrayList<ItemsViewModelCard>()
+        var data = ArrayList<String>()
         ClientNetwork.retrofit.login(query).enqueue(
             object : Callback<JsonObject> {
                 override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
@@ -665,7 +650,7 @@ class PlaceFragment : Fragment() {
 
                         for (i in 0 until queryset.size()) {
                             val item = queryset.get(i).asJsonObject
-                            data.add(
+                            /*data.add(
                                 ItemsViewModelCard(
                                     item.get("id_persona").asInt,
                                     item.get("numero_carta").asString,
@@ -673,16 +658,17 @@ class PlaceFragment : Fragment() {
                                     item.get("cvv").asString,
                                     item.get("titolare").asString
                                 )
-                            )
-                            // Aggiungi un nuovo elemento all'array dello spinner
-//                            val newItem = item.get("numero_carta").asString
-//                            val modifiedString = StringBuilder(newItem)
-//                            modifiedString.replace(0, newItem.length - 4, "**** **** **** ")
-//                            data.add(modifiedString.toString())
+                            )*/
+                           // Aggiungi un nuovo elemento all'array dello spinner
+                            val newItem = item.get("numero_carta").asString
+                            val modifiedString = StringBuilder(newItem)
+                            modifiedString.replace(0, newItem.length - 4, "**** **** **** ")
+                            data.add(modifiedString.toString())
 
-                            // Verifica se tutte le chiamate sono state completate
+                            //Verifica se tutte le chiamate sono state completate
                             if (completedCount == queryset.size()) {
-                                callback(data)
+                                Log.i(TAG,"'$data'")
+                                //showPopupWithSpinner(data)
                             }
                         }
                     }
@@ -691,6 +677,35 @@ class PlaceFragment : Fragment() {
                 }
             }
         )
+    }
+
+    private fun showPopupWithSpinner(carte: ArrayList<String>) {
+        val inflater = LayoutInflater.from(context)
+        val popupView = inflater.inflate(R.layout.pop_up_pagamento ,null)
+        val spinner = popupView.findViewById<Spinner>(R.id.spinner_cards)
+
+        // Creazione dell'array di dati per lo Spinner
+
+
+        // Creazione dell'adapter per lo Spinner
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, carte)
+        spinner.adapter = adapter
+
+        // Creazione del popup
+        val alertDialogBuilder = AlertDialog.Builder(context)
+            .setView(popupView)
+            .setPositiveButton("OK") { dialog, which ->
+                // Logica da eseguire quando viene premuto il pulsante OK nel popup
+                val selectedOption = spinner.selectedItem as String
+                //Toast.makeText(context, "Opzione selezionata: $selectedOption", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Annulla") { dialog, which ->
+                // Logica da eseguire quando viene premuto il pulsante Annulla nel popup
+                dialog.dismiss()
+            }
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 
 }
