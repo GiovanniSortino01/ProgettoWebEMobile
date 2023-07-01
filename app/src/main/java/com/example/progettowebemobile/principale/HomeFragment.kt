@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -22,11 +23,10 @@ import com.example.progettowebemobile.login.Login
 import com.example.progettowebemobile.login.Registrazione
 import com.google.android.material.navigation.NavigationView
 
-
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
-    private lateinit var toggle2: ActionBarDrawerToggle
-    private lateinit var intent :Intent
+    private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var intent: Intent
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,10 +37,16 @@ class HomeFragment : Fragment() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        toggle2 = ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
-        drawerLayout.addDrawerListener(toggle2)
-        toggle2.syncState()
+        val menuIcon: ImageView = binding.menuIcon
+        toggle = ActionBarDrawerToggle(requireActivity(), drawerLayout, R.string.home_nav_open, R.string.home_nav_close)
+        drawerLayout.addDrawerListener(toggle)
 
+        menuIcon.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        toggle.syncState()
+        
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 // Esegui le azioni desiderate qui
@@ -73,19 +79,19 @@ class HomeFragment : Fragment() {
                 ).show()
                 R.id.nav_logout -> {
                     val dialogBuilder = android.app.AlertDialog.Builder(requireContext())
-                    dialogBuilder.setMessage(getString(R.string.log_out_text))
-                        .setTitle(getString(R.string.log_out_title))
-                        .setPositiveButton(R.string.log_out_yes) { dialog, _ ->
-                            dialog.dismiss()
-                            intent = Intent(requireContext(), Login::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
-                        }
-                        .setNegativeButton(R.string.log_out_no) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        .create()
-                        .show()}
+                dialogBuilder.setMessage(getString(R.string.log_out_text))
+                    .setTitle(getString(R.string.log_out_title))
+                    .setPositiveButton(R.string.log_out_yes) { dialog, _ ->
+                        dialog.dismiss()
+                        intent = Intent(requireContext(), Login::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                    .setNegativeButton(R.string.log_out_no) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()}
             }
             true
         }
@@ -122,10 +128,10 @@ class HomeFragment : Fragment() {
 
 
     //funzione Navigation Drawer
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle2.onOptionsItemSelected(item)){
-            return true}
+     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+          if (toggle.onOptionsItemSelected(item)){
+              return true}
 
-        return super.onOptionsItemSelected(item)
-    }
+          return super.onOptionsItemSelected(item)
+      }
 }
