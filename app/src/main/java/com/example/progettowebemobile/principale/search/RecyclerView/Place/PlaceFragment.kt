@@ -16,9 +16,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.RatingBar
+import android.widget.Spinner
+import android.widget.SpinnerAdapter
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +44,7 @@ import com.example.progettowebemobile.entity.Servizi
 import com.example.progettowebemobile.entity.Utente
 import com.example.progettowebemobile.principale.account.ItemsViewModelPost
 import com.example.progettowebemobile.principale.search.RecyclerView.ItemsViewModelSearch
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -53,6 +58,7 @@ class PlaceFragment : Fragment() {
     private lateinit var taskViewModel: TaskViewModel
     private var utils = Utils()
     private var item = Buffer()
+    var prezzo = 0
     private var imagesList = mutableListOf<Bitmap>()
     private var backButtonEnabled=false
 
@@ -70,10 +76,14 @@ class PlaceFragment : Fragment() {
         }else{
             binding.searchFavoriteButton.setImageResource(R.drawable.baseline_favorite_border_24)
         }
-
+        binding.searchFragmentPrezzoEffettivo.text=prezzo.toString()
         viewpage2()
         setting()
         loadRecyclerViewData()
+
+        binding.searchFragmentBtnPrenota.setOnClickListener{
+            popCard()
+        }
 
         binding.searchFragmentRvRecensioni.layoutManager = LinearLayoutManager(requireContext())
 
@@ -104,14 +114,14 @@ class PlaceFragment : Fragment() {
                 nome1= "Tavolo da 2"
                 nome2= "Tavolo da 6"
                 nome3= "Tavolo da 8"
-                NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,0,0,0,luogo.tipo).show(requireActivity().supportFragmentManager, "newTaskTag")
+                NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,0,0,0,luogo.tipo,this).show(requireActivity().supportFragmentManager, "newTaskTag")
 
             }else{
                 nome1= "Stanza singola"
                 nome2= "Stanza doppia"
                 nome3= "Stanza familiare 4 persone"
                 getPrezzi(luogo.id_luogo){prez->
-                    NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,prez[0],prez[1],prez[2],luogo.tipo).show(requireActivity().supportFragmentManager, "newTaskTag")
+                    NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,prez[0],prez[1],prez[2],luogo.tipo,this).show(requireActivity().supportFragmentManager, "newTaskTag")
                 }
             }
 
@@ -339,7 +349,8 @@ class PlaceFragment : Fragment() {
     }
 
 
-    private fun loadRecyclerViewData() {
+    fun loadRecyclerViewData() {
+        binding.searchFragmentPrezzoEffettivo.text=prezzo.toString()
         var id=luogo.id_luogo
         getItems(id) { data ->
             val adapter = RecenzioniAdapter(data,requireContext())
@@ -603,4 +614,83 @@ class PlaceFragment : Fragment() {
             }
         )
     }
+
+    private fun popCard(){
+
+        val inflater = LayoutInflater.from(context)
+        val popupView = inflater.inflate(R.layout.pop_up_pagamento, null)
+        val popupButtonAdd = popupView.findViewById<FloatingActionButton>(R.id.Add)
+        val popupButtonPay = popupView.findViewById<Button>(R.id.btn_pay)
+        val spinner=popupView.findViewById<Spinner>(R.id.spinner_cards)
+
+        val alertDialogBuilder = AlertDialog.Builder(context).setView(popupView)
+        val alertDialog = alertDialogBuilder.create()
+        var id = utente?.id
+        val builder = AlertDialog.Builder(context)
+        builder.setView(popupView)
+        if(id!= null) {
+
+            getCard(id){card->
+
+
+            }
+
+
+
+
+            popupButtonPay.setOnClickListener {
+                utils.PopError(getString(R.string.Place_pagamento_confermato_title),getString(R.string.Place_pagamento_confermato_text),requireContext())
+                builder.setView(popupView)
+                alertDialog.show()
+            }
+
+
+                builder.setView(popupView)
+                alertDialog.show()
+            }
+        }
+
+    fun getCard(id: Int,callback: (List<ItemsViewModelCard>) -> Unit) {
+        val query = "select * from carte where id_persona = '$id';"
+        var data = ArrayList<ItemsViewModelCard>()
+        ClientNetwork.retrofit.login(query).enqueue(
+            object : Callback<JsonObject> {
+                override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                    val queryset = response.body()?.getAsJsonArray("queryset")
+
+                    if (queryset?.size()!! >= 1) {
+
+                        var completedCount =
+                            0 // Contatore per tenere traccia del numero di chiamate completate
+
+                        for (i in 0 until queryset.size()) {
+                            val item = queryset.get(i).asJsonObject
+                            data.add(
+                                ItemsViewModelCard(
+                                    item.get("id_persona").asInt,
+                                    item.get("numero_carta").asString,
+                                    item.get("data_scadenza").asString,
+                                    item.get("cvv").asString,
+                                    item.get("titolare").asString
+                                )
+                            )
+                            // Aggiungi un nuovo elemento all'array dello spinner
+//                            val newItem = item.get("numero_carta").asString
+//                            val modifiedString = StringBuilder(newItem)
+//                            modifiedString.replace(0, newItem.length - 4, "**** **** **** ")
+//                            data.add(modifiedString.toString())
+
+                            // Verifica se tutte le chiamate sono state completate
+                            if (completedCount == queryset.size()) {
+                                callback(data)
+                            }
+                        }
+                    }
+                }
+                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                }
+            }
+        )
+    }
+
 }

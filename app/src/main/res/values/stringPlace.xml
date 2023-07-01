@@ -45,4 +45,14 @@
     <string name="Place_RecenzioneConfirm2_text">La cancellazione è avvenuta con successo</string>
     <string name="data_pubblicazione">Pubblicato il 00-00-2023</string>
 
+    <!-- Pagamento -->
+    <string name="Place_pagamento_title">Inserisci il metodo di pagamento</string>
+    <string name="Place_pagamento_btn">Paga</string>
+    <string name="Place_pagamento_confermato_title">Si</string>
+    <string name="Place_pagamento_confermato_text">No</string>
+
+    <string-array name="spinnerItems">
+        <item></item>
+    </string-array>
+
 </resources>

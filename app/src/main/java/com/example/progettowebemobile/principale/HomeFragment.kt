@@ -25,7 +25,7 @@ import com.google.android.material.navigation.NavigationView
 class HomeFragment : Fragment() {
     private lateinit var binding : FragmentHomeBinding
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var intent :Intent
+    private lateinit var intent: Intent
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,10 +48,6 @@ class HomeFragment : Fragment() {
                 showDialogToConfirmExit()
             }
         }
-
-
-
-
 
 
         navView.setNavigationItemSelectedListener {

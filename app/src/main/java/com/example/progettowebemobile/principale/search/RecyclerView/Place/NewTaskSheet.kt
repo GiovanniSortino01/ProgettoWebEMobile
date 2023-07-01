@@ -15,14 +15,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NewTaskSheet(var id_luogo:Int,var nome1:String,var nome2:String,var nome3:String,var prezzo1:Int,var prezzo2:Int,var prezzo3:Int,var tipo:String) : BottomSheetDialogFragment()
+class NewTaskSheet(var id_luogo:Int,var nome1:String,var nome2:String,var nome3:String,var prezzo1:Int,var prezzo2:Int,var prezzo3:Int,var tipo:String,var place: PlaceFragment) : BottomSheetDialogFragment()
 {
     private lateinit var binding: FragmentNewTaskSheetBinding
     private lateinit var taskViewModel: TaskViewModel
     private var numberCamere: Int = 0
     private var numberAdulti: Int = 0
     private var numberBambini: Int = 0
-    private var prezzo = 0
+    public var prezzo = 0
     private var item = Buffer()
     private var listaPrezzi = arrayOf(prezzo1, prezzo2, prezzo3)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,6 +85,8 @@ class NewTaskSheet(var id_luogo:Int,var nome1:String,var nome2:String,var nome3:
 
 
         binding.searchSheetSaveButton.setOnClickListener {
+            place.prezzo=prezzo
+            place.loadRecyclerViewData()
             saveAction()
         }
 

@@ -57,5 +57,7 @@
     <string name="log_out_text">Vuoi veramente uscire?</string>
     <string name="log_out_yes">Si</string>
     <string name="log_out_no">No</string>
+
+
 </resources>
 
