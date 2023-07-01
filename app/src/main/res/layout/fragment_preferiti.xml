@@ -30,7 +30,7 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="25dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

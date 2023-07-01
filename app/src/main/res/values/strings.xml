@@ -59,5 +59,8 @@
     <string name="minus">-</string>
     <string name="plus">+</string>
 
+    <string name="data">01/01/2023</string>
+    <string name="costo">00.00</string>
+
 
 </resources>
