@@ -30,9 +30,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="40dp"
-                android:text="Esplora"
+                android:text="@string/esplora"
                 android:textColor="@color/white"
                 android:textSize="35sp"
                 android:textStyle="bold" />
@@ -50,22 +50,22 @@
 
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="70dp"
                     android:layout_marginBottom="30dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
 
                     <Button
                         android:id="@+id/search_btnRestaurant"
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="50dp"
+                        android:layout_marginEnd="20dp"
                         android:backgroundTint="@color/button"
                         android:drawableTop="@drawable/baseline_restaurant_menu_24"
                         android:gravity="center"
-                        android:padding="15dp"
+                        android:padding="20dp"
                         android:text="@string/search_btnRestaurant"
                         android:textColor="@color/buttonText"
                         android:textSize="18sp"
@@ -78,7 +78,7 @@
                         android:backgroundTint="@color/button"
                         android:drawableTop="@drawable/baseline_house_24"
                         android:gravity="center"
-                        android:padding="15dp"
+                        android:padding="20dp"
                         android:text="@string/search_btnHotel"
                         android:textColor="@color/buttonText"
                         android:textSize="18sp"
@@ -87,22 +87,23 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
 
                     <Button
                         android:id="@+id/search_btnMonuments"
                         android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="50dp"
+                        android:layout_marginEnd="20dp"
                         android:backgroundTint="@color/button"
                         android:backgroundTintMode="screen"
                         android:drawableTop="@drawable/baseline_event_24"
                         android:gravity="center"
-                        android:padding="15dp"
+                        android:padding="20dp"
                         android:text="@string/search_btnMonument"
                         android:textColor="@color/buttonText"
                         android:textSize="18sp"
@@ -115,7 +116,7 @@
                         android:backgroundTint="@color/button"
                         android:drawableTop="@drawable/baseline_emoji_people_24"
                         android:gravity="center"
-                        android:padding="15dp"
+                        android:padding="20dp"
                         android:text="@string/search_btnPerson"
                         android:textColor="@color/buttonText"
                         android:textSize="18sp"
@@ -127,12 +128,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="80dp"
                 android:gravity="center"
-                android:text="Trova ciò che è adatto a te con un semplice click"
+                android:text="@string/search_textBottom"
                 android:textColor="@color/buttonText"
                 android:textSize="15sp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:layout_marginBottom="40dp"/>
         </LinearLayout>
 
         </LinearLayout>
