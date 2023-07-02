@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,125 +7,135 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/card_newCard_title"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingBottom="8dp" />
-
-    <EditText
-        android:id="@+id/Et_titolare"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/card_newCard_hint_titolare"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:paddingBottom="8dp"
-        android:inputType="text"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/nuova_carta"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <EditText
-            android:id="@+id/Et_number_card"
-            android:layout_width="295dp"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:hint="@string/card_newCard_hint_number"
-            android:inputType="number"
-            android:maxLength="19"
-            android:paddingBottom="8dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.345" />
-
-        <EditText
-            android:id="@+id/Et_data_card"
-            android:layout_width="141dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="32dp"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:hint="@string/card_newCard_hint_data"
-            android:inputType="date"
-            android:paddingBottom="8dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/image_view"
-            app:layout_constraintTop_toTopOf="@+id/image_view"
-            app:layout_constraintVertical_bias="0.818" />
-
-        <EditText
-            android:id="@+id/Et_cvv_card"
-            android:layout_width="48dp"
-            android:layout_height="31dp"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:hint="@string/card_newCard_hint_cvv"
-            android:inputType="number"
-            android:maxLength="3"
-            android:paddingBottom="8dp"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.118"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.614" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FF1744"
-            android:text="@string/user_botton_back"
-            android:id="@+id/close_button"
-            android:gravity="center" />
-        <Button
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/button"
-            android:text="@string/user_botton_add"
-            android:textColor="@color/buttonText"
-            android:id="@+id/add_botton"
-            android:gravity="center" />
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:text="@string/card_newCard_title"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/Et_titolare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/card_newCard_hint_titolare"
+            android:inputType="text"
+            android:paddingBottom="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/nuova_carta"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/Et_number_card"
+                android:layout_width="295dp"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:hint="@string/card_newCard_hint_number"
+                android:inputType="number"
+                android:maxLength="19"
+                android:paddingBottom="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.345" />
+
+            <EditText
+                android:id="@+id/Et_data_card"
+                android:layout_width="141dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="32dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:hint="@string/card_newCard_hint_data"
+                android:inputType="date"
+                android:paddingBottom="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/image_view"
+                app:layout_constraintTop_toTopOf="@+id/image_view"
+                app:layout_constraintVertical_bias="0.818" />
+
+            <EditText
+                android:id="@+id/Et_cvv_card"
+                android:layout_width="48dp"
+                android:layout_height="31dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:hint="@string/card_newCard_hint_cvv"
+                android:inputType="number"
+                android:maxLength="3"
+                android:paddingBottom="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.118"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.614" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FF1744"
+                android:gravity="center"
+                android:text="@string/user_botton_back" />
+
+            <Button
+                android:id="@+id/add_botton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/button"
+                android:gravity="center"
+                android:text="@string/user_botton_add"
+                android:textColor="@color/buttonText" />
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
