@@ -46,7 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:gravity="center">
 
         <Button
             android:layout_width="wrap_content"
@@ -55,21 +56,17 @@
             android:text="@string/Place_newRecenzione_btn_back"
             android:id="@+id/close_button"
             android:gravity="center"
-            android:layout_gravity="start"
             android:textSize="14sp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginEnd="20dp"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:gravity="center"
-            android:layout_gravity="end"
             android:backgroundTint="@color/button"
             android:textColor="@color/buttonText"
             android:text="@string/Place_newRecenzione_btn_add"
-            android:id="@+id/add_botton"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:id="@+id/add_botton" />
     </LinearLayout>
 
 </LinearLayout>
