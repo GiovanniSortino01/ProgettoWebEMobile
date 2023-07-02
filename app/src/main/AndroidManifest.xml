@@ -62,12 +62,15 @@
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".login.Login"
+            android:configChanges="orientation|screenSize"
             android:exported="false"/>
         <activity
             android:name=".login.Registrazione"
+            android:configChanges="orientation|screenSize"
             android:exported="false"/>
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

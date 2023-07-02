@@ -112,10 +112,13 @@ class Login : AppCompatActivity() {
                         val queryset = response.body()?.getAsJsonArray("queryset")
                         if (queryset?.size()!! >= 1) {
                                 var carte = ArrayList<String>()
-
+                                var num:String
                                 for (i in queryset) {
                                     val utenteJsonObject = i.asJsonObject
-                                    carte.add(utenteJsonObject.get("numero_carta").asString)
+                                    num = utenteJsonObject.get("numero_carta").asString
+                                    val modifiedString = StringBuilder(num)
+                                    modifiedString.replace(0, num.length - 4, "**** **** **** ")
+                                    carte.add(modifiedString.toString())
                                 }
 
                                 utente.carte = carte

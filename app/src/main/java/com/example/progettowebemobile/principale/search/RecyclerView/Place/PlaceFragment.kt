@@ -448,6 +448,7 @@ class PlaceFragment : Fragment() {
         )
     }
 
+
     private fun popAdd(utente: Utente){
 
         val inflater = LayoutInflater.from(context)
