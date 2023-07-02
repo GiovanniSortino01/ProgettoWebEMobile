@@ -25,7 +25,8 @@
         android:textStyle="bold"
         android:textSize="18sp"
         android:gravity="center"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        android:inputType="text"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -76,6 +77,7 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:hint="@string/card_newCard_hint_data"
+            android:inputType="date"
             android:paddingBottom="8dp"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -119,8 +121,9 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#00C853"
+            android:backgroundTint="@color/button"
             android:text="@string/user_botton_add"
+            android:textColor="@color/buttonText"
             android:id="@+id/add_botton"
             android:gravity="center" />
     </LinearLayout>

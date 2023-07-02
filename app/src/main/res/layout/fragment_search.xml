@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".principale.SearchFragment"
     android:background="@color/background">
+
 
     <LinearLayout
         android:id="@+id/linearLayout9"
@@ -53,15 +54,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="70dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginBottom="30dp"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/search_btnRestaurant"
-                        android:layout_width="185dp"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="50dp"
                         android:backgroundTint="@color/button"
                         android:drawableTop="@drawable/baseline_restaurant_menu_24"
                         android:gravity="center"
@@ -73,7 +73,7 @@
 
                     <Button
                         android:id="@+id/search_btnHotel"
-                        android:layout_width="185dp"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/button"
                         android:drawableTop="@drawable/baseline_house_24"
@@ -95,9 +95,9 @@
 
                     <Button
                         android:id="@+id/search_btnMonuments"
-                        android:layout_width="185dp"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="50dp"
                         android:backgroundTint="@color/button"
                         android:backgroundTintMode="screen"
                         android:drawableTop="@drawable/baseline_event_24"
@@ -110,7 +110,7 @@
 
                     <Button
                         android:id="@+id/search_btnPeople"
-                        android:layout_width="185dp"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/button"
                         android:drawableTop="@drawable/baseline_emoji_people_24"
@@ -137,5 +137,5 @@
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 

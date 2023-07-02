@@ -117,7 +117,7 @@
 
             <Button
                 android:id="@+id/user_btn_edit"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/button"
                 android:padding="10dp"
@@ -128,7 +128,7 @@
 
             <Button
                 android:id="@+id/btnAddPost"
-                android:layout_width="180dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"

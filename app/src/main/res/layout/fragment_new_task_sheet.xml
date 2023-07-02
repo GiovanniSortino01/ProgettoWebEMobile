@@ -184,6 +184,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/search_sheet_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="20sp"
+                android:hint="Inserisci la data"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:inputType="date"
+                android:layout_marginBottom="10dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -200,7 +213,7 @@
                     android:textSize="25sp"
                     android:textColor="@color/white"
                     android:drawablePadding="10dp"
-                    android:drawableLeft="@drawable/baseline_price_check_24"/>
+                    android:drawableStart="@drawable/baseline_price_check_24"/>
 
                 <TextView
                     android:id="@+id/prezzo"
@@ -211,7 +224,7 @@
                     android:gravity="right"
                     android:textSize="25sp"
                     android:textColor="@color/white"
-                    android:drawableRight="@drawable/baseline_eurobianco_24"/>
+                    android:drawableEnd="@drawable/baseline_eurobianco_24"/>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
