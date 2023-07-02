@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
@@ -45,6 +46,11 @@ class PersonalAccountAdapter(private val mList: ArrayList<ItemsViewModelPost>,va
         holder.itemView.setOnClickListener{
             onClickListener?.onClick(position,ItemsViewModelPost)
         }
+
+        if(account==null){
+            holder.btn.visibility= View.GONE
+        }
+
         holder.btn.setOnClickListener{
             val dialogBuilder = AlertDialog.Builder(context)
             dialogBuilder.setMessage("Sei sicuro di voler eliminare il post?")

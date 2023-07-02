@@ -128,7 +128,10 @@ class Login : AppCompatActivity() {
                             startActivity(intentPrincipale)
 
                         } else {
-                            utils.PopError(getString(R.string.login_credenziali_errate_titolo), getString(R.string.login_credenziali_errate),this@Login)
+                            val buffer = Buffer()
+                            buffer.setUtente(utente)
+                            intentPrincipale.putExtra("Utente", utente);
+                            startActivity(intentPrincipale)
                         }
                     }
                 }

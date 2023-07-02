@@ -71,7 +71,7 @@ class PagamentiFragment : Fragment() {
     ) {
         val query = "select * from carte where id_persona = '$id';"
         val data = ArrayList<ItemViewModelCard>()
-        var nessuna_carta_image = binding.imageView
+        //var nessuna_carta_image = binding.imageView
         var nessuna_carta_text = binding.textView5
 
         ClientNetwork.retrofit.login(query).enqueue(
@@ -80,7 +80,7 @@ class PagamentiFragment : Fragment() {
                     val queryset = response.body()?.getAsJsonArray("queryset")
 
                     if (queryset?.size()!! >= 1) {
-                        nessuna_carta_image.visibility=View.GONE
+                       // nessuna_carta_image.visibility=View.GONE
                         nessuna_carta_text.visibility=View.GONE
                         var completedCount = 0 // Contatore per tenere traccia del numero di chiamate completate
 
@@ -95,7 +95,7 @@ class PagamentiFragment : Fragment() {
                                 }
                             }
                     } else {
-                        nessuna_carta_image.visibility=View.VISIBLE
+                        //nessuna_carta_image.visibility=View.VISIBLE
                         nessuna_carta_text.visibility=View.VISIBLE
                         callback(data)
                     }

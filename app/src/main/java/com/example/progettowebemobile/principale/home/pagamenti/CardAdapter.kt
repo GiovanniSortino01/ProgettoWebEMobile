@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.text.toSpanned
 import androidx.recyclerview.widget.RecyclerView
 import com.example.db_connection.ClientNetwork
+import com.example.progettowebemobile.Buffer
 import com.example.progettowebemobile.Buffer.Companion.utente
 import com.example.progettowebemobile.R
 import com.example.progettowebemobile.Utils
@@ -29,7 +30,7 @@ import java.util.Locale
     class CardAdapter(private val mList: ArrayList<ItemViewModelCard>, private val context: Context,utente: Utente) : RecyclerView.Adapter<CardAdapter.ViewHolder>(){
     private var onClickListener: CardAdapter.OnClickListener? = null
     private var utils= Utils()
-
+        private var item= Buffer()
     class ViewHolder(binding: ItemPagamentiBinding): RecyclerView.ViewHolder(binding.root){
         val titolare = binding.pagamentiItemTvTitolare
         val numero = binding.pagamentiItemTvNum
@@ -105,8 +106,9 @@ import java.util.Locale
                     val posizione = utente?.card?.indexOf(elementoDaCercare)
 
                     if (posizione != -1) {
-                        if (posizione != null) {
-                            utente?.card?.removeAt(posizione)
+                        if (utente != null && posizione != null) {
+                            utente!!.card.removeAt(posizione) // Rimuove l'elemento dalla posizione specificata
+                            item.setUtente(utente!!)
                         }
                     }
                     mList.removeAt(position) // Rimuovi l'elemento dalla lista

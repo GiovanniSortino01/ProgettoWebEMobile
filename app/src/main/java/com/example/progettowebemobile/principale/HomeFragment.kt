@@ -78,11 +78,6 @@ class HomeFragment : Fragment() {
                 R.id.nav_preferiti ->
                     findNavController().navigate(R.id.action_homeFragment_to_preferitiFragment)
 
-                R.id.nav_chiSiamo -> Toast.makeText(
-                    requireContext(),
-                    "Clicked Chi siamo",
-                    Toast.LENGTH_SHORT
-                ).show()
                 R.id.nav_logout -> {
                     val dialogBuilder = android.app.AlertDialog.Builder(requireContext())
                 dialogBuilder.setMessage(getString(R.string.log_out_text))
