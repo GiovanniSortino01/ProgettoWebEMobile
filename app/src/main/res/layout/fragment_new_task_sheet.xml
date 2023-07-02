@@ -193,23 +193,20 @@
 
                 <TextView
                     android:id="@+id/serch_sheet_text"
-                    android:layout_width="181dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="left"
                     android:layout_weight="1"
-                    android:text="@string/search_generalPrice"
+                    android:text="@string/sheet_dataText"
                     android:textSize="25sp"
-                    android:textColor="@color/white"
-                    android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/baseline_price_check_24"/>
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/sheet_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="data"
+                    android:text="@string/plus"
+                    android:drawableStart="@drawable/baseline_date_range_24"
                     android:backgroundTint="@color/button"
                     android:textColor="@color/buttonText"
                     android:textSize="25sp" />
