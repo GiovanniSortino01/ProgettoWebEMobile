@@ -47,6 +47,7 @@ class AccountFragment : Fragment() {
     private lateinit var utente: Utente
     private var utils = Utils()
     private var buffer = Buffer()
+    private var tipo:String=""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,9 +75,11 @@ class AccountFragment : Fragment() {
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
 
         binding.userBtnEdit.setOnClickListener {
+            tipo="profilo"
             popEdit()
         }
         binding.btnAddPost.setOnClickListener {
+            tipo=""
             popAdd()
         }
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -608,6 +611,7 @@ class AccountFragment : Fragment() {
                 if (selectedImage != null) {
                     val imageBitmap = getBitmapFromUri(selectedImage)
                     binding.imageView2.setImageBitmap(imageBitmap)
+
                 }
             }
         }

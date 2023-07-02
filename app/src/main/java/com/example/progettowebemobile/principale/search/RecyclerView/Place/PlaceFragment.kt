@@ -23,6 +23,7 @@ import android.widget.Spinner
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -76,6 +77,14 @@ class PlaceFragment : Fragment() {
         setting()
         loadRecyclerViewData()
 
+        binding.searchFragmentTvIndirizzo.setOnClickListener{
+            if (checkLocationPermission()) {
+                openGoogleMaps(luogo.indirizzo)
+            } else {
+                // Richiedi i permessi
+                requestLocationPermission()
+            }
+        }
 
         binding.searchFragmentRatingBar.rating = luogo.valutazione
 
@@ -319,11 +328,6 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentChiama.visibility = View.GONE
         binding.searchFragmentServizi.visibility = View.GONE
 
-        binding.searchFragmentBtnScegli.visibility = View.VISIBLE
-        binding.searchFragmentBtnPrenota.visibility = View.VISIBLE
-        binding.searchFragmentTvPrenotazione.visibility = View.VISIBLE
-        binding.serchFragmentTvPrezzo.visibility = View.VISIBLE
-        binding.searchFragmentPrezzoEffettivo.visibility = View.VISIBLE
     }
     private fun evento(){
         binding.searchFragmentTvPrenotazione.text=getString(R.string.Place_TvPrenotazioni_Evento)
@@ -334,11 +338,6 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentChiama.visibility = View.VISIBLE
         binding.searchFragmentServizi.visibility = View.GONE
 
-        binding.searchFragmentBtnScegli.visibility = View.VISIBLE
-        binding.searchFragmentBtnPrenota.visibility = View.VISIBLE
-        binding.searchFragmentTvPrenotazione.visibility = View.VISIBLE
-        binding.serchFragmentTvPrezzo.visibility = View.VISIBLE
-        binding.searchFragmentPrezzoEffettivo.visibility = View.VISIBLE
     }
     private fun hotel(){
         binding.searchFragmentTvPrenotazione.text=getString(R.string.Place_TvPrenotazioni_Hotel)
@@ -350,11 +349,6 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentServizi.visibility = View.VISIBLE
         binding.searchFragmentServizi.text = "Servizi"
 
-        binding.searchFragmentBtnScegli.visibility = View.VISIBLE
-        binding.searchFragmentBtnPrenota.visibility = View.VISIBLE
-        binding.searchFragmentTvPrenotazione.visibility = View.VISIBLE
-        binding.serchFragmentTvPrezzo.visibility = View.VISIBLE
-        binding.searchFragmentPrezzoEffettivo.visibility = View.VISIBLE
     }
     private fun ristorante(){
         binding.searchFragmentTvPrenotazione.text=getString(R.string.Place_TvPrenotazioni_Ristorante)
@@ -366,11 +360,7 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentServizi.visibility = View.VISIBLE
         binding.searchFragmentServizi.text = "Menù"
 
-        binding.searchFragmentBtnScegli.visibility = View.GONE
-        binding.searchFragmentBtnPrenota.visibility = View.GONE
-        binding.searchFragmentTvPrenotazione.visibility = View.GONE
-        binding.serchFragmentTvPrezzo.visibility = View.GONE
-        binding.searchFragmentPrezzoEffettivo.visibility = View.GONE
+
     }
 
 
@@ -709,30 +699,52 @@ class PlaceFragment : Fragment() {
             }
         )
     }
-//    private fun insertPrenotazione(id_luogo: Int, id_utente: Int, nome_luogo: String, data: String, prezzo: Int) {
-//        val query = "INSERT INTO prenotazioni (id_persona, id_luogo, nome_luogo, data, prezzo) VALUES ('$id_utente', '$id_luogo','$nome_luogo', '$data','$prezzo');"
-//        Log.i("LOG", "Query creata:$query ")
-//
-//        ClientNetwork.retrofit.insert(query).enqueue(object : Callback<JsonObject> {
-//            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-//                if (response.isSuccessful) {
-//                    val queryset = response.body()?.getAsJsonArray("queryset")
-//                    if (queryset != null && queryset.size() >= 1) {
-//                        utils.PopError(
-//                            getString(R.string.Place_pagamento_confermato_title),
-//                            getString(R.string.Place_pagamento_confermato_text),
-//                            requireContext()
-//                        )
-//                    } else {
-//                        Log.i("LOG", "Errore durante la registrazione")
-//                    }
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-//                Log.i("LOG", "Errore durante l'inserimento")
-//            }
-//        })
-//    }
+
+    private fun checkLocationPermission(): Boolean {
+        val permission = Manifest.permission.ACCESS_FINE_LOCATION
+        val result = ContextCompat.checkSelfPermission(requireContext(), permission)
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestLocationPermission() {
+        val permission = Manifest.permission.ACCESS_FINE_LOCATION
+
+        if (shouldShowRequestPermissionRationale(permission)) {
+            // Spiega all'utente perché sono necessari i permessi
+            val dialogBuilder = AlertDialog.Builder(requireContext())
+            dialogBuilder.setMessage(getString(R.string.dialog_text))
+                .setTitle(getString(R.string.dialog_title))
+                .setPositiveButton(R.string.dialog_concedi) { dialog, _ ->
+                    dialog.dismiss()
+                    requestPermissionLauncher2.launch(permission)
+                }
+                .setNegativeButton(R.string.dialog_annulla) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
+        } else {
+            // Richiedi direttamente i permessi
+            requestPermissionLauncher2.launch(permission)
+        }
+    }
+
+    private val requestPermissionLauncher2 =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                openGoogleMaps(luogo.indirizzo)
+            } else {
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    openGoogleMaps(luogo.indirizzo)
+
+                }
+            }
+        }
+    private fun openGoogleMaps(address: String) {
+        val uri = Uri.parse("geo:0,0?q=$address")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+    }
+
 
 }

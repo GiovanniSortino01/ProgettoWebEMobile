@@ -42,16 +42,6 @@ class GpsFragment : Fragment() {
         navigateToHomeFragment()
 
 
-        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // Esegui le azioni desiderate qui
-                // ad esempio, torna indietro o chiudi il Fragment
-                showDialogToConfirmExit()
-            }
-        }
-
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
-
         return view
     }
 
@@ -89,7 +79,12 @@ class GpsFragment : Fragment() {
             if (isGranted) {
                 openGoogleMaps()
             } else {
-                navigateToHomeFragment()
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    openGoogleMaps()
+
+                } else {
+                    navigateToHomeFragment()
+                }
             }
         }
 
@@ -131,19 +126,6 @@ class GpsFragment : Fragment() {
         }
 
         return null
-    }
-    private fun showDialogToConfirmExit() {
-        val builder = androidx.appcompat.app.AlertDialog.Builder(requireActivity())
-        builder.setTitle(getString(R.string.back_title))
-        builder.setMessage(getString(R.string.back_text))
-        builder.setPositiveButton(getString(R.string.back_yes)) { dialog, which ->
-            requireActivity().finish()
-        }
-        builder.setNegativeButton(getString(R.string.back_no)) { dialog, which ->
-            dialog.dismiss()
-        }
-        val dialog = builder.create()
-        dialog.show()
     }
 
 
