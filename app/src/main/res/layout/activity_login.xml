@@ -36,7 +36,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="#30ffffff"
-                android:drawableLeStart="@drawable/ic_baseline_person_outline_24"
+                android:drawableStart="@drawable/ic_baseline_person_outline_24"
                 android:drawablePadding="20dp"
                 android:hint="@string/user_tvNome"
                 android:inputType="text|textEmailAddress"

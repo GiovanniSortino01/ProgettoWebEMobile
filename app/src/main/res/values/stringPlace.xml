@@ -47,6 +47,7 @@
 
     <string name="Place_TV_PrezzoGenerale_Ristorante">Prenotazione:</string>
     <string name="sheet_dataText">Inserisci la data:</string>
+    <string name="minusText">Minus button</string>
 
     <!-- Pagamento -->
     <string name="Place_pagamento_title">Inserisci il metodo di pagamento</string>
