@@ -56,6 +56,7 @@ class PlaceFragment : Fragment() {
     var prezzo:Double = 0.0
     var dataPrenotazione1:String=""
     var dataPrenotazione2:String=""
+    var item = Buffer()
     var data = ""
     private var backButtonEnabled=false
 
@@ -90,9 +91,13 @@ class PlaceFragment : Fragment() {
         binding.searchFragmentRatingBar.rating = luogo.valutazione
 
         binding.searchFragmentBtnPrenota.setOnClickListener{
-            var carte=utente?.carte
+            var utente1 = item.getUtente()
+            utente1?.carte
+            var carte=utente1?.carte
             if(carte?.size!!>0) {
                 popCard(carte)
+            }else{
+                utils.PopError("Carta mancante","Non ci sono attualmente metodi di pagamento",requireContext())
             }
         }
 

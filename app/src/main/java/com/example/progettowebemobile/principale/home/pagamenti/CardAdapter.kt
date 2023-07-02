@@ -101,9 +101,6 @@ import java.util.Locale
                         context
                     )
 
-
-
-// Ora l'ArrayList conterrà solo ["Elemento 1", "Elemento 3"]
                     val elementoDaCercare = "Elemento 2"
                     val posizione = utente?.card?.indexOf(elementoDaCercare)
 

@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.R
+import com.example.progettowebemobile.databinding.FragmentAccountBinding
 import com.example.progettowebemobile.databinding.FragmentPlaceBinding
 import com.example.progettowebemobile.databinding.FragmentUserBinding
 import com.example.progettowebemobile.entity.Luogo
@@ -48,7 +49,7 @@ class UserFragment : Fragment() {
     }
     private fun loadRecyclerViewData() {
         getItems(persona.id) { data ->
-            val adapter = PersonalAccountAdapter(data)
+            val adapter = PersonalAccountAdapter(data,requireContext(),null)
             binding.userRecycleView.adapter = adapter
 
             adapter.setOnClickListener(object : PersonalAccountAdapter.OnClickListener {

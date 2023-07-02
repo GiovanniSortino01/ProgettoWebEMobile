@@ -43,8 +43,8 @@
     <string name="user_error_popup_edit_title">Elementi Mancanti</string>
     <string name="user_error_popup_edit_text">Devi compilare tutti i campi prima di poter modificare</string>
 
-    <string name="user_edit_modificaEffetuata_title">Password</string>
-    <string name="user_edit_modificaEffetuata_text">Password confermata con successo</string>
+    <string name="user_edit_modificaEffetuata_title">Modifica</string>
+    <string name="user_edit_modificaEffetuata_text">Modifica eseguita con successo</string>
 
     <!-- Edit Password-->
     <string name="user_tvEditPassword">Modifica Password</string>
@@ -81,6 +81,8 @@
     <!-- Edit Card-->
     <string name="user_edit_btnCard">Visualizza carte</string>
 
+    <string name="user_error_popup_editPassword_passwordUguali_title">Password uguali</string>
+    <string name="user_error_popup_editPassword_passwordUguali_text">La nuova password deve essere diversa dalla precedente</string>
 
 
 

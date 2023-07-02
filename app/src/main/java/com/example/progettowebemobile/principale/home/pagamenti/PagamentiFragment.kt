@@ -134,67 +134,75 @@ class PagamentiFragment : Fragment() {
                 val titolare = ET_titolare.text.toString()
                 val cvv = ET_cvv.text.toString()
                 val data = ET_date.text.toString()
-                val firstTwoChars = data.substring(0, 2)
-                val numeroSenzaSpazi = numero.replace(" ", "")
+                if(data != null && data.length>=2) {
+                    val firstTwoChars = data.substring(0, 2)
+                    val numeroSenzaSpazi = numero.replace(" ", "")
 
-                if (numeroSenzaSpazi.isEmpty() || cvv.isEmpty() || data.isEmpty() || titolare.isEmpty()) {
-                    utils.PopError(
-                        getString(R.string.card_newCard_error_title),
-                        getString(R.string.card_newCard_error_text),
-                        requireContext()
-                    )
-                } else {
-                    exist(numeroSenzaSpazi) { exists ->
-                        if (exists) {
-                            //già esistente
-                            utils.PopError(
-                                getString(R.string.card_newCard_error_general),
-                                getString(R.string.card_newCard_error_numberExist),
-                                requireContext()
-                            )
-                        } else if (numeroSenzaSpazi.length != 16 || !TextUtils.isDigitsOnly(
-                                numeroSenzaSpazi
-                            )
-                        ) {
-                            // Numero non valido
-                            utils.PopError(
-                                getString(R.string.card_newCard_error_general),
-                                getString(R.string.card_newCard_error_numberError),
-                                requireContext()
-                            )
-                        } else if (cvv.length != 3) {
-                            // CVV non valido
-                            utils.PopError(
-                                getString(R.string.card_newCard_error_general),
-                                getString(R.string.card_newCard_error_cvvError),
-                                requireContext()
-                            )
-                        }else if(!verificaFormatoStringa(data)){
-                            utils.PopError(
-                                getString(R.string.card_newCard_error_general),
-                                getString(R.string.card_newCard_error_dataMeseError),
-                                requireContext()
-                            )
-                        }else if(firstTwoChars.toInt()>12){
-                            //Data non valida
-                            utils.PopError(
-                                getString(R.string.card_newCard_error_general),
-                                getString(R.string.card_newCard_error_dataMeseError),
-                                requireContext()
-                            )
-                        } else if (!verificaData(data)) {
-                            // Carta scaduta
-                            utils.PopError(
-                                getString(R.string.card_newCard_error_general),
-                                getString(R.string.card_newCard_error_dataError),
-                                requireContext()
-                            )
-                        } else {
-                            // Inserisci i dati nel database
-                            insert(id, numeroSenzaSpazi, data, cvv, titolare)
-                            alertDialog.dismiss()
+                    if (numeroSenzaSpazi.isEmpty() || cvv.isEmpty() || data.isEmpty() || titolare.isEmpty()) {
+                        utils.PopError(
+                            getString(R.string.card_newCard_error_title),
+                            getString(R.string.card_newCard_error_text),
+                            requireContext()
+                        )
+                    } else {
+                        exist(numeroSenzaSpazi) { exists ->
+                            if (exists) {
+                                //già esistente
+                                utils.PopError(
+                                    getString(R.string.card_newCard_error_general),
+                                    getString(R.string.card_newCard_error_numberExist),
+                                    requireContext()
+                                )
+                            } else if (numeroSenzaSpazi.length != 16 || !TextUtils.isDigitsOnly(
+                                    numeroSenzaSpazi
+                                )
+                            ) {
+                                // Numero non valido
+                                utils.PopError(
+                                    getString(R.string.card_newCard_error_general),
+                                    getString(R.string.card_newCard_error_numberError),
+                                    requireContext()
+                                )
+                            } else if (cvv.length != 3) {
+                                // CVV non valido
+                                utils.PopError(
+                                    getString(R.string.card_newCard_error_general),
+                                    getString(R.string.card_newCard_error_cvvError),
+                                    requireContext()
+                                )
+                            } else if (!verificaFormatoStringa(data)) {
+                                utils.PopError(
+                                    getString(R.string.card_newCard_error_general),
+                                    getString(R.string.card_newCard_error_dataMeseError),
+                                    requireContext()
+                                )
+                            } else if (firstTwoChars.toInt() > 12) {
+                                //Data non valida
+                                utils.PopError(
+                                    getString(R.string.card_newCard_error_general),
+                                    getString(R.string.card_newCard_error_dataMeseError),
+                                    requireContext()
+                                )
+                            } else if (!verificaData(data)) {
+                                // Carta scaduta
+                                utils.PopError(
+                                    getString(R.string.card_newCard_error_general),
+                                    getString(R.string.card_newCard_error_dataError),
+                                    requireContext()
+                                )
+                            } else {
+                                // Inserisci i dati nel database
+                                insert(id, numeroSenzaSpazi, data, cvv, titolare)
+                                alertDialog.dismiss()
+                            }
                         }
                     }
+                }else{
+                    utils.PopError(
+                        getString(R.string.card_newCard_error_general),
+                        getString(R.string.card_newCard_error_numberExist),
+                        requireContext()
+                    )
                 }
             }
     }

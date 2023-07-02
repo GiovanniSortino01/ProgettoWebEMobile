@@ -97,9 +97,9 @@ class AccountFragment : Fragment() {
 
 
 
-    private fun loadRecyclerViewData() {
+    fun loadRecyclerViewData() {
         getItems(utente.id) { data ->
-            val adapter = PersonalAccountAdapter(data)
+            val adapter = PersonalAccountAdapter(data,requireContext(),this)
             binding.userRecycleView.adapter = adapter
 
             adapter.setOnClickListener(object : PersonalAccountAdapter.OnClickListener {
@@ -418,7 +418,13 @@ class AccountFragment : Fragment() {
                         getString(R.string.user_error_popup_editPassword_noConform_text),
                         requireContext()
                     )
-                } else if (!newPassword.equals(confermaPassword)) {
+                }else if(newPassword.equals(oldPassword)) {
+                    utils.PopError(
+                        getString(R.string.user_error_popup_editPassword_passwordUguali_title),
+                        getString(R.string.user_error_popup_editPassword_passwordUguali_text),
+                        requireContext()
+                    )
+                }else if (!newPassword.equals(confermaPassword)) {
                     utils.PopError(
                         getString(R.string.user_error_popup_editPassword_passwordDiverse_title),
                         getString(R.string.user_error_popup_editPassword_passwordDiverse_text),
