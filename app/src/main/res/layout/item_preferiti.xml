@@ -34,14 +34,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/preferiti_nome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome"
+                    android:text="@string/search_name_restaurant"
                     android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"/>
@@ -56,8 +56,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:layout_marginRight="20dp"
-                        android:text="Luogo"
+                        android:text="@string/search_name_place"
+                        android:layout_marginEnd="20dp"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
@@ -65,7 +65,7 @@
                         android:id="@+id/preferiti_rating_bar"
                         android:layout_width="240dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
                         android:contentDescription="@string/reviews_ratingDescription"
                         android:numStars="5"
                         android:progressBackgroundTint="@color/black"

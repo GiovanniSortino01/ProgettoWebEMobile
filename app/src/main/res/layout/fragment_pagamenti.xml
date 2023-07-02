@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:gravity="left"
+                android:gravity="start"
                 android:text="@string/pagamenti_tvGenerale"
                 android:textColor="@color/white"
                 android:textSize="25sp"
@@ -58,7 +58,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="20dp"
             android:text="@string/pagamenti_tvSecond"
-            android:gravity="left"
+            android:gravity="start"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="italic" />

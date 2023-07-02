@@ -46,7 +46,7 @@
                     android:layout_weight="1"
                     android:text="@string/menu_btnAntipasti"
                     android:textColor="@color/buttonText"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
                     android:textSize="20sp"
                     android:backgroundTint="@color/button"/>
 
@@ -57,7 +57,7 @@
                     android:layout_weight="1"
                     android:text="@string/menu_btnPrimi"
                     android:textColor="@color/buttonText"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
                     android:textSize="20sp"
                     android:backgroundTint="@color/button"/>
 
@@ -68,7 +68,7 @@
                     android:layout_weight="1"
                     android:text="@string/menu_btnSecondi"
                     android:textColor="@color/buttonText"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
                     android:textSize="20sp"
                     android:backgroundTint="@color/button"/>
 
@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/menu_btnDolci"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
                     android:textSize="20sp"
                     android:textColor="@color/buttonText"
                     android:backgroundTint="@color/button"/>

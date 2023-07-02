@@ -38,7 +38,7 @@
                     android:text="@string/servizi_internet"
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_wifi_24"
+                    android:drawableStart="@drawable/baseline_wifi_24"
                     android:drawablePadding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -65,7 +65,7 @@
                     android:text="@string/servizi_fitness"
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_fitness_center_24"
+                    android:drawableStart="@drawable/baseline_fitness_center_24"
                     android:drawablePadding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -92,7 +92,7 @@
                     android:text="@string/servizi_ciboBevande"
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_fastfood_24"
+                    android:drawableStart="@drawable/baseline_fastfood_24"
                     android:drawablePadding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -119,7 +119,7 @@
                     android:text="@string/servizi_trasporti"
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_directions_car_24"
+                    android:drawableStart="@drawable/baseline_directions_car_24"
                     android:drawablePadding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -146,7 +146,7 @@
                     android:text="@string/servizi_generali"
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_info_24"
+                    android:drawableStart="@drawable/baseline_info_24"
                     android:drawablePadding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -173,7 +173,7 @@
                     android:text="@string/servizi_tipiCamere"
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_bed_24"
+                    android:drawableStart="@drawable/baseline_bed_24"
                     android:drawablePadding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -201,7 +201,7 @@
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
                     android:textColor="@color/white"
-                    android:drawableLeft="@drawable/baseline_bed_24"
+                    android:drawableStart="@drawable/baseline_bed_24"
                     android:drawablePadding="10dp"
                     android:textStyle="bold"/>
 
@@ -227,7 +227,7 @@
                     android:text="@string/servizi_reception"
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_home_repair_service_24"
+                    android:drawableStart="@drawable/baseline_home_repair_service_24"
                     android:drawablePadding="10dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
@@ -254,7 +254,7 @@
                     android:text="@string/servizi_pulizia"
                     android:textSize="23sp"
                     android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/baseline_dry_cleaning_24"
+                    android:drawableStart="@drawable/baseline_dry_cleaning_24"
                     android:drawablePadding="10dp"
                     android:textStyle="bold"
                     android:textColor="@color/white"/>

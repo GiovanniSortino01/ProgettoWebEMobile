@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/pagamenti_rvTipologia"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -67,13 +67,13 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_weight="1"
         android:clickable="true"
         app:fabSize="mini"
         android:backgroundTint="@color/ristorante"
         app:srcCompat="@drawable/baseline_remove_24"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginTop="5dp"
         android:contentDescription="Rimuovi"/>
 </androidx.cardview.widget.CardView>
