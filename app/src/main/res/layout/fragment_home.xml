@@ -51,7 +51,8 @@
                     android:gravity="center"
                     android:text="Muoviti con noi"
                     android:textColor="@color/white"
-                    android:textSize="26sp"
+                    android:textSize="40sp"
+
                     android:textStyle="bold" />
 
                 <TextView

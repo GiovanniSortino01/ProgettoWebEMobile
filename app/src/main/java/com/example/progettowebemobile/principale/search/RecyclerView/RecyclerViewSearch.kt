@@ -190,7 +190,7 @@ class RecyclerViewSearch : Fragment() {
         tipo: String,text:String,
         callback: (ArrayList<ItemsViewModelSearch>) -> Unit // Callback per restituire il risultato nullable
     ) {
-        val query = "select * from luoghi l,preferiti p where l.tipo = '$tipo' and (l.nome LIKE '%$text%' or l.luogo LIKE '%$text%' or l.indirizzo LIKE '%$text%');"
+        val query = "SELECT * FROM luoghi WHERE tipo = '$tipo' AND (nome LIKE '%$text%' OR luogo LIKE '%$text%' OR indirizzo LIKE '%$text%');"
         val data = ArrayList<ItemsViewModelSearch>()
 
         ClientNetwork.retrofit.login(query).enqueue(
@@ -200,7 +200,7 @@ class RecyclerViewSearch : Fragment() {
                     val queryset = response.body()?.getAsJsonArray("queryset")
 
                     if (queryset?.size()!! >= 1) {
-                        binding.imageView3.visibility = View.GONE
+                        //binding.imageView3.visibility = View.GONE
                         binding.textView6.visibility = View.GONE
 
                         var completedCount = 0 // Contatore per tenere traccia del numero di chiamate completate
@@ -235,7 +235,7 @@ class RecyclerViewSearch : Fragment() {
                         }
                     } else {
                         callback(data)
-                        binding.imageView3.visibility = View.VISIBLE
+                       // binding.imageView3.visibility = View.VISIBLE
                         binding.textView6.visibility = View.VISIBLE
                     }
                 }
@@ -320,7 +320,7 @@ class RecyclerViewSearch : Fragment() {
                     if (response.isSuccessful) {
                         val queryset = response.body()?.getAsJsonArray("queryset")
                         if (queryset?.size()!! >= 1) {
-                            binding.imageView3.visibility = View.GONE
+                            //binding.imageView3.visibility = View.GONE
                             binding.textView6.visibility = View.GONE
                             var completedCount = 0 // Contatore per tenere traccia del numero di chiamate completate
 
@@ -339,7 +339,7 @@ class RecyclerViewSearch : Fragment() {
                             }
                         } else {
                             callback(data)
-                            binding.imageView3.visibility = View.VISIBLE
+                            //binding.imageView3.visibility = View.VISIBLE
                             binding.textView6.visibility = View.VISIBLE
                         }
                     }

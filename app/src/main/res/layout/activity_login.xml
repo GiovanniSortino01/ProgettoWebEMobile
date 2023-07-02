@@ -24,7 +24,7 @@
                 android:gravity="center"
                 android:text="@string/login_button_login"
                 android:textColor="@color/white"
-                android:textSize="35sp"
+                android:textSize="50sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -68,7 +68,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/button"
@@ -87,6 +87,14 @@
                 android:text="@string/home_singin"
                 android:textColor="@color/white"
                 android:layout_gravity="center"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/immagine_app"
+                />
 
         </LinearLayout>
 </ScrollView>

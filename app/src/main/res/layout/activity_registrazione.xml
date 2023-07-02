@@ -130,16 +130,19 @@
                 android:backgroundTint="@color/button"
                 android:text="@string/registrationText"
                 android:textStyle="bold"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="35dp"
                 android:textColor="@color/buttonText"
                 android:layout_marginBottom="15dp"
                 android:textSize="20sp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/register_btnBack"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="left"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20sp"
+                android:gravity="center"
                 android:backgroundTint="@color/buttonBack"
                 android:text="@string/register_back"
                 android:textSize="20sp"
