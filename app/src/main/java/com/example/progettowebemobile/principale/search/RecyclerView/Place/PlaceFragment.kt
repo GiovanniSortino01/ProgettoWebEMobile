@@ -94,16 +94,28 @@ class PlaceFragment : Fragment() {
             var utente1 = item.getUtente()
             var carte=utente1?.carte
             Log.i(TAG,"$carte")
-            if(carte?.size!!>0) {
-                for (i in 0 until carte.size) {
-                    var num = carte.get(i)
-                    val modifiedString = StringBuilder(num)
-                    modifiedString.replace(0, num.length - 4, "**** **** **** ")
-                    carte.set(i,modifiedString.toString())
+            if(prezzo!=0.0) {
+                if (carte?.size!! > 0) {
+                    for (i in 0 until carte.size) {
+                        var num = carte.get(i)
+                        val modifiedString = StringBuilder(num)
+                        modifiedString.replace(0, num.length - 4, "**** **** **** ")
+                        carte.set(i, modifiedString.toString())
+                    }
+                    popCard(carte)
+                } else {
+                    utils.PopError(
+                        "Carta mancante",
+                        "Non ci sono attualmente metodi di pagamento",
+                        requireContext()
+                    )
                 }
-                popCard(carte)
             }else{
-                utils.PopError("Carta mancante","Non ci sono attualmente metodi di pagamento",requireContext())
+                utils.PopError(
+                    "Inserisci il servizio",
+                    "Non hai selezionato cosa stai ordinando",
+                    requireContext()
+                )
             }
         }
 
@@ -669,11 +681,17 @@ class PlaceFragment : Fragment() {
         spinner.adapter = adapter
 
         popupButtonPay.setOnClickListener {
-            var dataPrenotazione = dataPrenotazione1 + " " + dataPrenotazione2
-            insertPrenotazione( luogo.id_luogo,utente!!.id, luogo.nome, dataPrenotazione, prezzo.toInt())
-            prezzo=0.0
-            binding.searchFragmentPrezzoEffettivo.text="0.0"
-            alertDialog.dismiss()
+                var dataPrenotazione = dataPrenotazione1 + " " + dataPrenotazione2
+                insertPrenotazione(
+                    luogo.id_luogo,
+                    utente!!.id,
+                    luogo.nome,
+                    dataPrenotazione,
+                    prezzo.toInt()
+                )
+                prezzo = 0.0
+                binding.searchFragmentPrezzoEffettivo.text = "0.0"
+                alertDialog.dismiss()
         }
 
         popupButtonAdd.setOnClickListener{
