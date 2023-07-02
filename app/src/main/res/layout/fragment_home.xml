@@ -236,6 +236,12 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu" >
 
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ScrollView>
+
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

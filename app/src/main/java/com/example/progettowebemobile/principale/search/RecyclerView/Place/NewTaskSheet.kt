@@ -116,18 +116,21 @@ class NewTaskSheet(
 
         binding.searchSheetSaveButton.setOnClickListener {
             if(data1 == ""){
-                utils.PopError("Inserisci le date","Prima di proseguire, inserisci il periodo",requireContext())
-            }else{
-
-                if(tipo=="hotel") {
-                    place.prezzo = prezzo * (difGiorni + 1)
+                utils.PopError(getString(R.string.Place_pagamento_dataError_title),getString(R.string.Place_pagamento_dataError_text),requireContext())
+            }else {
+                if (prezzo==0.0) {
+                    utils.PopError(getString(R.string.Place_pagamento_prezzoError_title),getString(R.string.Place_pagamento_prezzoError_text),requireContext())
                 }else{
-                    place.prezzo = prezzo * difGiorni
+                    if (tipo == "hotel") {
+                        place.prezzo = prezzo * (difGiorni + 1)
+                    } else {
+                        place.prezzo = prezzo * difGiorni
+                    }
+                    place.dataPrenotazione1 = data1
+                    place.dataPrenotazione2 = data2
+                    place.loadRecyclerViewData()
+                    saveAction()
                 }
-                place.dataPrenotazione1 = data1
-                place.dataPrenotazione2 = data2
-                place.loadRecyclerViewData()
-                saveAction()
             }
         }
 

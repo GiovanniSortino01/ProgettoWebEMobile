@@ -56,7 +56,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/button"
-                        android:contentDescription="@string/minusText"
                         android:src="@drawable/baseline_remove_24"
                         android:text="@string/minus" />
 
@@ -112,8 +111,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_remove_24"
                     android:backgroundTint="@color/button"
-                    android:text="@string/minus"
-                    android:contentDescription="@string/minusText"/>
+                    android:text="@string/minus"/>
 
                 <TextView
                     android:id="@+id/numberTextView_categoria2"
@@ -162,8 +160,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_remove_24"
                     android:backgroundTint="@color/button"
-                    android:text="@string/minus"
-                    android:contentDescription="@string/minusText"/>
+                    android:text="@string/minus"/>
 
                 <TextView
                     android:id="@+id/numberTextView_categoria3"
@@ -197,25 +194,18 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="15dp">
 
-                <TextView
-                    android:id="@+id/serch_sheet_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="left"
-                    android:layout_weight="1"
-                    android:text="@string/sheet_dataText"
-                    android:textSize="25sp"
-                    android:textColor="@color/white" />
-
                 <Button
                     android:id="@+id/sheet_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/plus"
-                    android:drawableStart="@drawable/baseline_date_range_24"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="data"
+
                     android:backgroundTint="@color/button"
                     android:textColor="@color/buttonText"
                     android:textSize="25sp" />
+            </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -262,6 +252,3 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-</LinearLayout>
