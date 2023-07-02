@@ -8,9 +8,12 @@
     tools:context=".principale.MainPrincipale"
     android:id="@+id/drawerLayout2">
 
-  <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+  <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="match_parent"
+      tools:context=".principale.MainPrincipale">
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNavBar"
@@ -20,19 +23,22 @@
         app:itemIconTint="@color/bottom_nav_icon_color"
         app:itemTextColor="@color/bottom_nav_text_color"
         app:labelVisibilityMode="labeled"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-        app:layout_anchor="@id/fragmentPrincipale"
-        app:layout_anchorGravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_menu" />
 
     <fragment
         android:id="@+id/fragmentPrincipale"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="409dp"
+        android:layout_height="649dp"
         app:defaultNavHost="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toTopOf="@+id/btmNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/my_nav" />
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

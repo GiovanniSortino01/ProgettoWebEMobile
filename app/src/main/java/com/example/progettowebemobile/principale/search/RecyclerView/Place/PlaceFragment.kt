@@ -53,8 +53,9 @@ class PlaceFragment : Fragment() {
     private lateinit var luogo: Luogo
     private lateinit var taskViewModel: TaskViewModel
     private var utils = Utils()
-    private var item = Buffer()
     var prezzo:Double = 0.0
+    var dataPrenotazione1:String=""
+    var dataPrenotazione2:String=""
     var data = ""
     private var backButtonEnabled=false
 
@@ -656,7 +657,8 @@ class PlaceFragment : Fragment() {
         spinner.adapter = adapter
 
         popupButtonPay.setOnClickListener {
-            insertPrenotazione( luogo.id_luogo,utente!!.id, luogo.nome, data, prezzo.toInt())
+            var dataPrenotazione = dataPrenotazione1 + " " + dataPrenotazione2
+            insertPrenotazione( luogo.id_luogo,utente!!.id, luogo.nome, dataPrenotazione, prezzo.toInt())
             alertDialog.dismiss()
         }
 

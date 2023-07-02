@@ -55,5 +55,8 @@
 
     <string name="Place_pagamento_confermato_title">Pagamento confermato</string>
     <string name="Place_pagamento_confermato_text">Il pagamento è stato eseguito con successo</string>
+    <string name="date_range_format">%1$s - %2$s</string>
+
+    <string name="Place_TV_Prezzo_Al_Giorno">Prezzo al giorno</string>
 
 </resources>
