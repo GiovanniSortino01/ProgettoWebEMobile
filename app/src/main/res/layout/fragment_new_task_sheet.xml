@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,42 +9,102 @@
     android:background="@color/background">
 
 
-    <TextView
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Prenota"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:layout_marginBottom="20dp"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="Prenota"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/search_sheet_categoria1"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/search_sheet_categoria1"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/minusButton_categoria1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/button"
+                            android:src="@drawable/baseline_remove_24"
+                            android:text="@string/minus" />
+
+                        <TextView
+                            android:id="@+id/numberTextView_categoria1"
+                            android:layout_width="40dp"
+                            android:layout_height="60dp"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/plusButton_categoria1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/button"
+                            android:contentDescription="@string/plusText"
+                            android:src="@drawable/baseline_add_24"
+                            android:text="@string/plus" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/search_sheet_categoria1"
+                    android:id="@+id/search_sheet_categoria2"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_sheet_categoria1"
+                    android:text="@string/search_sheet_categoria2"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -52,7 +112,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/minusButton_categoria1"
+                        android:id="@+id/minusButton_categoria2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/button"
@@ -60,7 +120,7 @@
                         android:text="@string/minus" />
 
                     <TextView
-                        android:id="@+id/numberTextView_categoria1"
+                        android:id="@+id/numberTextView_categoria2"
                         android:layout_width="40dp"
                         android:layout_height="60dp"
                         android:gravity="center"
@@ -69,173 +129,119 @@
                         android:textSize="20sp" />
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/plusButton_categoria1"
+                        android:id="@+id/plusButton_categoria2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/baseline_add_24"
                         android:backgroundTint="@color/button"
-                        android:text="@string/plus"
-                        android:contentDescription="@string/plusText"/>
+                        android:contentDescription="@string/plusText"
+                        android:src="@drawable/baseline_add_24"
+                        android:text="@string/plus" />
                 </LinearLayout>
 
-
             </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:id="@+id/search_sheet_categoria2"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="@string/search_sheet_categoria2"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/minusButton_categoria2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_remove_24"
-                    android:backgroundTint="@color/button"
-                    android:text="@string/minus"/>
-
                 <TextView
-                    android:id="@+id/numberTextView_categoria2"
-                    android:layout_width="40dp"
-                    android:layout_height="60dp"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/plusButton_categoria2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/search_sheet_categoria3"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_add_24"
-                    android:backgroundTint="@color/button"
-                    android:text="@string/plus"
-                    android:contentDescription="@string/plusText"/>
+                    android:text="@string/search_sheet_categoria3"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/minusButton_categoria3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/button"
+                        android:src="@drawable/baseline_remove_24"
+                        android:text="@string/minus" />
+
+                    <TextView
+                        android:id="@+id/numberTextView_categoria3"
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/plusButton_categoria3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/button"
+                        android:contentDescription="@string/plusText"
+                        android:src="@drawable/baseline_add_24"
+                        android:text="@string/plus" />
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:id="@+id/search_sheet_categoria3"
-                android:layout_width="200dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/search_sheet_categoria3"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/sheet_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/button"
+                        android:gravity="center"
+
+                        android:text="data"
+                        android:textColor="@color/buttonText"
+                        android:textSize="25sp" />
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/minusButton_categoria3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_remove_24"
-                    android:backgroundTint="@color/button"
-                    android:text="@string/minus"/>
-
-                <TextView
-                    android:id="@+id/numberTextView_categoria3"
-                    android:layout_width="40dp"
-                    android:layout_height="60dp"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/plusButton_categoria3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_add_24"
-                    android:backgroundTint="@color/button"
-                    android:text="@string/plus"
-                    android:contentDescription="@string/plusText"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
-
-                <Button
-                    android:id="@+id/sheet_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="data"
-
-                    android:backgroundTint="@color/button"
-                    android:textColor="@color/buttonText"
-                    android:textSize="25sp" />
-            </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
 
                 <TextView
                     android:id="@+id/serch_fragment_tvPrezzo"
                     android:layout_width="181dp"
                     android:layout_height="match_parent"
-                    android:gravity="left"
                     android:layout_weight="1"
-                    android:text="@string/search_generalPrice"
-                    android:textSize="25sp"
-                    android:textColor="@color/white"
+                    android:drawableStart="@drawable/baseline_price_check_24"
                     android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/baseline_price_check_24"/>
+                    android:gravity="start"
+                    android:text="@string/search_generalPrice"
+                    android:textColor="@color/white"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/prezzo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:drawableEnd="@drawable/baseline_eurobianco_24"
+                    android:gravity="end"
                     android:text="@string/search_price"
-                    android:gravity="right"
-                    android:textSize="25sp"
                     android:textColor="@color/white"
-                    android:drawableEnd="@drawable/baseline_eurobianco_24"/>
+                    android:textSize="25sp" />
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -244,11 +250,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/button"
                 android:text="Save"
                 android:textColor="@color/buttonText"
-                android:textSize="20sp"
-                android:layout_marginBottom="20dp"/>
+                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>
+
+</ScrollView>
