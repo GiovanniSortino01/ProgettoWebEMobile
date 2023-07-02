@@ -25,13 +25,7 @@ import retrofit2.Response
 
 
 class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val context: Context) : RecyclerView.Adapter<AccountAdapter.ViewHolder>(){
-    private var itemClickListener = emptyList<Object>()
-    private var buffer = Buffer()
     private var onClickListener: OnClickListener?= null
-    private var lastClickTime: Long = 0
-    private val DOUBLE_CLICK_TIME_DELTA: Long = 300 // Tempo di doppio clic desiderato in millisecondi
-
-
 
     class ViewHolder(binding: AccountItemBinding): RecyclerView.ViewHolder(binding.root){
         val imageView = binding.imageViewProfile
@@ -108,6 +102,7 @@ class AccountAdapter(private val mList: List<ItemsViewModelAccount>,private val 
             }
         )
     }
+
 
 
 

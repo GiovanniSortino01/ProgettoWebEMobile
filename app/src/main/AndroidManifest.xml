@@ -58,6 +58,7 @@
         <activity
             android:name=".principale.MainPrincipale"
             android:exported="false"
+            android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".login.Login"

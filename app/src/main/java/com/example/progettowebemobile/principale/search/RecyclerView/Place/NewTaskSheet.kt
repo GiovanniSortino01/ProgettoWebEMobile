@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.db_connection.ClientNetwork
 import com.example.progettowebemobile.Buffer
+import com.example.progettowebemobile.R
 import com.example.progettowebemobile.databinding.FragmentNewTaskSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.gson.JsonObject
@@ -22,7 +23,7 @@ class NewTaskSheet(var id_luogo:Int,var nome1:String,var nome2:String,var nome3:
     private var numberCamere: Int = 0
     private var numberAdulti: Int = 0
     private var numberBambini: Int = 0
-    public var prezzo = 0
+    public var prezzo = 0.0
     private var item = Buffer()
     private var listaPrezzi = arrayOf(prezzo1, prezzo2, prezzo3)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,7 +32,7 @@ class NewTaskSheet(var id_luogo:Int,var nome1:String,var nome2:String,var nome3:
         taskViewModel = ViewModelProvider(activity).get(TaskViewModel::class.java)
 
         if(tipo == "ristorante"){
-            binding.prezzo.visibility = View.GONE
+            binding.serchFragmentTvPrezzo.text = getString(R.string.Place_TV_PrezzoGenerale_Ristorante)
         }
 
 

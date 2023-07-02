@@ -625,5 +625,4 @@ class AccountFragment : Fragment() {
             null
         }
     }
-
 }

@@ -54,7 +54,7 @@ class PlaceFragment : Fragment() {
     private lateinit var taskViewModel: TaskViewModel
     private var utils = Utils()
     private var item = Buffer()
-    var prezzo = 0
+    var prezzo:Double = 0.0
     var data = ""
     private var backButtonEnabled=false
 
@@ -120,16 +120,24 @@ class PlaceFragment : Fragment() {
             val nome1:String
             val nome2:String
             val nome3:String
-            if(luogo.tipo  == "evento"){
+            if(luogo.tipo  == "monumento"){
                 nome1= "Biglietto anni 0-12"
                 nome2= "Biglietto anni 12-21"
-                nome3= "Biglietto anni 22++"
-                NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,0,0,0,luogo.tipo,this).show(requireActivity().supportFragmentManager, "newTaskTag")
-
-            }else{
+                nome3= "Biglietto anni 22+"
+                getPrezzi(luogo.id_luogo){prez->
+                    NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,prez[0],prez[1],prez[2],luogo.tipo,this).show(requireActivity().supportFragmentManager, "newTaskTag")
+                }
+            }else if(luogo.tipo=="hotel"){
                 nome1= "Stanza singola"
                 nome2= "Stanza doppia"
                 nome3= "Stanza familiare 4 persone"
+                getPrezzi(luogo.id_luogo){prez->
+                    NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,prez[0],prez[1],prez[2],luogo.tipo,this).show(requireActivity().supportFragmentManager, "newTaskTag")
+                }
+            }else{
+                nome1= "Tavolo per 4"
+                nome2= "Tavolo per 6"
+                nome3= "Tavolo per 8"
                 getPrezzi(luogo.id_luogo){prez->
                     NewTaskSheet(luogo.id_luogo,nome1,nome2,nome3,prez[0],prez[1],prez[2],luogo.tipo,this).show(requireActivity().supportFragmentManager, "newTaskTag")
                 }
@@ -647,7 +655,7 @@ class PlaceFragment : Fragment() {
         spinner.adapter = adapter
 
         popupButtonPay.setOnClickListener {
-            insertPrenotazione( luogo.id_luogo,utente!!.id, luogo.nome, data, prezzo)
+            insertPrenotazione( luogo.id_luogo,utente!!.id, luogo.nome, data, prezzo.toInt())
             alertDialog.dismiss()
         }
 
