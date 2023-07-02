@@ -1,72 +1,80 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Place_newRecenzione_title"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingBottom="8dp" />
-
-    <RatingBar
-        android:id="@+id/recenzione_ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="47dp"
-        android:contentDescription="@string/reviews_ratingDescription"
-
-        android:numStars="5"
-        android:progressBackgroundTint="@color/black"
-        android:progressTint="@color/ratingBar"
-        android:rating="5"
-        android:scaleX="0.6"
-        android:scaleY="0.6"
-        android:stepSize="0.5"
-        android:transformPivotX="0dp"
-        android:translationY="5dp" />
-    <EditText
-        android:id="@+id/Et_luogo"
-        android:inputType="text"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="@string/Place_newRecenzione_hint_commento"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:paddingBottom="8dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/buttonBack"
-            android:text="@string/Place_newRecenzione_btn_back"
-            android:id="@+id/close_button"
             android:gravity="center"
-            android:textSize="14sp"
-            android:layout_marginEnd="20dp"/>
-        <Button
+            android:paddingBottom="8dp"
+            android:text="@string/Place_newRecenzione_title"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/recenzione_ratingBar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="47dp"
+            android:contentDescription="@string/reviews_ratingDescription"
+
+            android:numStars="5"
+            android:progressBackgroundTint="@color/black"
+            android:progressTint="@color/ratingBar"
+            android:rating="5"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:stepSize="0.5"
+            android:transformPivotX="0dp"
+            android:translationY="5dp" />
+
+        <EditText
+            android:id="@+id/Et_luogo"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:gravity="center"
-            android:backgroundTint="@color/button"
-            android:textColor="@color/buttonText"
-            android:text="@string/Place_newRecenzione_btn_add"
-            android:id="@+id/add_botton" />
+            android:hint="@string/Place_newRecenzione_hint_commento"
+            android:inputType="text"
+            android:paddingBottom="8dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/buttonBack"
+                android:gravity="center"
+                android:text="@string/Place_newRecenzione_btn_back"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/add_botton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/button"
+                android:gravity="center"
+                android:text="@string/Place_newRecenzione_btn_add"
+                android:textColor="@color/buttonText"
+                android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
