@@ -46,6 +46,8 @@
     <string name="data_pubblicazione">Pubblicato il 00-00-2023</string>
 
     <string name="Place_TV_PrezzoGenerale_Ristorante">Prenotazione:</string>
+    <string name="sheet_dataText">Inserisci la data:</string>
+    <string name="minusText">Minus button</string>
 
     <!-- Pagamento -->
     <string name="Place_pagamento_title">Inserisci il metodo di pagamento</string>
@@ -58,5 +60,6 @@
     <string name="date_range_format">%1$s - %2$s</string>
 
     <string name="Place_TV_Prezzo_Al_Giorno">Prezzo al giorno</string>
+
 
 </resources>
